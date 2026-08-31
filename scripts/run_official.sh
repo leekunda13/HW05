@@ -66,7 +66,33 @@ for attempt in {1..30}; do
 done
 curl -fsS "http://127.0.0.1:3000/api/products" >/dev/null
 
+# database.js queues destructive DROP/CREATE/seed statements asynchronously and
+# app.listen() can become reachable before that queue finishes.  Require the
+# canonical seed counts to remain stable before inserting performance accounts.
+stable_checks=0
+for attempt in {1..45}; do
+  seed_state="$(sqlite3 "$database_file" "select (select count(*) from users) || '|' || (select count(*) from products) || '|' || (select count(*) from coupons);")"
+  if [[ "$seed_state" == "2|5|4" ]]; then
+    stable_checks=$((stable_checks + 1))
+  else
+    stable_checks=0
+  fi
+  if [[ "$stable_checks" -ge 3 ]]; then
+    break
+  fi
+  sleep 1
+done
+if [[ "$stable_checks" -lt 3 ]]; then
+  echo "SUT database did not reach a stable canonical seed state" >&2
+  exit 5
+fi
+
 sqlite3 "$database_file" < "$task_root/scripts/seed_performance_data.sql"
+seeded_users="$(sqlite3 "$database_file" "select count(*) from users where email like 'perf%@eshop.local' and role='admin';")"
+if [[ "$seeded_users" != "80" ]]; then
+  echo "Expected 80 performance accounts, found $seeded_users" >&2
+  exit 6
+fi
 sqlite3 -header -csv "$database_file" "select datetime('now','localtime') as captured_at, count(*) as users, sum(role='admin') as admins, (select count(*) from products) as products, (select count(*) from orders) as orders, (select count(*) from coupon_usage) as coupon_usage from users;" > "$pre_state"
 
 start_iso="$(date '+%Y-%m-%dT%H:%M:%S%z')"
