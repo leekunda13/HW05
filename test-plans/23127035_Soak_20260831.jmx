@@ -2,7 +2,7 @@
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="HW05 FR03-FR09-FR16 Soak" enabled="true">
-      <stringProp name="TestPlan.comments">Ten-minute sustained run at 6 VUs using the same workflow, assertions, CSV data, and think time.</stringProp>
+      <stringProp name="TestPlan.comments">Ten-minute sustained run at 30 VUs, selected after the valid 30-VU spike completed with zero errors. Uses the same workflow, assertions, CSV data, and think time.</stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp><boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true"><collectionProp name="Arguments.arguments"/></elementProp>
       <stringProp name="TestPlan.user_define_classpath"></stringProp>
@@ -24,12 +24,12 @@
         <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Think time 200-500 ms" enabled="true">
           <stringProp name="ConstantTimer.delay">200</stringProp><stringProp name="RandomTimer.range">300</stringProp>
         </UniformRandomTimer><hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Soak - 6 VUs sustained" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Soak - 30 VUs sustained" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp><intProp name="LoopController.loops">-1</intProp>
         </elementProp>
-        <stringProp name="ThreadGroup.num_threads">6</stringProp><stringProp name="ThreadGroup.ramp_time">15</stringProp>
+        <stringProp name="ThreadGroup.num_threads">30</stringProp><stringProp name="ThreadGroup.ramp_time">30</stringProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp><stringProp name="ThreadGroup.duration">600</stringProp><stringProp name="ThreadGroup.delay">0</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>

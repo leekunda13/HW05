@@ -334,8 +334,8 @@ const plans = [
   {
     filename: `${studentId}_Soak_${runDate}.jmx`,
     title: "HW05 FR03-FR09-FR16 Soak",
-    comments: "Ten-minute sustained run at 6 VUs using the same workflow, assertions, CSV data, and think time.",
-    groups: [{ name: "Soak - 6 VUs sustained", threads: 6, ramp: 15, duration: 600, delay: 0 }],
+    comments: "Ten-minute sustained run at 30 VUs, selected after the valid 30-VU spike completed with zero errors. Uses the same workflow, assertions, CSV data, and think time.",
+    groups: [{ name: "Soak - 30 VUs sustained", threads: 30, ramp: 30, duration: 600, delay: 0 }],
   },
 ];
 
