@@ -1,0 +1,4 @@
+interface:
+  display_name: "JMeter Performance Testing"
+  short_description: "Design, run, and review HW05 performance tests"
+  default_prompt: "Use $jmeter-performance-testing to design, audit, execute, and analyse the EShop HW05 performance-testing workflow."

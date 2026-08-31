@@ -1,0 +1,4 @@
+.DS_Store
+tmp/
+*.log
+evidence/database/original_database.sqlite
