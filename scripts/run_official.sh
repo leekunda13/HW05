@@ -13,7 +13,8 @@ case "$scenario" in
 esac
 
 task_root="$(cd "$(dirname "$0")/.." && pwd)"
-sut_backend="/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend"
+sut_backend="${HW05_SUT_BACKEND:-/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend}"
+sut_port="${HW05_PORT:-3000}"
 database_file="$sut_backend/database.sqlite"
 stem="23127035_${scenario}_20260831"
 plan="$task_root/test-plans/${stem}.jmx"
@@ -55,7 +56,7 @@ trap cleanup EXIT INT TERM
 backend_pid=$!
 
 for attempt in {1..30}; do
-  if curl -fsS "http://127.0.0.1:3000/api/products" >/dev/null 2>&1; then
+  if curl -fsS "http://127.0.0.1:$sut_port/api/products" >/dev/null 2>&1; then
     break
   fi
   if ! kill -0 "$backend_pid" 2>/dev/null; then
@@ -64,7 +65,7 @@ for attempt in {1..30}; do
   fi
   sleep 1
 done
-curl -fsS "http://127.0.0.1:3000/api/products" >/dev/null
+curl -fsS "http://127.0.0.1:$sut_port/api/products" >/dev/null
 
 # database.js queues destructive DROP/CREATE/seed statements asynchronously and
 # app.listen() can become reachable before that queue finishes.  Require the
@@ -115,12 +116,13 @@ jmeter -n \
   -Jjmeter.save.saveservice.sent_bytes=true \
   -Jjmeter.save.saveservice.thread_counts=true \
   -Jjmeter.save.saveservice.assertion_results_failure_message=true \
+  -Jport="$sut_port" \
   2>&1 | tee "$run_log"
 jmeter_status=${PIPESTATUS[0]}
 set -e
 
 end_iso="$(date '+%Y-%m-%dT%H:%M:%S%z')"
-printf '%s,%s,%s,%s,%s,%s,%s\n' "$scenario" "$start_iso" "$end_iso" "$backend_pid" "5.6.3" "127.0.0.1" "3000" >> "$metadata_csv"
+printf '%s,%s,%s,%s,%s,%s,%s\n' "$scenario" "$start_iso" "$end_iso" "$backend_pid" "5.6.3" "127.0.0.1" "$sut_port" >> "$metadata_csv"
 sqlite3 -header -csv "$database_file" "select datetime('now','localtime') as captured_at, count(*) as users, sum(role='admin') as admins, (select count(*) from products) as products, (select count(*) from orders) as orders, (select count(*) from coupon_usage) as coupon_usage from users;" > "$post_state"
 
 kill "$monitor_pid" 2>/dev/null || true
