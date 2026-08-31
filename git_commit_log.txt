@@ -1,0 +1,7 @@
+d523f16 2026-08-31T17:30:23+07:00 add test plans
+c4c2fe6 2026-08-31T17:31:56+07:00 fix plan scope
+e139682 2026-08-31T17:35:11+07:00 fix database readiness
+6b16cff 2026-08-31T17:44:43+07:00 tune soak load
+79a379d 2026-08-31T17:57:42+07:00 isolate soak run
+0115c5e 2026-08-31T18:15:55+07:00 add test results
+cb5e69f 2026-08-31T18:16:07+07:00 add task report
