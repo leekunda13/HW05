@@ -1,0 +1,20 @@
+WARNING: package sun.awt.X11 not in java.desktop
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+Creating summariser <summary>
+Created the tree successfully using /Users/kunda/Documents/hw/hw05/test-plans/23127035_Spike_20260831.jmx
+Starting standalone test @ 2026 Aug 31 17:41:40 ICT (1788172900096)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +    149 in 00:00:20 =    7.5/s Avg:     4 Min:     1 Max:    30 Err:     0 (0.00%) Active: 3 Started: 3 Finished: 0
+summary +    547 in 00:00:30 =   18.3/s Avg:     2 Min:     0 Max:    10 Err:     0 (0.00%) Active: 30 Started: 33 Finished: 3
+summary =    696 in 00:00:50 =   14.0/s Avg:     3 Min:     0 Max:    30 Err:     0 (0.00%)
+summary +   2155 in 00:00:30 =   71.6/s Avg:     2 Min:     0 Max:    15 Err:     0 (0.00%) Active: 3 Started: 36 Finished: 33
+summary =   2851 in 00:01:20 =   35.7/s Avg:     2 Min:     0 Max:    30 Err:     0 (0.00%)
+summary +    246 in 00:00:30 =    8.2/s Avg:     2 Min:     0 Max:     9 Err:     0 (0.00%) Active: 3 Started: 36 Finished: 33
+summary =   3097 in 00:01:50 =   28.2/s Avg:     2 Min:     0 Max:    30 Err:     0 (0.00%)
+summary +     83 in 00:00:10 =    8.1/s Avg:     2 Min:     1 Max:     6 Err:     0 (0.00%) Active: 0 Started: 36 Finished: 36
+summary =   3180 in 00:02:00 =   26.5/s Avg:     2 Min:     0 Max:    30 Err:     0 (0.00%)
+Tidying up ...    @ 2026 Aug 31 17:43:40 ICT (1788173020201)
+... end of run

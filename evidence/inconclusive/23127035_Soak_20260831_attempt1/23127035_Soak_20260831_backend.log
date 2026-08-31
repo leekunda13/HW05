@@ -1,0 +1,36 @@
+Database initialized and seeded (Phase 2).
+Server is running on http://localhost:3000
+Connected to database
+TypeError: Cannot destructure property 'email' of 'req.body' as it is undefined.
+    at /Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/server.js:69:11
+    at Layer.handleRequest (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/index.js:295:15
+    at processParams (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/index.js:582:12)
+    at next (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/index.js:291:5)
+    at read (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/body-parser/lib/read.js:62:5)
+TypeError: Cannot destructure property 'code' of 'req.body' as it is undefined.
+    at /Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/server.js:364:11
+    at Layer.handleRequest (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/route.js:157:13)
+    at Route.dispatch (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/route.js:117:3)
+    at handle (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/index.js:435:11)
+    at Layer.handleRequest (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/layer.js:152:17)
+    at /Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/index.js:295:15
+    at processParams (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/index.js:582:12)
+    at next (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/index.js:291:5)
+    at read (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/body-parser/lib/read.js:62:5)
+TypeError: Cannot destructure property 'products' of 'req.body' as it is undefined.
+    at /Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/server.js:200:21
+    at Layer.handleRequest (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/route.js:157:13)
+    at /Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/server.js:108:5
+    at /Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/jsonwebtoken/verify.js:261:12
+    at getSecret (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/jsonwebtoken/verify.js:97:14)
+    at module.exports [as verify] (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/jsonwebtoken/verify.js:101:10)
+    at authenticateToken (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/server.js:105:7)
+    at Layer.handleRequest (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/layer.js:152:17)
+    at next (/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend/node_modules/router/lib/route.js:157:13)

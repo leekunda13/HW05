@@ -1,0 +1,26 @@
+WARNING: package sun.awt.X11 not in java.desktop
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+Creating summariser <summary>
+Created the tree successfully using /Users/kunda/Documents/hw/hw05/test-plans/23127035_Stress_20260831.jmx
+Starting standalone test @ 2026 Aug 31 17:38:02 ICT (1788172682394)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+summary +      1 in 00:00:01 =    1.4/s Avg:    19 Min:    19 Max:    19 Err:     0 (0.00%) Active: 1 Started: 1 Finished: 0
+summary +    383 in 00:00:27 =   14.3/s Avg:     3 Min:     0 Max:    25 Err:     0 (0.00%) Active: 6 Started: 6 Finished: 0
+summary =    384 in 00:00:27 =   14.0/s Avg:     3 Min:     0 Max:    25 Err:     0 (0.00%)
+summary +    509 in 00:00:30 =   16.9/s Avg:     2 Min:     0 Max:     5 Err:     0 (0.00%) Active: 6 Started: 6 Finished: 0
+summary =    893 in 00:00:58 =   15.5/s Avg:     2 Min:     0 Max:    25 Err:     0 (0.00%)
+summary +    805 in 00:00:30 =   27.0/s Avg:     2 Min:     0 Max:    13 Err:     0 (0.00%) Active: 12 Started: 18 Finished: 6
+summary =   1698 in 00:01:27 =   19.4/s Avg:     2 Min:     0 Max:    25 Err:     0 (0.00%)
+summary +   1009 in 00:00:30 =   33.6/s Avg:     2 Min:     0 Max:    12 Err:     0 (0.00%) Active: 12 Started: 18 Finished: 6
+summary =   2707 in 00:01:58 =   23.0/s Avg:     2 Min:     0 Max:    25 Err:     0 (0.00%)
+summary +   1590 in 00:00:30 =   53.1/s Avg:     2 Min:     0 Max:    18 Err:     0 (0.00%) Active: 24 Started: 42 Finished: 18
+summary =   4297 in 00:02:27 =   29.1/s Avg:     2 Min:     0 Max:    25 Err:     0 (0.00%)
+summary +   2008 in 00:00:30 =   66.9/s Avg:     2 Min:     0 Max:    32 Err:     0 (0.00%) Active: 24 Started: 42 Finished: 18
+summary =   6305 in 00:02:57 =   35.5/s Avg:     2 Min:     0 Max:    32 Err:     0 (0.00%)
+summary +    171 in 00:00:03 =   67.2/s Avg:     2 Min:     0 Max:     7 Err:     0 (0.00%) Active: 0 Started: 42 Finished: 42
+summary =   6476 in 00:03:00 =   36.0/s Avg:     2 Min:     0 Max:    32 Err:     0 (0.00%)
+Tidying up ...    @ 2026 Aug 31 17:41:02 ICT (1788172862555)
+... end of run

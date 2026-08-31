@@ -1,0 +1,7 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1788172187207,12,FR03-1 Forgot password,200,OK,Smoke - 1 VU x 1 iteration 1-1,text,true,,350,248,1,1,http://127.0.0.1:3000/api/forgot-password,12,0,9
+1788172187568,5,FR03-2 Reset password,200,OK,Smoke - 1 VU x 1 iteration 1-1,text,true,,308,293,1,1,http://127.0.0.1:3000/api/reset-password,5,0,0
+1788172187941,5,FR03-3 Login and correlate JWT,200,OK,Smoke - 1 VU x 1 iteration 1-1,text,true,,647,261,1,1,http://127.0.0.1:3000/api/login,4,0,0
+1788172188443,5,FR09 Apply BIGBUY coupon,200,OK,Smoke - 1 VU x 1 iteration 1-1,text,true,,399,265,1,1,http://127.0.0.1:3000/api/apply-coupon,5,0,0
+1788172188694,4,FR16 Import one product,200,OK,Smoke - 1 VU x 1 iteration 1-1,text,true,,357,564,1,1,http://127.0.0.1:3000/api/admin/import-products,4,0,0
+1788172189211,2,READ Verify imported product,200,OK,Smoke - 1 VU x 1 iteration 1-1,text,true,,443,224,1,1,http://127.0.0.1:3000/api/products?search=HW05-P001-0-1-1788172186940,2,0,0
