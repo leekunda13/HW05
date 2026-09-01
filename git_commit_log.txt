@@ -10,3 +10,5 @@ ff06f21 2026-08-31T18:16:07+07:00 add commit log
 12faa27 2026-08-31T18:16:43+07:00 update commit log
 1d6aaa7 2026-09-01T09:59:48+07:00 add task 2 analysis
 8af81de 2026-09-01T20:53:05+07:00 replace test workflow
+cb4e4af 2026-09-01T22:57:59+07:00 add remaining checklist
+cf2aa65 2026-09-01T23:27:34+07:00 add task 3 proposal
