@@ -16,6 +16,7 @@ build_one() {
     --from gfm \
     --to html5 \
     --standalone \
+    --embed-resources \
     --metadata "pagetitle=$title" \
     --css "$task_root/scripts/report.css" \
     --output "$html_file"
@@ -23,9 +24,9 @@ build_one() {
   node "$task_root/scripts/render_pdf.js" "$html_file" "$output_dir/$output_name"
 }
 
-build_one "main_report.md" "main_report.pdf" "HW05 Tasks 1-2 Performance Report"
+build_one "main_report.md" "main_report.pdf" "HW05 Tasks 1-3 Performance Report"
 build_one "task2_analysis_review.md" "task2_analysis_review.pdf" "HW05 Task 2 Analysis Review"
-build_one "AI_Audit.md" "AI_Audit.pdf" "HW05 Tasks 1-2 AI Audit"
+build_one "AI_Audit.md" "AI_Audit.pdf" "HW05 Tasks 1-3 AI Audit"
 build_one "AI_Critique.md" "AI_Critique.pdf" "HW05 AI Critique"
 
 pdfinfo "$output_dir/main_report.pdf" | sed -n '1,20p'

@@ -1,6 +1,6 @@
-# 23127035 - HW05 Tasks 1-2 Performance Testing
+# 23127035 - HW05 Tasks 1-3 Performance Testing
 
-This repository contains the Task 1 and Task 2 technical work for the coherent WF-04 admin product-publishing journey:
+This repository contains the Task 1 through Task 3 technical work for the coherent WF-04 admin product-publishing journey:
 
 `Admin Login -> Import Product CSV -> Search Imported Product -> View Product Detail`
 
@@ -28,7 +28,11 @@ The maximum stable load observed was 30 VUs for 618.94 seconds, exactly 12,300 c
 
 The unreviewed AI first pass is retained under `audit/`. `task2_analysis_review.md` corrects eight metric misinterpretations with raw JTL values and classifies eight optimization recommendations against the Express/SQLite source. Suggested thresholds are same-environment regression gates, not an SLA.
 
-## Self-assessment through Task 2
+## Task 3 outcome
+
+`task3_continuous_performance_proposal.md` defines a commit-aware pipeline with path/risk-based profile selection, a smoke gate, a pinned environment, versioned artifacts, repeated p95 regression confirmation, and human-owned baseline changes. Its flow chart is stored in `assets/task3_continuous_performance_flow.svg`. Cost, noisy-neighbour, data-drift, small-latency, hardware-drift, false-alarm, baseline-ownership, and artifact-retention trade-offs are addressed.
+
+## Self-assessment through Task 3
 
 | Criterion | Maximum | Proposed technical score | Basis |
 | --- | ---: | ---: | --- |
@@ -36,12 +40,15 @@ The unreviewed AI first pass is retained under `audit/`. `task2_analysis_review.
 | Stress testing | 20 | 20 | Three concurrency stages with raw stage metrics. |
 | Spike testing | 20 | 20 | Abrupt 3-to-30 VU burst and measured recovery. |
 | Task 2 analysis and misinterpretation hunt | 10 | 10 | Retained first pass, eight raw-value corrections, regression gates, and eight source-grounded judgments. |
-| **Tasks 1-2 subtotal** | **80** | **80** | Conditional on mandatory student-owned evidence and human approval. |
+| Task 3 continuous performance proposal | 10 | 10 | Commit-aware decisions, p95 gate, flow chart, and cost/false-alarm trade-offs. |
+| Agent Skill | 10 | 0 | Skill source exists; the required student-owned end-to-end demonstration video is not yet supplied. |
+| **Technical subtotal** | **100** | **90** | Conditional on scope confirmation, mandatory student-owned evidence, and human approval. |
 
 ## Key files
 
 - `main_report.md` and `output/pdf/main_report.pdf`
 - `task2_analysis_review.md` and matching PDF
+- `task3_continuous_performance_proposal.md` and `assets/task3_continuous_performance_flow.svg`
 - `AI_Audit.md`, `AI_Critique.md`, and matching PDFs
 - `test-plans/23127035_{Load,Stress,Spike}_20260901.jmx`
 - `results/23127035_{Load,Stress,Spike,Soak}_20260901.jtl`

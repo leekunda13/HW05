@@ -1,8 +1,8 @@
-# AI Audit Report - HW05 Tasks 1-2
+# AI Audit Report - HW05 Tasks 1-3
 
 ## Declaration
 
-I use **OpenAI Codex** for assignment/SUT analysis, JMeter generation and review, run orchestration, raw JTL analysis, workflow correction, misinterpretation review preparation, optimization classification, and report drafting. Apache JMeter 5.6.3 generated real traffic; SQLite and macOS process tools captured database and resource evidence.
+I use **OpenAI Codex** for assignment/SUT analysis, JMeter generation and review, run orchestration, raw JTL analysis, workflow correction, misinterpretation review preparation, optimization classification, continuous-performance proposal design, and report drafting. Apache JMeter 5.6.3 generated real traffic; SQLite and macOS process tools captured database and resource evidence.
 
 AI did not create screenshots, narration, YouTube links, group records, or a student's approval statement.
 
@@ -20,6 +20,14 @@ thực hiện tiếp task 2 của hw05
 t nghĩ cần điều chỉnh lại luồng, vì luồng hiênj tại của t ko phù hợp làm 1 workflow end-to-end, đây là luồng các bạn trong team t chọn: WF-01: Login → Product → Server Cart → Checkout; WF-02: Login → Product → Coupon → Checkout → Coupon Usage; WF-03: Login → Product → Checkout → Cancel Order
 ```
 
+```text
+check xem còn phải làm những gì đưa vào 1 file md
+```
+
+```text
+làm phần còn thiếu của task 3 cho t
+```
+
 ## Chronological interaction log
 
 | Recorded time (ICT) | Prompt/instruction stage | AI output and review status |
@@ -33,6 +41,8 @@ t nghĩ cần điều chỉnh lại luồng, vì luồng hiênj tại của t ko
 | 2026-09-01 17:37:48-17:49:04 | Run duration-scheduled WF-04 Soak and audit timestamps. | Excluded the attempt: JTL traffic covered 305.20 seconds while the host wall clock advanced roughly six minutes and ended the scheduler early. All raw evidence remains in `evidence/inconclusive`. |
 | 2026-09-01 18:11:36-18:21:59 | Rerun Soak with 410 iterations per thread. | Accepted 49,200 samples and exactly 12,300 workflows over 618.94 JTL seconds, 0 errors, p95 4 ms, 79.49 samples/s, 19.87 workflows/s, peak CPU 22.3%, and peak RSS 136.67 MB. |
 | 2026-09-01 after 18:21 | Re-run Task 2 analysis and rebuild the submission. | Updated the first-pass AI output, eight raw-log corrections, optimization judgments, reports, verification scripts, filenames, PDFs, and Git history for WF-04 only. |
+| 2026-09-01 22:56-23:03 | Check the complete assignment against the repository. | Read and visually inspected all nine assignment pages, inventoried deliverables, and consolidated missing work into `STUDENT_EVIDENCE_REQUIRED.md`. Flagged the unresolved transactional-scope risk rather than silently changing the workflow. |
+| 2026-09-01 after 23:13 | Complete Task 3. | Designed a commit-aware continuous-performance model with a flow chart, trigger matrix, smoke gate, p95 confirmation rule, versioned baseline ownership, raw-artifact retention, and cost/false-alarm trade-offs; integrated it into the report and README. |
 
 ## AI mistakes and corrections
 

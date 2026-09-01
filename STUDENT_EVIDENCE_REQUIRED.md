@@ -17,14 +17,14 @@ Lý do: workflow hiện tại là `Admin Login -> Import Product CSV -> Search I
 
 ### Task 3 - Continuous Performance Testing proposal (10 điểm)
 
-- [ ] Viết proposal theo dõi commit của SUT và quyết định khi nào chạy performance test.
-- [ ] Nêu smoke gate trước khi chạy Load/Stress/Spike hoặc soak.
-- [ ] Mô tả cách so sánh p95 với baseline đã được duyệt và cách flag regression.
-- [ ] Thêm flow chart thể hiện commit/change detection -> scope decision -> smoke -> performance run -> compare baseline -> lưu artifacts -> human review.
-- [ ] Phân tích trade-off: chi phí runner, thời gian pipeline, false alarm, noisy neighbour, data drift, khác phần cứng, và quyền phê duyệt baseline.
-- [ ] Đưa Task 3 vào phần conclusion của `main_report.md` và cập nhật `README.md`.
-- [ ] Dựng lại `output/pdf/main_report.pdf`, render và kiểm tra bố cục.
-- [ ] Tạo một commit Git riêng, message ngắn, cho Task 3.
+- [x] Viết proposal theo dõi commit của SUT và quyết định khi nào chạy performance test.
+- [x] Nêu smoke gate trước khi chạy Load/Stress/Spike hoặc soak.
+- [x] Mô tả cách so sánh p95 với baseline đã được duyệt và cách flag regression.
+- [x] Thêm flow chart thể hiện commit/change detection -> scope decision -> smoke -> performance run -> compare baseline -> lưu artifacts -> human review.
+- [x] Phân tích trade-off: chi phí runner, thời gian pipeline, false alarm, noisy neighbour, data drift, khác phần cứng, và quyền phê duyệt baseline.
+- [x] Đưa Task 3 vào phần conclusion của `main_report.md` và cập nhật `README.md`.
+- [x] Dựng lại `output/pdf/main_report.pdf`, render và kiểm tra bố cục.
+- [x] Tạo một commit Git riêng, message ngắn, cho Task 3.
 
 ### Agent Skill (10 điểm)
 
@@ -80,7 +80,7 @@ Có thể dùng `demo_video_script.md` làm dàn ý, nhưng phải tự nói và
 - [ ] Chèn nội dung AI Critique 200-300 từ vào main report hoặc appendix của main report; hiện critique mới tồn tại ở file/PDF riêng trong khi đề yêu cầu main report bao gồm critique.
 - [ ] Cập nhật `AI_Audit.md` với các interaction sau commit `4f1a70f`, gồm tên AI tool, thời gian, prompt và tóm tắt output cho từng interaction.
 - [ ] Sau các thay đổi, xuất lại `main_report.pdf`, `AI_Audit.pdf`, `AI_Critique.pdf` và các PDF liên quan; render để kiểm tra không cắt bảng/chồng chữ.
-- [ ] Cập nhật self-assessment trong `README.md` đủ cả 6 tiêu chí: Load, Stress, Spike, Task 2, Task 3 và Agent Skill. Không tự chấm Task 3/Skill khi evidence chưa hoàn thành.
+- [x] Cập nhật self-assessment trong `README.md` đủ cả 6 tiêu chí: Load, Stress, Spike, Task 2, Task 3 và Agent Skill; Agent Skill hiện để 0 vì chưa có demo.
 - [ ] Trong README ghi đủ: scenarios, endpoint groups, endurance threshold bằng số, số bug/performance issue, link video chính, link demo skill và public GitHub URL.
 - [ ] Kiểm tra main report dẫn tới đúng ảnh, URL, raw JTL, HTML report và issue thật.
 
@@ -119,6 +119,7 @@ Có thể dùng `demo_video_script.md` làm dàn ý, nhưng phải tự nói và
 - [x] Resource CSV/log và database pre/post state cho các run.
 - [x] Soak khoảng 10 phút: 30 VUs, 618.94 giây, 12,300 workflow hoàn chỉnh, p95 4 ms, 0 failure.
 - [x] Task 2 AI first pass, tám metric corrections, threshold proposal và tám optimization judgments.
+- [x] Task 3 commit-aware pipeline, flow chart, p95 regression rule và cost/false-alarm trade-offs.
 - [x] AI Critique 247 từ và AI Audit hiện có đến lần cập nhật workflow.
 - [x] Agent Skill source đã có.
 - [x] Local Git repository và commit log đã có.
@@ -126,8 +127,7 @@ Có thể dùng `demo_video_script.md` làm dàn ý, nhưng phải tự nói và
 ## Thứ tự nên thực hiện
 
 1. Xác nhận rủi ro transactional của WF-04 với TA.
-2. Làm Task 3 và cập nhật main report.
-3. Chạy/capture evidence thật, chụp hardware và quay hai phần demo cần thiết.
-4. Tự human-review Task 1/Task 2/critique.
-5. Publish GitHub, thêm các URL và hoàn thiện README/audit.
-6. Dựng lại PDF, commit, cập nhật commit log, đóng gói ZIP và nộp Moodle.
+2. Chạy/capture evidence thật, chụp hardware và quay hai phần demo cần thiết.
+3. Tự human-review Task 1/Task 2/critique.
+4. Publish GitHub, thêm các URL và hoàn thiện README/audit.
+5. Dựng lại PDF, commit, cập nhật commit log, đóng gói ZIP và nộp Moodle.
