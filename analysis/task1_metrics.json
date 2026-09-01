@@ -1,218 +1,218 @@
 {
   "Load": {
-    "jtl": "results/23127035_Load_20260831.jtl",
+    "jtl": "results/23127035_Load_20260901.jtl",
     "overall": {
-      "samples": 1896,
+      "samples": 1912,
       "errors": 0,
       "error_percent": 0.0,
-      "mean_ms": 2.523,
+      "mean_ms": 2.351,
       "p90_ms": 4.0,
       "p95_ms": 5.0,
       "p99_ms": 6.0,
       "min_ms": 0.0,
-      "max_ms": 24.0,
-      "throughput_samples_s": 15.881,
-      "window_seconds": 119.387
+      "max_ms": 72.0,
+      "throughput_samples_s": 16.037,
+      "window_seconds": 119.225
     },
     "stages": {
       "Load - 6 VUs steady": {
-        "samples": 1896,
+        "samples": 1912,
         "errors": 0,
         "error_percent": 0.0,
-        "mean_ms": 2.523,
+        "mean_ms": 2.351,
         "p90_ms": 4.0,
         "p95_ms": 5.0,
         "p99_ms": 6.0,
         "min_ms": 0.0,
-        "max_ms": 24.0,
-        "throughput_samples_s": 15.881,
-        "window_seconds": 119.387
+        "max_ms": 72.0,
+        "throughput_samples_s": 16.037,
+        "window_seconds": 119.225
       }
     },
     "resources": {
       "observations": 121,
-      "max_cpu_percent": 10.2,
-      "mean_cpu_percent": 2.629,
-      "max_rss_mb": 79.594,
-      "final_rss_mb": 79.359
+      "max_cpu_percent": 6.9,
+      "mean_cpu_percent": 2.374,
+      "max_rss_mb": 72.594,
+      "final_rss_mb": 71.516
     },
     "response_codes": {
-      "200": 1896
+      "200": 1912
     }
   },
   "Stress": {
-    "jtl": "results/23127035_Stress_20260831.jtl",
+    "jtl": "results/23127035_Stress_20260901.jtl",
     "overall": {
-      "samples": 6476,
+      "samples": 6514,
       "errors": 0,
       "error_percent": 0.0,
-      "mean_ms": 2.542,
-      "p90_ms": 4.0,
-      "p95_ms": 5.0,
-      "p99_ms": 6.0,
+      "mean_ms": 1.634,
+      "p90_ms": 3.0,
+      "p95_ms": 4.0,
+      "p99_ms": 5.0,
       "min_ms": 0.0,
-      "max_ms": 32.0,
-      "throughput_samples_s": 36.108,
-      "window_seconds": 179.35
+      "max_ms": 19.0,
+      "throughput_samples_s": 36.329,
+      "window_seconds": 179.308
     },
     "stages": {
       "Stress stage 1 - 6 VUs": {
-        "samples": 936,
+        "samples": 932,
         "errors": 0,
         "error_percent": 0.0,
-        "mean_ms": 2.815,
+        "mean_ms": 2.193,
         "p90_ms": 4.0,
         "p95_ms": 5.0,
         "p99_ms": 6.0,
         "min_ms": 0.0,
-        "max_ms": 25.0,
-        "throughput_samples_s": 15.784,
-        "window_seconds": 59.302
+        "max_ms": 19.0,
+        "throughput_samples_s": 15.738,
+        "window_seconds": 59.221
       },
       "Stress stage 2 - 12 VUs": {
-        "samples": 1854,
+        "samples": 1873,
         "errors": 0,
         "error_percent": 0.0,
-        "mean_ms": 2.792,
-        "p90_ms": 4.0,
-        "p95_ms": 5.0,
-        "p99_ms": 6.0,
+        "mean_ms": 1.688,
+        "p90_ms": 3.0,
+        "p95_ms": 4.0,
+        "p99_ms": 5.0,
         "min_ms": 0.0,
-        "max_ms": 13.0,
-        "throughput_samples_s": 31.099,
-        "window_seconds": 59.616
+        "max_ms": 18.0,
+        "throughput_samples_s": 31.441,
+        "window_seconds": 59.571
       },
       "Stress stage 3 - 24 VUs": {
-        "samples": 3686,
+        "samples": 3709,
         "errors": 0,
         "error_percent": 0.0,
-        "mean_ms": 2.347,
-        "p90_ms": 4.0,
-        "p95_ms": 5.0,
-        "p99_ms": 6.0,
+        "mean_ms": 1.466,
+        "p90_ms": 3.0,
+        "p95_ms": 4.0,
+        "p99_ms": 5.0,
         "min_ms": 0.0,
-        "max_ms": 32.0,
-        "throughput_samples_s": 61.867,
-        "window_seconds": 59.579
+        "max_ms": 14.0,
+        "throughput_samples_s": 62.206,
+        "window_seconds": 59.624
       }
     },
     "resources": {
-      "observations": 179,
-      "max_cpu_percent": 19.4,
-      "mean_cpu_percent": 6.652,
-      "max_rss_mb": 132.594,
-      "final_rss_mb": 119.047
+      "observations": 180,
+      "max_cpu_percent": 13.7,
+      "mean_cpu_percent": 4.225,
+      "max_rss_mb": 114.484,
+      "final_rss_mb": 108.516
     },
     "response_codes": {
-      "200": 6476
+      "200": 6514
     }
   },
   "Spike": {
-    "jtl": "results/23127035_Spike_20260831.jtl",
+    "jtl": "results/23127035_Spike_20260901.jtl",
     "overall": {
-      "samples": 3180,
+      "samples": 3216,
       "errors": 0,
       "error_percent": 0.0,
-      "mean_ms": 2.634,
-      "p90_ms": 5.0,
-      "p95_ms": 5.0,
-      "p99_ms": 7.0,
+      "mean_ms": 1.761,
+      "p90_ms": 3.0,
+      "p95_ms": 4.0,
+      "p99_ms": 5.0,
       "min_ms": 0.0,
-      "max_ms": 30.0,
-      "throughput_samples_s": 26.687,
-      "window_seconds": 119.159
+      "max_ms": 50.0,
+      "throughput_samples_s": 26.981,
+      "window_seconds": 119.196
     },
     "stages": {
       "Spike baseline - 3 VUs": {
-        "samples": 357,
+        "samples": 360,
         "errors": 0,
         "error_percent": 0.0,
-        "mean_ms": 3.899,
-        "p90_ms": 6.0,
-        "p95_ms": 6.0,
-        "p99_ms": 7.0,
-        "min_ms": 1.0,
-        "max_ms": 30.0,
-        "throughput_samples_s": 8.111,
-        "window_seconds": 44.015
-      },
-      "Spike burst - 30 VUs": {
-        "samples": 2456,
-        "errors": 0,
-        "error_percent": 0.0,
-        "mean_ms": 2.4,
-        "p90_ms": 4.0,
-        "p95_ms": 5.0,
-        "p99_ms": 7.0,
-        "min_ms": 0.0,
-        "max_ms": 15.0,
-        "throughput_samples_s": 82.962,
-        "window_seconds": 29.604
-      },
-      "Spike recovery - 3 VUs": {
-        "samples": 367,
-        "errors": 0,
-        "error_percent": 0.0,
-        "mean_ms": 2.973,
-        "p90_ms": 4.0,
-        "p95_ms": 5.0,
-        "p99_ms": 7.0,
-        "min_ms": 0.0,
-        "max_ms": 9.0,
-        "throughput_samples_s": 8.215,
-        "window_seconds": 44.676
-      }
-    },
-    "resources": {
-      "observations": 120,
-      "max_cpu_percent": 20.5,
-      "mean_cpu_percent": 4.602,
-      "max_rss_mb": 104.016,
-      "final_rss_mb": 81.438
-    },
-    "response_codes": {
-      "200": 3180
-    }
-  },
-  "Soak": {
-    "jtl": "results/23127035_Soak_20260831.jtl",
-    "overall": {
-      "samples": 49322,
-      "errors": 0,
-      "error_percent": 0.0,
-      "mean_ms": 2.458,
-      "p90_ms": 4.0,
-      "p95_ms": 5.0,
-      "p99_ms": 6.0,
-      "min_ms": 0.0,
-      "max_ms": 222.0,
-      "throughput_samples_s": 82.292,
-      "window_seconds": 599.355
-    },
-    "stages": {
-      "Soak - 30 VUs sustained": {
-        "samples": 49322,
-        "errors": 0,
-        "error_percent": 0.0,
-        "mean_ms": 2.458,
-        "p90_ms": 4.0,
+        "mean_ms": 3.061,
+        "p90_ms": 5.0,
         "p95_ms": 5.0,
         "p99_ms": 6.0,
         "min_ms": 0.0,
-        "max_ms": 222.0,
-        "throughput_samples_s": 82.292,
-        "window_seconds": 599.355
+        "max_ms": 50.0,
+        "throughput_samples_s": 8.126,
+        "window_seconds": 44.303
+      },
+      "Spike burst - 30 VUs": {
+        "samples": 2482,
+        "errors": 0,
+        "error_percent": 0.0,
+        "mean_ms": 1.505,
+        "p90_ms": 3.0,
+        "p95_ms": 4.0,
+        "p99_ms": 5.0,
+        "min_ms": 0.0,
+        "max_ms": 10.0,
+        "throughput_samples_s": 84.027,
+        "window_seconds": 29.538
+      },
+      "Spike recovery - 3 VUs": {
+        "samples": 374,
+        "errors": 0,
+        "error_percent": 0.0,
+        "mean_ms": 2.211,
+        "p90_ms": 4.0,
+        "p95_ms": 4.0,
+        "p99_ms": 5.0,
+        "min_ms": 0.0,
+        "max_ms": 5.0,
+        "throughput_samples_s": 8.379,
+        "window_seconds": 44.634
       }
     },
     "resources": {
-      "observations": 590,
-      "max_cpu_percent": 38.7,
-      "mean_cpu_percent": 14.909,
-      "max_rss_mb": 140.469,
-      "final_rss_mb": 78.5
+      "observations": 121,
+      "max_cpu_percent": 15.4,
+      "mean_cpu_percent": 3.394,
+      "max_rss_mb": 101.766,
+      "final_rss_mb": 95.672
     },
     "response_codes": {
-      "200": 49322
+      "200": 3216
+    }
+  },
+  "Soak": {
+    "jtl": "results/23127035_Soak_20260901.jtl",
+    "overall": {
+      "samples": 49200,
+      "errors": 0,
+      "error_percent": 0.0,
+      "mean_ms": 2.294,
+      "p90_ms": 3.0,
+      "p95_ms": 4.0,
+      "p99_ms": 6.0,
+      "min_ms": 0.0,
+      "max_ms": 1151.0,
+      "throughput_samples_s": 79.491,
+      "window_seconds": 618.941
+    },
+    "stages": {
+      "Soak - 30 VUs sustained": {
+        "samples": 49200,
+        "errors": 0,
+        "error_percent": 0.0,
+        "mean_ms": 2.294,
+        "p90_ms": 3.0,
+        "p95_ms": 4.0,
+        "p99_ms": 6.0,
+        "min_ms": 0.0,
+        "max_ms": 1151.0,
+        "throughput_samples_s": 79.491,
+        "window_seconds": 618.941
+      }
+    },
+    "resources": {
+      "observations": 608,
+      "max_cpu_percent": 22.3,
+      "mean_cpu_percent": 10.637,
+      "max_rss_mb": 136.672,
+      "final_rss_mb": 51.859
+    },
+    "response_codes": {
+      "200": 49200
     }
   }
 }

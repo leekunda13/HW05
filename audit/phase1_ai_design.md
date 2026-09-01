@@ -1,6 +1,6 @@
 # HW05 Task 1 - Giai đoạn 1: Phân tích SUT và thiết kế performance workflow
 
-> Historical AI output captured before execution. Statements such as "not yet run" below describe that earlier phase only; `../main_report.md` is the current final execution report. This file is retained for the mandatory chronological audit and is not a pending-work list.
+> **Superseded workflow audit.** This historical AI output proposed FR03-FR09-FR16 before the student compared it with the team's workflows. It is retained only to show the original AI mistake. The accepted workflow is WF-04 in `../main_report.md`; none of the design below is current submission guidance.
 
 ## 1. Phạm vi và trạng thái
 

@@ -12,22 +12,21 @@ Read this reference when creating or auditing EShop requests. The source of trut
 
 JMeter targets the backend on port 3000, not the Vite frontend.
 
-## Recommended End-to-End Journey
+## Accepted Admin Product-Publishing Journey
 
 | Order | Endpoint | Group | Input/correlation | Minimum checks |
 | ---: | --- | --- | --- | --- |
-| 1 | `POST /api/login` | Auth-heavy | CSV `email,password`; extract `token` | 200, JSON token exists, response is not a lockout |
-| 2 | `GET /api/products?search={search}` | Read-heavy | CSV `search` | 200, JSON array, expected item/ID is present |
-| 3 | `GET /api/products/{product_id}` | Read-heavy | CSV or value correlated from listing | 200, non-empty product object, expected ID |
-| 4 | `POST /api/cart` | Transactional | Bearer token; JSON item/quantity | 200, `Added to cart` message |
-| 5 | `POST /api/checkout` | Transactional | Bearer token; `total_amount`, `shipping_address` | 200, `Checkout successful`, extract `orderId` |
+| 1 | `POST /api/login` | Auth-heavy | CSV `email,password`; extract `token`, user ID, role | 200, token exists, role is `admin`, response is not a lockout |
+| 2 | `POST /api/admin/import-products` | Transactional/write-heavy | Bearer token; one runtime-unique product | 200, `inserted=1`, empty errors, `1/1` message |
+| 3 | `GET /api/products?search={unique_name}` | Read-heavy | Exact imported name; correlate matching ID | 200, exactly one expected match with an ID |
+| 4 | `GET /api/products/{product_id}` | Read-heavy | ID correlated from search | 200, expected ID, name, and price |
 
-Use `Content-Type: application/json`. Add `Authorization: Bearer ${token}` to cart and checkout. The cart is an in-memory object keyed by user ID; checkout writes an order row to SQLite.
+Use `Content-Type: application/json`. Add `Authorization: Bearer ${token}` to import. The import writes products to SQLite; the subsequent search and detail requests validate the same business effect.
 
 Suggested CSV header:
 
 ```csv
-email,password,search,product_id,quantity,total_amount,shipping_address
+email,password,product_prefix,product_price,product_description,product_image_url,category_id
 ```
 
 Create and verify performance accounts before timed runs. Do not assume the two default accounts are sufficient for concurrent traffic, and do not place sensitive real credentials in a committed CSV.

@@ -2,13 +2,13 @@
 set -euo pipefail
 
 if [[ $# -ne 1 ]]; then
-  echo "Usage: $0 <Load|Stress|Spike|Soak>" >&2
+  echo "Usage: $0 <Smoke|Load|Stress|Spike|Soak>" >&2
   exit 2
 fi
 
 scenario="$1"
 case "$scenario" in
-  Load|Stress|Spike|Soak) ;;
+  Smoke|Load|Stress|Spike|Soak) ;;
   *) echo "Unsupported scenario: $scenario" >&2; exit 2 ;;
 esac
 
@@ -16,7 +16,7 @@ task_root="$(cd "$(dirname "$0")/.." && pwd)"
 sut_backend="${HW05_SUT_BACKEND:-/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend}"
 sut_port="${HW05_PORT:-3000}"
 database_file="$sut_backend/database.sqlite"
-stem="23127035_${scenario}_20260831"
+stem="23127035_${scenario}_20260901"
 plan="$task_root/test-plans/${stem}.jmx"
 jtl="$task_root/results/${stem}.jtl"
 report="$task_root/reports/${stem}"

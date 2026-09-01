@@ -1,2 +1,0 @@
-scenario,start_time,end_time,backend_pid,jmeter_version,host,port
-Load,2026-08-31T17:35:22+0700,2026-08-31T17:37:24+0700,35084,5.6.3,127.0.0.1,3000

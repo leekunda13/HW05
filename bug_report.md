@@ -1,10 +1,9 @@
 # Task 1 issue report
 
-No new performance issue was filed from the accepted Load, Stress, Spike, or isolated Soak executions. Every accepted sample returned HTTP 200 and passed its correlation/business assertions; the backend did not crash and the Spike recovery returned to baseline behavior.
+No new performance issue was filed from the accepted WF-04 Load, Stress, Spike, or isolated Soak executions. Every accepted sample returned HTTP 200 and passed its correlation/business assertions; the backend did not crash and Spike recovery returned to baseline behavior.
 
-Two execution attempts were rejected before analysis:
+One WF-04 execution attempt was rejected before analysis:
 
-- Load attempt 1 was an automation-readiness fault caused by seeding before the SUT's asynchronous destructive initializer settled. It was corrected by a stable database gate and is not reported as a performance failure.
-- Soak attempt 1 was contaminated by unrelated traffic on shared port 3000. It was corrected with an isolated runtime/database at port 3001 and is not reported as a SUT failure.
+- The first Soak attempt had 24,528 successful samples but only 305.20 seconds of JTL traffic because the host clock advanced while a duration scheduler was active. It was retained as inconclusive and replaced by a 410-iteration/thread rerun spanning 618.94 JTL seconds. This is an environment/scheduling fault, not a SUT performance issue.
 
-Known source observations (missing admin-role enforcement, percentage-coupon calculation, SQL-interpolated product search, and destructive startup initialization) are documented in `audit/phase1_ai_design.md`. They were not newly discovered as performance failures in the accepted runs, and no external GitHub Issue was created without the student's publishing decision and real screenshot evidence.
+Known source observations (missing admin-role enforcement, SQL-interpolated product search, absent FR16 transaction, and destructive startup initialization) were not newly discovered as performance failures in the accepted runs. No external GitHub Issue was created without the student's publishing decision and real screenshot evidence.

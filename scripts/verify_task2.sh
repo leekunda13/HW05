@@ -14,10 +14,10 @@ from pathlib import Path
 root = Path.cwd()
 metrics = json.loads((root / "analysis/task2_metrics.json").read_text())
 expected = {
-    "Load": (1896, 0, 5, 6, 315),
-    "Stress": (6476, 0, 5, 6, 1062),
-    "Spike": (3180, 0, 5, 7, 513),
-    "Soak": (49322, 0, 5, 6, 8207),
+    "Load": (1912, 0, 5, 6, 477),
+    "Stress": (6514, 0, 4, 5, 1613),
+    "Spike": (3216, 0, 4, 5, 793),
+    "Soak": (49200, 0, 4, 6, 12300),
 }
 for scenario, values in expected.items():
     overall = metrics[scenario]["overall"]
@@ -33,22 +33,22 @@ for scenario, values in expected.items():
     with jtl_path.open(newline="", encoding="utf-8") as stream:
         rows = list(csv.DictReader(stream))
     final_successes = sum(
-        row["label"] == "READ Verify imported product" and row["success"].lower() == "true"
+        row["label"] == "FR06 View imported product detail" and row["success"].lower() == "true"
         for row in rows
     )
     assert final_successes == overall["completed_workflows"], scenario
 
 stress_24 = metrics["Stress"]["stages"]["Stress stage 3 - 24 VUs"]
 spike_burst = metrics["Spike"]["stages"]["Spike burst - 30 VUs"]
-assert round(stress_24["sample_rate_s"], 2) == 61.87
-assert round(spike_burst["sample_rate_s"], 2) == 82.96
+assert round(stress_24["sample_rate_s"], 2) == 62.21
+assert round(spike_burst["sample_rate_s"], 2) == 84.03
 
 soak_resources = metrics["Soak"]["resources"]
-assert round(soak_resources["rss_peak_mb"], 2) == 140.47
-assert round(soak_resources["rss_final_mb"], 2) == 78.50
+assert round(soak_resources["rss_peak_mb"], 2) == 136.67
+assert round(soak_resources["rss_final_mb"], 2) == 51.86
 
 critique = (root / "AI_Critique.md").read_text(encoding="utf-8").split("\n\n")[1]
-assert len(critique.split()) == 260
+assert 200 <= len(critique.split()) <= 300
 
 review = (root / "task2_analysis_review.md").read_text(encoding="utf-8")
 assert review.count("| \u201c") == 8, "Expected eight first-pass correction rows"

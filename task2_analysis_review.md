@@ -1,77 +1,74 @@
 # HW05 Task 2 - AI Analysis and Misinterpretation Hunt
 
-**Student ID:** 23127035  
-**Run data:** 2026-08-31  
-**Analysis date:** 2026-09-01  
-**Workflow:** FR03 - FR09 - FR16  
+**Student ID:** 23127035<br>
+**Run/analysis date:** 2026-09-01<br>
+**Workflow:** WF-04 - Admin Login -> Import Product CSV -> Search Imported Product -> View Product Detail<br>
 **AI tool:** OpenAI Codex
 
 ## 1. Method and evidence boundary
 
-The retained first-pass AI response is in `audit/task2_first_pass_ai_analysis.md`. It was generated before source and metric review and is intentionally not silently rewritten. The correction below was reproduced directly from the four accepted JTL files by `scripts/analyze_task2.py`; its machine-readable output is `analysis/task2_metrics.json`.
+The unreviewed AI response is retained in `audit/task2_first_pass_ai_analysis.md`. The correction below is reproduced from the four accepted `20260901` JTL files by `scripts/analyze_task2.py`; machine-readable output is `analysis/task2_metrics.json`.
 
-JMeter `elapsed` is used for response-time percentiles, with nearest-rank p90/p95/p99. A JTL row is failed when its `success` field is not `true`, so assertion failures are included even if the HTTP status is 2xx. A completed business workflow is counted only when the successful final sampler `READ Verify imported product` exists. This is stricter than dividing all HTTP samples by six because ramp-up and test shutdown can leave partial iterations.
+Percentiles use nearest rank over JMeter `elapsed`. A row fails when JMeter `success` is not `true`, so business-assertion failures count even for HTTP 2xx. A workflow completes only when the successful final sampler `FR06 View imported product detail` exists. This is stricter than dividing samples by four because scheduled Load/Stress/Spike shutdown can leave partial iterations.
 
-The review is technically complete and ready for the student's decision. It is not labelled as the student's human review until the student reads the cited JTL evidence and approves or amends it.
+The technical review is complete but is not labelled as the student's human review until the student checks and approves or amends it.
 
-## 2. Authoritative result summary
+## 2. Authoritative raw-log summary
 
-| Scenario | HTTP samples | Failed | Error % | p95 ms | p99 ms | Max ms | Samples/s | Completed workflows | Completed workflows/s |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Load | 1,896 | 0 | 0.00 | 5 | 6 | 24 | 15.88 | 315 | 2.64 |
-| Stress | 6,476 | 0 | 0.00 | 5 | 6 | 32 | 36.11 | 1,062 | 5.92 |
-| Spike | 3,180 | 0 | 0.00 | 5 | 7 | 30 | 26.69 | 513 | 4.30 |
-| Soak | 49,322 | 0 | 0.00 | 5 | 6 | 222 | 82.29 | 8,207 | 13.69 |
+| Scenario | HTTP samples | Failed | p95 ms | p99 ms | Max ms | Samples/s | Completed workflows | Workflows/s |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Load | 1,912 | 0 | 5 | 6 | 72 | 16.04 | 477 | 4.00 |
+| Stress | 6,514 | 0 | 4 | 5 | 19 | 36.33 | 1,613 | 9.00 |
+| Spike | 3,216 | 0 | 4 | 5 | 50 | 26.98 | 793 | 6.65 |
+| Soak | 49,200 | 0 | 4 | 6 | 1,151 | 79.49 | 12,300 | 19.87 |
 
-The raw source paths are `results/23127035_{Load,Stress,Spike,Soak}_20260831.jtl`. The full overall, stage, sampler, and backend-resource extraction is in `analysis/task2_metrics.md`.
+Raw sources are `results/23127035_{Load,Stress,Spike,Soak}_20260901.jtl`. Overall, stage, sampler, and resource details are in `analysis/task2_metrics.md`.
 
-## 3. Misinterpretation hunt and corrections
+## 3. Misinterpretation hunt
 
-| First-pass AI statement | Correct raw value | Why the statement is wrong |
+| First-pass AI statement | Correct raw value | Why it is wrong |
 | --- | --- | --- |
-| “The soak sustained 82.29 workflows/s.” | Soak has **82.29 HTTP samples/s**, **8,207** successful final samplers, and **13.69 completed workflows/s** over the overall window. | JMeter reports sampler throughput. Each normal journey has six requests, and partial iterations make `samples / 6` only approximate. The final sampler count is the exact completion count. |
-| “Stress achieved 36.11 requests/s,” used as its peak level. | Stress overall is **36.11 samples/s**, but the 24-VU stage is **61.87 samples/s**, p95 **5 ms**, 0 failures. | An overall value averages three different concurrency windows. Peak-stage behavior must be assessed within the stage boundary. |
-| “Spike fell below Stress, so the burst reduced throughput.” | The 30-VU burst reached **82.96 samples/s**, p95 **5 ms**; the complete Spike average is **26.69** because it includes two 3-VU windows. | Comparing whole-test averages with different workload shapes confounds low-load baseline/recovery with the burst. |
-| “The 222 ms maximum proves a tail-latency problem.” | Soak maximum is **222 ms**, but overall p95 is **5 ms** and p99 is **6 ms** across **49,322** samples. | One maximum is an outlier, not a percentile or evidence of a systematic tail problem. It is worth retaining, but not substituting for distribution metrics. |
-| “0% errors proves capacity at 82 users/s and production readiness.” | The run proved **30 VUs for 600 s**, 0 failures, 82.29 samples/s, and 13.69 completed workflows/s. No tested stage reached collapse. | Error-free execution establishes a baseline inside the tested envelope, not an absolute user-arrival capacity, saturation point, or production SLA. |
-| “Peak RSS 140.47 MB is the memory ceiling.” | Soak RSS started **66.64 MB**, peaked **140.47 MB**, ended **78.50 MB**; first/last-quarter means were **118.45/73.73 MB**. | A transient peak is not a ceiling and the final/quarter values show reclamation. A longer controlled run and heap/GC telemetry are needed for a leak or ceiling claim. |
-| “CPU 38.7% means 61.3% whole-machine headroom.” | **38.7%** is the peak macOS percentage for the Node PID and is not normalized across the ten cores. | Process CPU semantics and unmeasured competing load prevent converting it directly into whole-system headroom. |
-| “The suggested values can be treated as an SLA.” | The assignment/SUT provides no response-time or throughput SLA. | A measured local baseline can support provisional regression gates only after controlling hardware, source, data, timers, and measurement windows. Product owners must approve an SLA. |
+| “Soak sustained 79.49 workflows/s.” | **79.49 HTTP samples/s**, exactly **12,300** final samplers and **19.87 completed workflows/s** over 618.94 s. | JMeter's default rate counts HTTP samplers, not business journeys. |
+| “Stress achieved 36.33 requests/s,” used as its peak. | Whole Stress is 36.33 samples/s, but the **24-VU stage is 62.21 samples/s**, p95 4 ms, 0 failures. | The whole value averages 6-, 12-, and 24-VU windows. |
+| “Spike is slower than Stress, so the burst degraded throughput.” | The **30-VU burst reached 84.03 samples/s**, p95 4 ms; 26.98 is the whole test including two 3-VU periods. | Different workload windows are not comparable peak stages. |
+| “Spike did not recover.” | Recovery was **8.38 samples/s, p95 4 ms**, versus baseline **8.13 samples/s, p95 5 ms**. | Recovery must be compared with the same 3-VU baseline, not the burst or whole-run average. |
+| “The 1,151 ms maximum proves a tail-latency failure.” | Soak p95 is **4 ms** and p99 **6 ms** across 49,200 samples; the maximum occurs in a brief multi-sampler cluster. | A maximum is an outlier, not a percentile or evidence of sustained tail degradation. |
+| “0% errors proves production capacity at 79 users/s.” | Evidence proves **30 VUs**, 0 failures, 79.49 samples/s, and 19.87 workflows/s. No stage reached collapse. | VUs, user arrival rate, HTTP sample rate, and completed workflow rate are different quantities. |
+| “Peak RSS 136.67 MB is the memory ceiling.” | Soak RSS start/peak/final is **67.64/136.67/51.86 MB**; first/last-quarter means are **111.26/51.41 MB**. | A transient peak followed by reclamation is neither an absolute ceiling nor proof of a leak. |
+| “The suggested numbers are an SLA.” | Neither the assignment nor SUT defines a response-time/throughput SLA. | Local measurements support proposed regression gates only; product owners must approve service targets. |
 
-## 4. Evidence-derived threshold proposal
+## 4. Proposed same-environment regression gates
 
-These values are proposed **same-environment regression gates**, not contractual SLAs. Compare only the same workflow, timers, seed state, source configuration, JMeter version, and host class. Re-baselining requires a documented reason and human approval.
-
-| Metric/scope | Proposed warning/fail rule | Evidence and intent |
+| Metric/scope | Proposed rule | Basis |
 | --- | --- | --- |
-| Business smoke correctness | Fail on any failed HTTP/business assertion. | Accepted baseline had 0 failures in every scenario; correctness errors must not be averaged away. |
-| Stable-stage p95 | Warn above 7.5 ms; fail above 10 ms. | Observed scenario p95 was 5 ms; gates flag +50% and +100% regressions, rather than claiming a user SLA. |
-| Stable-stage p99 | Warn above 10.5 ms; fail above 14 ms. | Worst observed scenario p99 was 7 ms; same proportional bands. |
-| Load 6-VU throughput | Fail below 14.29 samples/s. | 10% below observed 15.88 samples/s. |
-| Stress 24-VU throughput | Fail below 55.68 samples/s. | 10% below observed stage rate 61.87 samples/s. |
-| Spike 30-VU burst throughput | Fail below 74.66 samples/s. | 10% below observed burst rate 82.96 samples/s. |
-| Soak 30-VU throughput | Fail below 74.06 samples/s or 12.32 completed workflows/s. | 10% below 82.29 samples/s and 13.69 exact-completion rate. |
-| Backend resources | Investigate above 50% Node CPU or 170 MB RSS. Do not auto-fail. | Rounded observability bands above measured 38.7% and 140.47 MB peaks; resource semantics vary by host and GC timing. |
+| Business correctness | Fail on any HTTP/business assertion failure. | All accepted samples passed; functional failures must not be averaged away. |
+| Stable-stage p95 | Warn above 7.5 ms; fail above 10 ms. | +50%/+100% over worst accepted p95 of 5 ms. |
+| Stable-stage p99 | Warn above 9 ms; fail above 12 ms. | +50%/+100% over worst accepted p99 of 6 ms. |
+| Load 6 VUs | Fail below 14.44 samples/s. | 10% below observed 16.04. |
+| Stress 24 VUs | Fail below 55.99 samples/s. | 10% below observed 62.21. |
+| Spike 30-VU burst | Fail below 75.63 samples/s. | 10% below observed 84.03. |
+| Soak 30 VUs | Fail below 71.54 samples/s or 17.89 workflows/s. | 10% below observed 79.49 and 19.87. |
+| Backend resources | Investigate above 30% Node CPU or 165 MB RSS; do not auto-fail. | Rounded bands above measured 22.3% and 136.67 MB peaks; host and GC dependent. |
 
-The 10% throughput floor and 50%/100% latency bands are policy choices proposed for sensitivity. They require repeated clean runs to estimate normal variance before becoming CI gates.
+These are candidate regression controls, not contractual SLAs. Repeated clean runs are required to estimate natural variance before CI enforcement or re-baselining.
 
-## 5. AI optimization recommendations judged against source
+## 5. AI recommendations judged against source
 
 | Recommendation | Classification | Source-grounded judgment |
 | --- | --- | --- |
-| Wrap all FR16 import inserts in one explicit transaction. | **Feasible; prioritize experiment** | `server.js:209-240` prepares one statement and runs all rows but has no `BEGIN/COMMIT`. A transaction can reduce per-write commit overhead and make a batch atomic. Validate error/rollback behavior and benchmark multi-row imports. |
-| Enable SQLite WAL and set `busy_timeout`. | **Feasible experiment, not guaranteed** | `database.js:5` opens one `sqlite3.Database`; no WAL or busy-timeout PRAGMA exists. WAL can improve read/write overlap, but writer contention, checkpointing, and deployment filesystem behavior must be measured. |
-| Add a non-unique index on `users(email)`. | **Feasible; profile first** | `database.js:50-61` defines no email index, while `server.js:35` and `:70` perform equality lookups. The test database has only 82 users, and no latency bottleneck was observed. A unique index would additionally change current duplicate-email behavior. |
-| Add a B-tree index on `products(name)` for current search. | **Hallucinated as a direct fix** | `server.js:144` uses `LIKE '%${searchQuery}%'`. The leading wildcard generally prevents ordinary B-tree prefix lookup. Use `EXPLAIN QUERY PLAN`; FTS5 or a product requirement permitting prefix search would be architectural alternatives. |
-| Add an index on `coupons(code)`. | **Hallucinated/redundant** | `database.js:31` already declares `code TEXT UNIQUE`, for which SQLite creates a uniqueness index; the lookup at `server.js:370` already benefits from it. |
-| Add a conventional database connection pool. | **Hallucinated for current architecture** | The app uses one in-process SQLite handle at `database.js:5`, not a client/server database. A PostgreSQL/MySQL-style pool is not a drop-in SQLite optimization and does not remove SQLite's single-writer constraint. |
-| Cache exact product-search responses. | **Unsupported for this workload** | Each iteration imports a unique product and immediately verifies it. Expected hit rate is low and invalidation is required for read-after-write correctness. No raw metric identifies search as the bottleneck. |
-| Run multiple clustered Node workers. | **Hallucinated as an immediate fix** | Multiple processes would open multiple SQLite handles and may increase write contention. It is a migration experiment requiring shared state, auth, database, and benchmark design, not an evidenced remedy for these results. |
+| Wrap FR16 batch inserts in an explicit transaction. | **Feasible; prioritize experiment** | `server.js:209-240` prepares one statement but has no `BEGIN/COMMIT`. A transaction can reduce per-write commit overhead and make the batch atomic; benchmark multi-row imports and rollback behavior. |
+| Enable SQLite WAL and `busy_timeout`. | **Feasible experiment, not guaranteed** | `database.js:5` opens one SQLite handle and defines no such PRAGMA. Measure writer contention and checkpoint behavior. |
+| Add a non-unique index on `users(email)`. | **Feasible; profile first** | `database.js:50-61` has no email index; `server.js:35` performs equality login lookup. The local dataset has only 82 users and no observed login bottleneck. |
+| Add a B-tree index on `products(name)` for current search. | **Hallucinated as a direct fix** | `server.js:144` uses `LIKE '%term%'`; the leading wildcard generally prevents ordinary prefix-index lookup. Examine `EXPLAIN QUERY PLAN`; consider FTS5 or a requirement change. |
+| Add another index on `coupons(code)`. | **Hallucinated/redundant** | `database.js:31` already declares `code TEXT UNIQUE`, which creates a uniqueness index. Coupon lookup is not even part of WF-04. |
+| Add a conventional database connection pool. | **Hallucinated for current architecture** | Current code uses one in-process SQLite handle, not a client/server database. A PostgreSQL/MySQL-style pool is not a drop-in fix and does not remove SQLite's single-writer constraint. |
+| Cache exact product-search responses. | **Unsupported for this workload** | Every iteration imports a unique product then immediately reads it. Hit rate is near zero and invalidation is mandatory for read-after-write correctness. |
+| Run clustered Node workers. | **Hallucinated as an immediate fix** | Multiple processes create multiple SQLite handles and may increase writer contention. This is an architectural experiment, not an evidenced fix for these results. |
 
-The first experiment should therefore be a multi-row FR16 benchmark comparing explicit transaction versus current behavior, followed by WAL/busy-timeout combinations. Index changes should be justified by query plans and representative data volume, not by generic database advice.
+The first optimization experiment should compare multi-row FR16 imports with and without one explicit transaction, then test WAL/busy-timeout combinations. Query plans and representative data volume must precede index claims.
 
-## 6. Bounded conclusion and student decision
+## 6. Bounded conclusion and review ownership
 
-The accepted evidence shows stable behavior within the tested local envelope: zero JMeter/business-assertion failures, scenario p95 of 5 ms, proportional Stress scaling, and Spike recovery to the 3-VU baseline. The authoritative endurance result is 30 VUs for ten minutes at 82.29 HTTP samples/s and 13.69 completed workflows/s, not 82 workflows/s or an absolute capacity. No measured run establishes production readiness, a memory ceiling, or a formal SLA.
+WF-04 remained stable inside the tested envelope: zero assertion failures, proportional Stress scaling, and Spike recovery to the 3-VU baseline. The accepted endurance result is 30 VUs for 618.94 seconds at 79.49 HTTP samples/s and 19.87 completed workflows/s. It is not 79 workflows/s, production readiness, absolute capacity, or a measured memory ceiling.
 
-For the mandatory human-review requirement, the student must compare at least the eight corrections above with the referenced raw JTL/JSON and record approval or amendments in `STUDENT_EVIDENCE_REQUIRED.md`. AI cannot truthfully sign that decision on the student's behalf.
+For the assignment's human-review requirement, the student must compare these eight corrections with the referenced JTL/JSON and explicitly approve or amend them in `STUDENT_EVIDENCE_REQUIRED.md`. AI cannot truthfully sign that decision.

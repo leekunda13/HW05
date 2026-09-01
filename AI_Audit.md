@@ -2,61 +2,50 @@
 
 ## Declaration
 
-I use AI tools for the following tasks: assignment/SUT analysis, JMeter plan generation, XML audit, smoke and performance-run orchestration, raw JTL analysis, misinterpretation review preparation, source-grounded optimization classification, and report drafting. The AI tool was **OpenAI Codex**. Apache JMeter 5.6.3 executed the traffic; SQLite and macOS process tools captured database/resource evidence.
+I use **OpenAI Codex** for assignment/SUT analysis, JMeter generation and review, run orchestration, raw JTL analysis, workflow correction, misinterpretation review preparation, optimization classification, and report drafting. Apache JMeter 5.6.3 generated real traffic; SQLite and macOS process tools captured database and resource evidence.
 
-The Codex client did not expose the exact timestamp of the incoming chat message. It was received on `2026-08-31` before the first recorded execution artifact at `17:28:38+07:00`; this limitation is stated instead of inventing a timestamp.
+AI did not create screenshots, narration, YouTube links, group records, or a student's approval statement.
 
-## Original student prompt
+## Student prompts
 
 ```text
 hãy làm toàn bộ task 1 của hw5 cho t (có đề nằm trong folder hw5), chọn luồng fr 3 9 16, web nằm trong folder hw04, đọc kĩ đề và làm, không để lại tồn đọng của AI, tạo git local trong folder hw05 và commit (message commit gắn gọn đơn giản)
 ```
 
-## Task 2 continuation prompt
-
 ```text
 thực hiện tiếp task 2 của hw05
 ```
 
-## Interaction and output log
+```text
+t nghĩ cần điều chỉnh lại luồng, vì luồng hiênj tại của t ko phù hợp làm 1 workflow end-to-end, đây là luồng các bạn trong team t chọn: WF-01: Login → Product → Server Cart → Checkout; WF-02: Login → Product → Coupon → Checkout → Coupon Usage; WF-03: Login → Product → Checkout → Cancel Order
+```
+
+## Chronological interaction log
 
 | Recorded time (ICT) | Prompt/instruction stage | AI output and review status |
 | --- | --- | --- |
-| 2026-08-31 before 17:28 | Read the nine-page assignment, reusable JMeter skill, and actual HW04 source; map FR03/FR09/FR16. | Produced the source-grounded workflow and contract in `audit/phase1_ai_design.md`. Confirmed FR03 auth writes, FR09 fixed-coupon validation, FR16 authenticated import, and an exact search read-after-write check. The earlier document is retained as historical AI output, not current execution status. |
-| 2026-08-31 17:28:38-17:29:49 | Install/verify JMeter, create CSV/JMX, and run 1 VU x 1 iteration smoke. | Installed JMeter 5.6.3, generated five JMX files plus 80 synthetic accounts, and produced two successful six-sample smoke logs. The reviewed smoke had 0 errors. |
-| 2026-08-31 17:30:23 | Save the first reviewed plan set. | Git commit `d523f16 add test plans`. Output includes exact dated Load/Stress/Spike names, data, generation script, and reusable skill. |
-| 2026-08-31 17:31:56 | Audit XML scope and distinct workload/listener configuration. | Found that the initial generator placed shared config under only the first thread group. Moved CSV/header/timer to Test Plan scope and re-smoked successfully. Added the safe official runner in commit `c4c2fe6 fix plan scope`. |
-| 2026-08-31 17:32:17-17:35:11 | Execute Load and classify failures. | Attempt 1 became 99.74% errors because the SUT's asynchronous destructive initializer removed performance accounts after the HTTP port opened. AI correctly excluded it, retained raw evidence under `evidence/inconclusive`, and added a three-check stable database readiness gate in commit `e139682 fix database readiness`. |
-| 2026-08-31 17:35:22-17:43:42 | Run official Load, Stress, and Spike from clean database states. | Generated three full JTL logs, three HTML dashboards, run logs, exact PID/timestamp metadata, per-second backend CPU/RSS logs, and DB pre/post snapshots. All official samples passed. |
-| 2026-08-31 17:44:43 | Select the endurance load from observed evidence. | Replaced the arbitrary 6-VU soak draft with 30 VUs because the real 30-VU spike completed with zero errors. Commit: `6b16cff tune soak load`. |
-| 2026-08-31 17:44:50-17:57:45 | Run and audit soak state isolation. | First ten-minute soak had 0 JMeter errors but deterministic DB counts proved unrelated traffic reached shared port 3000. AI retained and excluded the run, configured an isolated temporary runtime on port 3001 without editing HW04 source, and committed `79a379d isolate soak run`. |
-| 2026-08-31 17:57:45-18:07:48 | Rerun the same 30-VU/10-minute soak in isolation and generate final reports. | The clean run produced 49,322 samples, 0 errors, p95 5 ms, 82.29 samples/s, peak CPU 38.7%, and peak RSS 140.47 MB. Product delta matched 8,213 successful FR16 samples exactly and coupon usage remained zero. |
-| 2026-09-01 09:52 ICT | Analyse accepted JTLs, suggest thresholds, and recommend database/backend optimizations. | Produced the intentionally unreviewed first pass in `audit/task2_first_pass_ai_analysis.md`. It incorrectly called sample throughput workflow throughput, compared incompatible whole-run windows, promoted an outlier and peak RSS to system properties, and proposed generic optimizations. |
-| 2026-09-01 after 09:52 ICT | Recalculate from raw JTL, review each interpretation, and inspect the actual Express/SQLite source. | Produced `analysis/task2_metrics.{json,md}` and `task2_analysis_review.md`. Exact final-sampler completion counts replace the six-sample approximation; stage boundaries, percentile semantics, process-resource semantics, and source feasibility are documented separately from the first pass. |
-
-## Task 2 first-pass mistakes and evidence corrections
-
-| AI mistake | Raw/source evidence | Corrected interpretation |
-| --- | --- | --- |
-| Called Soak 82.29 workflows/s. | 49,322 HTTP samples; 8,207 successful final samplers; 599.37 s overall window. | 82.29 samples/s and 13.69 completed workflows/s. |
-| Used 36.11 Stress and 26.69 Spike whole-run rates to infer burst degradation. | Stress 24-VU stage 61.87 samples/s; Spike 30-VU burst 82.96 samples/s; recovery 8.21 versus baseline 8.11. | Compare equivalent stage windows; no burst throughput loss or failed recovery was observed. |
-| Treated maximum 222 ms as tail failure. | Soak p95 5 ms and p99 6 ms across 49,322 samples. | Retain maximum as an outlier; do not replace percentile distribution with it. |
-| Called 140.47 MB a memory ceiling. | Soak RSS start/peak/final 66.64/140.47/78.50 MB; first/last-quarter means 118.45/73.73 MB. | A transient peak is neither a leak nor a measured ceiling. |
-| Promoted arbitrary values to SLA. | No product SLA in assignment or SUT requirements. | Label them provisional same-environment regression gates requiring repeated runs and human ownership. |
-| Suggested generic indexes/pooling. | `coupons.code` is already `UNIQUE`; product search has a leading wildcard; current DB is one SQLite handle. | Coupon index is redundant, ordinary name index is not a direct fix, and client/server pooling is architecture-mismatched. |
+| 2026-08-31 before 17:28 | Read assignment and source; map requested FR03/FR09/FR16. | Generated the original chain and plans. Later student review correctly identified that the chain lacked one coherent business goal. |
+| 2026-08-31 17:28-18:07 | Smoke, correct JMeter scope/readiness/isolation errors, then run Load/Stress/Spike/Soak. | Produced real but subsequently superseded evidence. Git history retains it; it is excluded from the WF-04 baseline. |
+| 2026-09-01 09:52 | Perform Task 2 analysis. | Retained an AI first pass, recalculated metrics, and separated regression gates from SLA claims. This analysis was later regenerated after the workflow changed. |
+| 2026-09-01 before 17:28 | Review the three team workflows and choose a non-duplicated coherent flow. | Replaced the unrelated chain with **WF-04 Admin Login -> Import Product CSV -> Search Imported Product -> View Product Detail**. The choice is distinct from the three workflows supplied and covers auth-heavy, write-heavy, and read-heavy groups. |
+| 2026-09-01 17:28:50 | Run one WF-04 Smoke iteration. | Four samples passed; JWT/role and product ID were correlated; products increased 5 -> 6. |
+| 2026-09-01 17:29:25-17:37:11 | Run WF-04 Load, Stress, and Spike on isolated port 3001. | Load 1,912, Stress 6,514, and Spike 3,216 samples; all had 0 failed assertions. Spike burst reached 84.03 samples/s and recovered to the 3-VU baseline. |
+| 2026-09-01 17:37:48-17:49:04 | Run duration-scheduled WF-04 Soak and audit timestamps. | Excluded the attempt: JTL traffic covered 305.20 seconds while the host wall clock advanced roughly six minutes and ended the scheduler early. All raw evidence remains in `evidence/inconclusive`. |
+| 2026-09-01 18:11:36-18:21:59 | Rerun Soak with 410 iterations per thread. | Accepted 49,200 samples and exactly 12,300 workflows over 618.94 JTL seconds, 0 errors, p95 4 ms, 79.49 samples/s, 19.87 workflows/s, peak CPU 22.3%, and peak RSS 136.67 MB. |
+| 2026-09-01 after 18:21 | Re-run Task 2 analysis and rebuild the submission. | Updated the first-pass AI output, eight raw-log corrections, optimization judgments, reports, verification scripts, filenames, PDFs, and Git history for WF-04 only. |
 
 ## AI mistakes and corrections
 
 | AI mistake/incompleteness | Evidence | Correction | Likely cause |
 | --- | --- | --- | --- |
-| Shared CSV/header/timer scoped only to the first group in multi-stage plans. | XML tree audit after smoke. | Place all shared config directly under the Test Plan, before every Thread Group; validate with `xmllint` and smoke again. | A single-thread smoke could not exercise later thread groups; the generator optimized reuse without checking JMeter scope semantics. |
-| HTTP readiness was treated as database readiness. | Inconclusive Load attempt: pre-state briefly had 82 users, then the DB fell back to 2; raw responses became 404/401/403. | Wait for canonical counts of 2 users, 5 products, and 4 coupons to remain stable for three checks, then seed and verify 80 accounts. | `database.js` queues DROP/CREATE/seed work asynchronously while `app.listen()` becomes reachable. |
-| Initial soak reused 6 VUs without empirical justification. | Valid Spike sustained 30 VUs with 0 errors. | Use 30 VUs for ten minutes and label the result as the highest stable load observed, not an absolute hardware limit. | The first choice copied the ordinary-load level instead of waiting for baseline evidence. |
-| First soak used the shared port and allowed unrelated local traffic. | Product delta exceeded successful FR16 samples by 46 and two unexpected coupon-usage rows appeared, although the JTL contained no usage request. | Preserve the run as inconclusive and rerun on an isolated runtime/DB at port 3001. | Process isolation was incomplete even though database reset logic was correct. |
-| Raw sample throughput could be mistaken for completed workflow throughput. | The plan emits six HTTP samples per full journey. | Report both sample/s and the derived approximate workflow/s; do not label either as an approved SLA. | JMeter's default summary emphasizes sampler throughput rather than business-journey completion. |
+| Accepted FR03 -> FR09 -> FR16 as end-to-end. | The actions serve unrelated password recovery, coupon validation, and admin import goals. | Replace with one admin publishing journey ending in correlated product detail. | The AI optimized endpoint coverage instead of business coherence. |
+| Used the original date in regenerated filenames. | New runs occurred on 2026-09-01. | Rename all primary plans/results/reports to `20260901`; raw JTL contents remain unchanged. | Reuse of prior generator constants. |
+| Assumed a 600-second scheduler guaranteed ten minutes of traffic. | Excluded attempt: 305.20 JTL seconds, 303 resource observations, but 676 wall-clock seconds after a clock jump. | Use 410 iterations/thread; accept only the 618.94-second, 12,300-workflow rerun. | Scheduler behavior depended on wall-clock continuity. |
+| Called HTTP sample throughput workflow throughput. | Soak has 79.49 samples/s and 19.87 exact workflows/s. | Count successful final FR06 samplers. | JMeter summaries foreground sampler rate. |
+| Compared complete Stress and Spike averages. | Stress 24-VU stage is 62.21 samples/s; Spike burst is 84.03. | Compare equivalent stage windows. | Aggregate summaries hide workload shape. |
+| Promoted the 1,151 ms max and 136.67 MB RSS peak to system properties. | Soak p95/p99 are 4/6 ms; RSS ends at 51.86 MB. | Keep max/peak as observations, not tail failure, leak, or ceiling. | Generic labels were applied without distribution/time-series review. |
+| Proposed generic indexes and pooling. | Leading-wildcard search, existing coupon uniqueness index, and one SQLite handle. | Classify recommendations against exact query/schema/architecture. | Familiar database advice was reused without source inspection. |
 
 ## Integrity boundary
 
-The JTL files, HTML dashboards, process samples, timestamps, database snapshots, and Git history were created by real commands in this workspace. The agent did **not** create or imitate Activity Monitor screenshots, a hardware screenshot, a Vietnamese voice recording, a YouTube URL, a GitHub Issue, group-uniqueness evidence, or a student's human-approval statement. Those student-owned items are listed once in `STUDENT_EVIDENCE_REQUIRED.md`.
-
-The human-review decision remains attributable only after the student reads the final JMX/report and confirms it. This audit records AI self-corrections but does not mislabel them as student review.
+Accepted JTLs, HTML reports, resource logs, database snapshots, and commits were produced by real commands. The excluded Soak attempt remains visible rather than being silently discarded. Final human approval remains attributable only to the student after reading the raw-log corrections.

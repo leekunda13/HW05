@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const runDate = "20260831";
+const runDate = "20260901";
 const studentId = "23127035";
 const csvRelative = "../data/performance_users.csv";
 
@@ -15,11 +15,6 @@ for (const directory of ["data", "test-plans", "results", "reports", "evidence/r
 const csvHeader = [
   "email",
   "password",
-  "new_password",
-  "coupon_code",
-  "coupon_total",
-  "expected_discount",
-  "expected_final",
   "product_prefix",
   "product_price",
   "product_description",
@@ -32,11 +27,6 @@ for (let index = 1; index <= 80; index += 1) {
   csvRows.push([
     `perf${String(index).padStart(3, "0")}@eshop.local`,
     "Perf1234!",
-    "Perf1234!",
-    "BIGBUY",
-    "600000",
-    "50000",
-    "550000",
     `HW05-P${String(index).padStart(3, "0")}`,
     "750000",
     "HW05 performance product",
@@ -162,45 +152,22 @@ function authHeader() {
 
 function workflow() {
   const prepareScript = `def suffix = ctx.getThreadNum() + '-' + vars.getIteration() + '-' + System.currentTimeMillis()\nvars.put('unique_product', vars.get('product_prefix') + '-' + suffix)`;
-  const resetAssert = `def token = vars.get('reset_token')\nif (token == null || !(token ==~ /[0-9]{4}/)) { AssertionResult.setFailure(true); AssertionResult.setFailureMessage('resetToken was not a dynamic four-digit value: ' + token) }`;
-  const resetBodyAssert = `def body = new groovy.json.JsonSlurper().parseText(prev.getResponseDataAsString())\nif (body.message != 'Password reset successfully') { AssertionResult.setFailure(true); AssertionResult.setFailureMessage('Unexpected reset response: ' + body) }`;
   const loginAssert = `def token = vars.get('jwt')\ndef userId = vars.get('user_id')\ndef role = vars.get('user_role')\nif (!token || token == 'NOT_FOUND' || !userId || userId == 'NOT_FOUND' || role != 'admin') { AssertionResult.setFailure(true); AssertionResult.setFailureMessage('Login correlation failed: user_id=' + userId + ', role=' + role) }`;
-  const couponAssert = `def body = new groovy.json.JsonSlurper().parseText(prev.getResponseDataAsString())\ndef expectedDiscount = vars.get('expected_discount') as BigDecimal\ndef expectedFinal = vars.get('expected_final') as BigDecimal\nif (body.success != true || body.discount_amount as BigDecimal != expectedDiscount || body.final_amount as BigDecimal != expectedFinal) { AssertionResult.setFailure(true); AssertionResult.setFailureMessage('Coupon business result mismatch: ' + body) }`;
   const importAssert = `def body = new groovy.json.JsonSlurper().parseText(prev.getResponseDataAsString())\nif (body.inserted != 1 || !(body.errors instanceof List) || !body.errors.isEmpty() || !body.message.contains('1/1')) { AssertionResult.setFailure(true); AssertionResult.setFailureMessage('Import business result mismatch: ' + body) }`;
-  const searchAssert = `def body = new groovy.json.JsonSlurper().parseText(prev.getResponseDataAsString())\ndef expected = vars.get('unique_product')\nif (!(body instanceof List) || !body.any { it.name == expected }) { AssertionResult.setFailure(true); AssertionResult.setFailureMessage('Imported product not found by exact name: ' + expected) }`;
+  const searchAssert = `def body = new groovy.json.JsonSlurper().parseText(prev.getResponseDataAsString())\ndef expected = vars.get('unique_product')\ndef matches = body instanceof List ? body.findAll { it.name == expected } : []\nif (matches.size() != 1 || !matches[0].id) { AssertionResult.setFailure(true); AssertionResult.setFailureMessage('Expected exactly one imported product named ' + expected + ', got: ' + matches) } else { vars.put('product_id', matches[0].id.toString()) }`;
+  const detailAssert = `def body = new groovy.json.JsonSlurper().parseText(prev.getResponseDataAsString())\ndef expectedId = vars.get('product_id') as Integer\ndef expectedName = vars.get('unique_product')\ndef expectedPrice = vars.get('product_price') as BigDecimal\nif (body.id != expectedId || body.name != expectedName || body.price as BigDecimal != expectedPrice) { AssertionResult.setFailure(true); AssertionResult.setFailureMessage('Product detail mismatch: ' + body) }`;
 
   return [
     httpSampler({
-      name: "FR03-1 Forgot password",
+      name: "FR02 Login and correlate admin JWT",
       method: "POST",
-      endpoint: "/api/forgot-password",
-      body: '{"email":"${email}"}',
+      endpoint: "/api/login",
+      body: '{"email":"${email}","password":"${password}"}',
       children: `
             <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Create unique iteration data" enabled="true">
               <stringProp name="cacheKey">true</stringProp><stringProp name="filename"></stringProp><stringProp name="parameters"></stringProp>
               <stringProp name="script">${escapeXml(prepareScript)}</stringProp><stringProp name="scriptLanguage">groovy</stringProp>
-            </JSR223PreProcessor><hashTree/>${responseCodeAssertion()}${jsonExtractor("reset_token", "$.resetToken", "NOT_FOUND")}${jsr223Assertion("Validate resetToken", resetAssert)}`,
-    }),
-    httpSampler({
-      name: "FR03-2 Reset password",
-      method: "POST",
-      endpoint: "/api/reset-password",
-      body: '{"email":"${email}","resetToken":"${reset_token}","newPassword":"${new_password}"}',
-      children: `${responseCodeAssertion()}${jsr223Assertion("Validate reset response", resetBodyAssert)}`,
-    }),
-    httpSampler({
-      name: "FR03-3 Login and correlate JWT",
-      method: "POST",
-      endpoint: "/api/login",
-      body: '{"email":"${email}","password":"${new_password}"}',
-      children: `${responseCodeAssertion()}${jsonExtractor("jwt;user_id;user_role", "$.token;$.user.id;$.user.role", "NOT_FOUND;NOT_FOUND;NOT_FOUND")}${jsr223Assertion("Validate login correlation", loginAssert)}`,
-    }),
-    httpSampler({
-      name: "FR09 Apply BIGBUY coupon",
-      method: "POST",
-      endpoint: "/api/apply-coupon",
-      body: '{"code":"${coupon_code}","total_amount":${coupon_total},"user_id":${user_id}}',
-      children: `${responseCodeAssertion()}${jsr223Assertion("Validate coupon amounts", couponAssert)}`,
+            </JSR223PreProcessor><hashTree/>${responseCodeAssertion()}${jsonExtractor("jwt;user_id;user_role", "$.token;$.user.id;$.user.role", "NOT_FOUND;NOT_FOUND;NOT_FOUND")}${jsr223Assertion("Validate login correlation", loginAssert)}`,
     }),
     httpSampler({
       name: "FR16 Import one product",
@@ -210,11 +177,17 @@ function workflow() {
       children: `${authHeader()}${responseCodeAssertion()}${jsr223Assertion("Validate import result", importAssert)}`,
     }),
     httpSampler({
-      name: "READ Verify imported product",
+      name: "FR05 Search imported product",
       method: "GET",
       endpoint: "/api/products",
       query: { name: "search", value: "${unique_product}" },
-      children: `${responseCodeAssertion()}${jsr223Assertion("Validate exact imported product", searchAssert)}`,
+      children: `${responseCodeAssertion()}${jsr223Assertion("Correlate exact imported product ID", searchAssert)}`,
+    }),
+    httpSampler({
+      name: "FR06 View imported product detail",
+      method: "GET",
+      endpoint: "/api/products/${product_id}",
+      children: `${responseCodeAssertion()}${jsr223Assertion("Validate imported product detail", detailAssert)}`,
     }),
   ].join("");
 }
@@ -226,7 +199,7 @@ function csvConfig() {
           <stringProp name="filename">${csvRelative}</stringProp><boolProp name="ignoreFirstLine">true</boolProp>
           <boolProp name="quotedData">true</boolProp><boolProp name="recycle">true</boolProp>
           <stringProp name="shareMode">shareMode.all</stringProp><boolProp name="stopThread">false</boolProp>
-          <stringProp name="variableNames">email,password,new_password,coupon_code,coupon_total,expected_discount,expected_final,product_prefix,product_price,product_description,product_image_url,category_id</stringProp>
+          <stringProp name="variableNames">email,password,product_prefix,product_price,product_description,product_image_url,category_id</stringProp>
         </CSVDataSet><hashTree/>`;
 }
 
@@ -297,20 +270,20 @@ function testPlan({ title, comments, groups, listenerType = null, listenerEnable
 const plans = [
   {
     filename: `${studentId}_Smoke_${runDate}.jmx`,
-    title: "HW05 FR03-FR09-FR16 Smoke",
+    title: "HW05 WF-04 Admin Product Publishing Smoke",
     comments: "One user, one iteration. Validates correlation and business assertions before official runs.",
     groups: [{ name: "Smoke - 1 VU x 1 iteration", threads: 1, ramp: 1, loops: 1, scheduler: false }],
   },
   {
     filename: `${studentId}_Load_${runDate}.jmx`,
-    title: "HW05 FR03-FR09-FR16 Load",
+    title: "HW05 WF-04 Admin Product Publishing Load",
     comments: "Steady realistic load: 6 VUs, 15-second ramp-up, 120-second duration, shared 200-500 ms think time.",
     groups: [{ name: "Load - 6 VUs steady", threads: 6, ramp: 15, duration: 120, delay: 0 }],
     listenerType: "Load",
   },
   {
     filename: `${studentId}_Stress_${runDate}.jmx`,
-    title: "HW05 FR03-FR09-FR16 Stress",
+    title: "HW05 WF-04 Admin Product Publishing Stress",
     comments: "Three one-minute stages at 6, 12, and 24 VUs. Each stage starts after the prior stage to expose degradation by concurrency level.",
     groups: [
       { name: "Stress stage 1 - 6 VUs", threads: 6, ramp: 10, duration: 60, delay: 0 },
@@ -321,7 +294,7 @@ const plans = [
   },
   {
     filename: `${studentId}_Spike_${runDate}.jmx`,
-    title: "HW05 FR03-FR09-FR16 Spike",
+    title: "HW05 WF-04 Admin Product Publishing Spike",
     comments: "3-VU baseline for 45 seconds, abrupt 30-VU spike for 30 seconds, then 3-VU recovery for 45 seconds.",
     groups: [
       { name: "Spike baseline - 3 VUs", threads: 3, ramp: 5, duration: 45, delay: 0 },
@@ -333,9 +306,9 @@ const plans = [
   },
   {
     filename: `${studentId}_Soak_${runDate}.jmx`,
-    title: "HW05 FR03-FR09-FR16 Soak",
-    comments: "Ten-minute sustained run at 30 VUs, selected after the valid 30-VU spike completed with zero errors. Uses the same workflow, assertions, CSV data, and think time.",
-    groups: [{ name: "Soak - 30 VUs sustained", threads: 30, ramp: 30, duration: 600, delay: 0 }],
+    title: "HW05 WF-04 Admin Product Publishing Soak",
+    comments: "Approximately ten-minute sustained run at 30 VUs, selected after the valid 30-VU spike completed with zero errors. Uses 410 iterations per thread so a wall-clock adjustment cannot terminate the measurement early.",
+    groups: [{ name: "Soak - 30 VUs sustained", threads: 30, ramp: 30, loops: 410, scheduler: false }],
   },
 ];
 

@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RUN_DATE = "20260831"
+RUN_DATE = "20260901"
 SCENARIOS = ("Load", "Stress", "Spike", "Soak")
 
 
@@ -94,7 +94,7 @@ def main() -> None:
     lines = [
         "# HW05 Task 1 - Reproducible Metrics",
         "",
-        "Percentiles use the nearest-rank method over JMeter `elapsed` milliseconds. Throughput is HTTP samples divided by each observed measurement window; six samples form one completed workflow.",
+        "Percentiles use the nearest-rank method over JMeter `elapsed` milliseconds. Throughput is HTTP samples divided by each observed measurement window; four samples form one completed workflow.",
         "",
         "| Scenario | Samples | Errors | Error % | Mean ms | p90 ms | p95 ms | p99 ms | Samples/s | Workflows/s | Peak CPU % | Peak RSS MB |",
         "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
@@ -105,7 +105,7 @@ def main() -> None:
         lines.append(
             f"| {scenario} | {overall['samples']} | {overall['errors']} | {overall['error_percent']:.2f} | "
             f"{overall['mean_ms']:.2f} | {overall['p90_ms']:.0f} | {overall['p95_ms']:.0f} | {overall['p99_ms']:.0f} | "
-            f"{overall['throughput_samples_s']:.2f} | {overall['throughput_samples_s'] / 6:.2f} | "
+            f"{overall['throughput_samples_s']:.2f} | {overall['throughput_samples_s'] / 4:.2f} | "
             f"{resources['max_cpu_percent']:.1f} | {resources['max_rss_mb']:.2f} |"
         )
 

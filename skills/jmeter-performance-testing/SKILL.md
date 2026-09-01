@@ -18,21 +18,20 @@ Build repeatable performance evidence from the real EShop backend and keep AI ou
 
 ## Design the Test Plans
 
-Create Load, Stress, and Spike plans around the same end-to-end virtual-user journey:
+Create Load, Stress, and Spike plans around the same coherent end-to-end journey. For this repository, the accepted non-duplicated workflow is the admin product-publishing flow:
 
 ```text
 POST /api/login
-  -> GET /api/products?search=...
-  -> GET /api/products/{id}
-  -> POST /api/cart
-  -> POST /api/checkout
+  -> POST /api/admin/import-products
+  -> GET /api/products?search=<unique imported name>
+  -> GET /api/products/{correlated id}
 ```
 
-This covers auth-heavy, read-heavy, and transactional endpoint groups. Keep request order, correlation, assertions, and CSV schema equivalent across all three plans; vary only the workload model and the required distinct report listener.
+This covers auth-heavy, transactional/write-heavy, and read-heavy endpoint groups while expressing one goal: publish a product and verify it in the catalogue. Keep request order, correlation, assertions, and CSV schema equivalent across all three plans; vary only the workload model and the required distinct report listener. Reject a chain that merely touches required endpoint groups without one business goal.
 
-- Put credentials, search terms, product IDs, quantities, totals, and shipping addresses in CSV input. Prefer unique pre-seeded accounts per concurrent virtual user so account state is not shared accidentally.
+- Put credentials and product fields in CSV input. Generate a unique product name per iteration and correlate the product ID from exact search rather than hard-coding it. Prefer unique pre-seeded accounts per concurrent virtual user so account state is not shared accidentally.
 - Configure CSV exhaustion deliberately: do not silently recycle a small credential set under a larger thread count. Document sharing mode, recycle behavior, and the number of usable rows.
-- Extract the JWT from the login JSON and send `Authorization: Bearer ${token}` to cart and checkout. Fail the iteration when extraction fails.
+- Extract the JWT and admin role from login and send `Authorization: Bearer ${token}` to the import request. Extract the imported product ID from exact search and use it in product detail. Fail the iteration when any correlation fails.
 - Add response-code, JSON/body, and business assertions. Do not count an HTTP response as success solely because a socket completed.
 - Add realistic timers between human actions, but do not add think-time to one scenario and omit it from the others without justification.
 - Name the plans exactly `{StudentID}_{ScenarioType}_{YYYYMMDD}.jmx`, where scenario type is `Load`, `Stress`, or `Spike`. Use the same stem for the corresponding `.jtl` and report folder.
@@ -45,7 +44,7 @@ Choose thread counts, ramp-up, duration, and spike shape from a smoke/baseline r
 Audit every generated JMX as code or XML before execution:
 
 - host and port resolve to the backend API, normally `127.0.0.1:3000`;
-- all five journey requests occur inside the same user iteration;
+- all four journey requests occur inside the same user iteration;
 - CSV columns match variable references and contain enough independent accounts;
 - token extraction and authenticated headers are scoped correctly;
 - assertions distinguish application errors from transport success;
