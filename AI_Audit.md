@@ -1,8 +1,8 @@
-# AI Audit Report - HW05 Task 1
+# AI Audit Report - HW05 Tasks 1-2
 
 ## Declaration
 
-I use AI tools for the following tasks: assignment/SUT analysis, JMeter plan generation, XML audit, smoke and performance-run orchestration, raw JTL analysis, and report drafting. The AI tool was **OpenAI Codex**. Apache JMeter 5.6.3 executed the traffic; SQLite and macOS process tools captured database/resource evidence.
+I use AI tools for the following tasks: assignment/SUT analysis, JMeter plan generation, XML audit, smoke and performance-run orchestration, raw JTL analysis, misinterpretation review preparation, source-grounded optimization classification, and report drafting. The AI tool was **OpenAI Codex**. Apache JMeter 5.6.3 executed the traffic; SQLite and macOS process tools captured database/resource evidence.
 
 The Codex client did not expose the exact timestamp of the incoming chat message. It was received on `2026-08-31` before the first recorded execution artifact at `17:28:38+07:00`; this limitation is stated instead of inventing a timestamp.
 
@@ -10,6 +10,12 @@ The Codex client did not expose the exact timestamp of the incoming chat message
 
 ```text
 hãy làm toàn bộ task 1 của hw5 cho t (có đề nằm trong folder hw5), chọn luồng fr 3 9 16, web nằm trong folder hw04, đọc kĩ đề và làm, không để lại tồn đọng của AI, tạo git local trong folder hw05 và commit (message commit gắn gọn đơn giản)
+```
+
+## Task 2 continuation prompt
+
+```text
+thực hiện tiếp task 2 của hw05
 ```
 
 ## Interaction and output log
@@ -25,6 +31,19 @@ hãy làm toàn bộ task 1 của hw5 cho t (có đề nằm trong folder hw5), 
 | 2026-08-31 17:44:43 | Select the endurance load from observed evidence. | Replaced the arbitrary 6-VU soak draft with 30 VUs because the real 30-VU spike completed with zero errors. Commit: `6b16cff tune soak load`. |
 | 2026-08-31 17:44:50-17:57:45 | Run and audit soak state isolation. | First ten-minute soak had 0 JMeter errors but deterministic DB counts proved unrelated traffic reached shared port 3000. AI retained and excluded the run, configured an isolated temporary runtime on port 3001 without editing HW04 source, and committed `79a379d isolate soak run`. |
 | 2026-08-31 17:57:45-18:07:48 | Rerun the same 30-VU/10-minute soak in isolation and generate final reports. | The clean run produced 49,322 samples, 0 errors, p95 5 ms, 82.29 samples/s, peak CPU 38.7%, and peak RSS 140.47 MB. Product delta matched 8,213 successful FR16 samples exactly and coupon usage remained zero. |
+| 2026-09-01 09:52 ICT | Analyse accepted JTLs, suggest thresholds, and recommend database/backend optimizations. | Produced the intentionally unreviewed first pass in `audit/task2_first_pass_ai_analysis.md`. It incorrectly called sample throughput workflow throughput, compared incompatible whole-run windows, promoted an outlier and peak RSS to system properties, and proposed generic optimizations. |
+| 2026-09-01 after 09:52 ICT | Recalculate from raw JTL, review each interpretation, and inspect the actual Express/SQLite source. | Produced `analysis/task2_metrics.{json,md}` and `task2_analysis_review.md`. Exact final-sampler completion counts replace the six-sample approximation; stage boundaries, percentile semantics, process-resource semantics, and source feasibility are documented separately from the first pass. |
+
+## Task 2 first-pass mistakes and evidence corrections
+
+| AI mistake | Raw/source evidence | Corrected interpretation |
+| --- | --- | --- |
+| Called Soak 82.29 workflows/s. | 49,322 HTTP samples; 8,207 successful final samplers; 599.37 s overall window. | 82.29 samples/s and 13.69 completed workflows/s. |
+| Used 36.11 Stress and 26.69 Spike whole-run rates to infer burst degradation. | Stress 24-VU stage 61.87 samples/s; Spike 30-VU burst 82.96 samples/s; recovery 8.21 versus baseline 8.11. | Compare equivalent stage windows; no burst throughput loss or failed recovery was observed. |
+| Treated maximum 222 ms as tail failure. | Soak p95 5 ms and p99 6 ms across 49,322 samples. | Retain maximum as an outlier; do not replace percentile distribution with it. |
+| Called 140.47 MB a memory ceiling. | Soak RSS start/peak/final 66.64/140.47/78.50 MB; first/last-quarter means 118.45/73.73 MB. | A transient peak is neither a leak nor a measured ceiling. |
+| Promoted arbitrary values to SLA. | No product SLA in assignment or SUT requirements. | Label them provisional same-environment regression gates requiring repeated runs and human ownership. |
+| Suggested generic indexes/pooling. | `coupons.code` is already `UNIQUE`; product search has a leading wildcard; current DB is one SQLite handle. | Coupon index is redundant, ordinary name index is not a direct fix, and client/server pooling is architecture-mismatched. |
 
 ## AI mistakes and corrections
 

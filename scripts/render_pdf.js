@@ -26,7 +26,7 @@ async function main() {
       preferCSSPageSize: true,
       displayHeaderFooter: true,
       headerTemplate: "<div></div>",
-      footerTemplate: `<div style="box-sizing:border-box;color:#64748b;display:flex;font-family:Arial,sans-serif;font-size:8px;justify-content:space-between;padding:0 15mm;width:100%"><span>23127035 - HW05 Task 1</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
+      footerTemplate: `<div style="box-sizing:border-box;color:#64748b;display:flex;font-family:Arial,sans-serif;font-size:8px;justify-content:space-between;padding:0 15mm;width:100%"><span>23127035 - HW05 Tasks 1-2</span><span><span class="pageNumber"></span> / <span class="totalPages"></span></span></div>`,
     });
   } finally {
     await browser.close();

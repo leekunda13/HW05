@@ -94,6 +94,15 @@ pre {
   white-space: pre-wrap;
 }
 
+pre + h2 {
+  margin-top: 9mm;
+}
+
+h2[id$="proposed-regression-gates-not-sla"] {
+  break-before: page;
+  page-break-before: always;
+}
+
 blockquote {
   background: #fff8e6;
   border-left: 3px solid #d69e2e;

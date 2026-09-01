@@ -23,10 +23,12 @@ build_one() {
   node "$task_root/scripts/render_pdf.js" "$html_file" "$output_dir/$output_name"
 }
 
-build_one "main_report.md" "main_report.pdf" "HW05 Task 1 Performance Report"
-build_one "AI_Audit.md" "AI_Audit.pdf" "HW05 Task 1 AI Audit"
+build_one "main_report.md" "main_report.pdf" "HW05 Tasks 1-2 Performance Report"
+build_one "task2_analysis_review.md" "task2_analysis_review.pdf" "HW05 Task 2 Analysis Review"
+build_one "AI_Audit.md" "AI_Audit.pdf" "HW05 Tasks 1-2 AI Audit"
 build_one "AI_Critique.md" "AI_Critique.pdf" "HW05 AI Critique"
 
 pdfinfo "$output_dir/main_report.pdf" | sed -n '1,20p'
+pdfinfo "$output_dir/task2_analysis_review.pdf" | sed -n '1,20p'
 pdfinfo "$output_dir/AI_Audit.pdf" | sed -n '1,20p'
 pdfinfo "$output_dir/AI_Critique.pdf" | sed -n '1,20p'
