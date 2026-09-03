@@ -52,6 +52,7 @@ trong file remainig work bạn có ghi 'Nếu phải chạy lại vào ngày kh�
 | 2026-09-03 18:04-18:15 | Run and monitor the fixed-iteration Soak. | Accepted 49,200 samples and exactly 12,300 workflows over 613.82 JTL seconds, 0 errors, p95 4 ms, 80.15 samples/s, 20.04 workflows/s, peak CPU 28.2%, and peak RSS 138.95 MB. |
 | 2026-09-03 after 18:15 | Recalculate the current baseline and continue without generating PDFs. | Regenerated Task 2 JSON/Markdown from 20260903 raw logs, updated report tables, regression candidates, screenshot references, README, demo script, critique, and remaining-work checklist. |
 | 2026-09-03 final evidence review | Record student-owned review and demonstration evidence. | The student explicitly confirmed completion of the human review and review of `sysinfo.png`, then supplied the Task 1 demo URL `https://youtu.be/ukf1sTUyVuY` and Agent Skill demo URL `https://youtu.be/MxNkVFIW3Gk`. The original hardware image was flagged for serial-number redaction before public upload. No PDF was generated. |
+| 2026-09-03 publication decision | Publish the local repository to GitHub. | The student supplied `https://github.com/leekunda13/HW05.git` and explicitly chose to include the reviewed original `sysinfo.png` despite its visible serial number. Repository links were added to README and the main report before push. |
 
 ## AI mistakes and corrections
 

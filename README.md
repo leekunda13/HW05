@@ -76,7 +76,7 @@ HW05_RUN_DATE=20260903 HW05_SUT_BACKEND="$PWD/tmp/isolated-backend-wf04" HW05_PO
 
 - Task 1 demo (YouTube Unlisted): [https://youtu.be/ukf1sTUyVuY](https://youtu.be/ukf1sTUyVuY)
 - Agent Skill demo (YouTube Unlisted): [https://youtu.be/MxNkVFIW3Gk](https://youtu.be/MxNkVFIW3Gk)
-- Public GitHub repository: pending the student's repository URL.
-- Activity Monitor screenshots for all accepted scenarios are in `evidence/screenshots/20260903`; the hardware screenshot and spec table are documented in `evidence/hardware/`. The local `sysinfo.png` must have its visible serial number redacted before public upload.
+- Public GitHub repository: [https://github.com/leekunda13/HW05](https://github.com/leekunda13/HW05)
+- Activity Monitor screenshots for all accepted scenarios are in `evidence/screenshots/20260903`; the [hardware screenshot](evidence/hardware/sysinfo.png) and spec table are documented in `evidence/hardware/`.
 
 No performance issue was filed because all accepted samples passed. The incomplete clock-jump Soak attempt is retained as excluded evidence and is not used in the endurance conclusion.

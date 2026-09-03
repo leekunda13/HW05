@@ -89,7 +89,7 @@ Các metrics Markdown và report đã được tính lại từ chính JTL/HTML/
 - [x] Chụp và human-review hardware report thật bằng System Information tại `evidence/hardware/sysinfo.png`.
 - [x] Ảnh hiển thị hostname `MacBook-Air-cua-KunDa.local`, Apple M4, 16 GB và macOS 26.5.1.
 - [x] Bảng spec dạng text đã có tại `evidence/hardware/hardware_spec.md`.
-- [ ] Che số sê-ri đang hiển thị trong `sysinfo.png`, sau đó mới đưa bản đã che vào public repository/final package và dẫn chiếu trực tiếp trong main report.
+- [x] Đặt `sysinfo.png` vào evidence và dẫn chiếu trực tiếp trong main report. Sinh viên đã review và quyết định giữ nguyên ảnh dù số sê-ri đang hiển thị.
 
 ### Video demo chính
 
@@ -116,14 +116,14 @@ Có thể dùng `demo_video_script.md` làm dàn ý, nhưng phải tự nói và
 - [ ] Cập nhật `AI_Audit.md` với các interaction sau commit `4f1a70f`, gồm tên AI tool, thời gian, prompt và tóm tắt output cho từng interaction.
 - [ ] Sau các thay đổi, xuất lại `main_report.pdf`, `AI_Audit.pdf`, `AI_Critique.pdf` và các PDF liên quan; render để kiểm tra không cắt bảng/chồng chữ.
 - [x] Cập nhật self-assessment trong `README.md` đủ cả 6 tiêu chí; Agent Skill có source và video demo end-to-end.
-- [ ] Trong README ghi đủ: scenarios, endpoint groups, endurance threshold bằng số, số bug/performance issue, link video chính, link demo skill và public GitHub URL.
-- [ ] Kiểm tra main report dẫn tới đúng ảnh, URL, raw JTL, HTML report và issue thật.
+- [x] Trong README ghi đủ: scenarios, endpoint groups, endurance threshold bằng số, số bug/performance issue, link video chính, link demo skill và public GitHub URL.
+- [x] Kiểm tra main report dẫn tới đúng ảnh, URL, raw JTL và supporting evidence; không có issue thật vì accepted runs có 0 failure.
 
 ## 5. GitHub và issue
 
-- [ ] Tạo/publish public GitHub repository bằng tài khoản của sinh viên; local repo hiện chưa có remote.
+- [x] Dùng public GitHub repository `https://github.com/leekunda13/HW05` bằng tài khoản của sinh viên.
 - [ ] Push toàn bộ commit và kiểm tra public link mở được khi chưa đăng nhập.
-- [ ] Thêm public repository URL vào README/main report.
+- [x] Thêm public repository URL vào README/main report.
 - [ ] Nếu sau khi tự xác minh có bug thật, tạo GitHub Issue kèm screenshot và link từ `bug_report.md`.
 - [ ] Nếu không có issue performance trong accepted runs, giữ số issue là 0 và nói rõ 0 failure; performance issue không bắt buộc khi không phát hiện.
 - [ ] Các source observation như thiếu admin-role enforcement chỉ được báo thành issue sau khi sinh viên tái hiện và xác nhận; không dùng nhận định AI thay evidence.

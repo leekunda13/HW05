@@ -6,6 +6,7 @@
 **Tool:** Apache JMeter 5.6.3<br>
 **Task 1 demo:** [YouTube Unlisted](https://youtu.be/ukf1sTUyVuY)<br>
 **Agent Skill demo:** [YouTube Unlisted](https://youtu.be/MxNkVFIW3Gk)<br>
+**Public repository:** [GitHub - leekunda13/HW05](https://github.com/leekunda13/HW05)<br>
 **Human review:** The student reviewed the four JMX plans, raw-log corrections, source-grounded optimization judgments, AI Critique, and hardware evidence.
 
 ## 1. Test environment and isolation
@@ -19,7 +20,7 @@
 | JMeter | 5.6.3, non-GUI mode |
 | Measurement endpoint | `http://127.0.0.1:3001` |
 
-The student-reviewed hardware screenshot confirms the hostname, Apple M4, 16 GB memory, and macOS 26.5.1. Its original local copy contains a visible serial number and must be redacted before public upload or final packaging.
+The student-reviewed [hardware screenshot](evidence/hardware/sysinfo.png) confirms the hostname, Apple M4, 16 GB memory, and macOS 26.5.1.
 
 ## 2. Coherent end-to-end workflow
 
