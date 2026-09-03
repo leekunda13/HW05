@@ -28,6 +28,10 @@ check xem còn phải làm những gì đưa vào 1 file md
 làm phần còn thiếu của task 3 cho t
 ```
 
+```text
+trong file remainig work bạn có ghi 'Nếu phải chạy lại vào ngày khác 2026-09-01, tên JMX/JTL/report chính phải dùng ngày chạy thật theo `{StudentID}_{ScenarioType}_{YYYYMMDD}`; sau đó phải cập nhật metrics, report, PDF và commit', bây giờ là ngày 3/9 rôif hãy chỉnh lại để t chụp màn hình, lưu ý khoan tạo pdf, khi chuẩn bị nộp bài và ko cần chỉnh gì nữa t sẽ kêu tạo pdf 1 lượt
+```
+
 ## Chronological interaction log
 
 | Recorded time (ICT) | Prompt/instruction stage | AI output and review status |
@@ -43,6 +47,7 @@ làm phần còn thiếu của task 3 cho t
 | 2026-09-01 after 18:21 | Re-run Task 2 analysis and rebuild the submission. | Updated the first-pass AI output, eight raw-log corrections, optimization judgments, reports, verification scripts, filenames, PDFs, and Git history for WF-04 only. |
 | 2026-09-01 22:56-23:03 | Check the complete assignment against the repository. | Read and visually inspected all nine assignment pages, inventoried deliverables, and consolidated missing work into `STUDENT_EVIDENCE_REQUIRED.md`. Flagged the unresolved transactional-scope risk rather than silently changing the workflow. |
 | 2026-09-01 after 23:13 | Complete Task 3. | Designed a commit-aware continuous-performance model with a flow chart, trigger matrix, smoke gate, p95 confirmation rule, versioned baseline ownership, raw-artifact retention, and cost/false-alarm trade-offs; integrated it into the report and README. |
+| 2026-09-03 10:31 | Prepare current-date evidence capture without rebuilding PDFs. | Parameterized the generator and runner by run date, created dated 20260903 plans, added a safe isolated-backend default, port preflight, PID/capture countdown, screenshot paths, and exact sequential capture instructions. Preserved 20260901 evidence instead of relabelling it. |
 
 ## AI mistakes and corrections
 

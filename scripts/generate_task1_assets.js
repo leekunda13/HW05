@@ -4,7 +4,11 @@ const fs = require("fs");
 const path = require("path");
 
 const root = path.resolve(__dirname, "..");
-const runDate = "20260901";
+const runDate = process.env.HW05_RUN_DATE
+  || new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Ho_Chi_Minh" }).replaceAll("-", "");
+if (!/^\d{8}$/.test(runDate)) {
+  throw new Error(`HW05_RUN_DATE must use YYYYMMDD, received: ${runDate}`);
+}
 const studentId = "23127035";
 const csvRelative = "../data/performance_users.csv";
 

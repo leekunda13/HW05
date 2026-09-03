@@ -1,6 +1,6 @@
 # HW05 - Những việc còn phải hoàn thành trước khi nộp
 
-Đối chiếu ngày 2026-09-01 với đề `2026.HW05.Performance Testing_En.pdf` và trạng thái Git tại commit `4f1a70f`.
+Đối chiếu ngày 2026-09-03 với đề `2026.HW05.Performance Testing_En.pdf` và trạng thái Git tại commit `f3fbf75`.
 
 File này là checklist duy nhất cho phần còn lại. Các ô chỉ được đánh dấu hoàn thành sau khi có bằng chứng thật; không dùng ảnh, giọng nói, URL hoặc lời xác nhận do AI tạo.
 
@@ -39,15 +39,50 @@ Skill `skills/jmeter-performance-testing/` đã có; còn thiếu bằng chứng
 
 ### Ảnh từng scenario
 
-Hiện repository không có ảnh Load, Stress hoặc Spike. Vì ảnh phải khớp lần chạy thật, không được chụp lại màn hình từ log cũ rồi mô tả là ảnh lúc chạy.
+Hiện repository không có ảnh Load, Stress hoặc Spike. Vì ảnh phải khớp lần chạy thật, không được chụp lại màn hình từ log cũ rồi mô tả là ảnh lúc chạy. Bộ JMX mới ngày `20260903` đã được chuẩn bị; evidence ngày `20260901` vẫn được giữ nguyên làm lịch sử cho đến khi các run mới hoàn tất.
+
+Các file dùng để capture ngày 3/9:
+
+```text
+test-plans/23127035_Smoke_20260903.jmx
+test-plans/23127035_Load_20260903.jmx
+test-plans/23127035_Stress_20260903.jmx
+test-plans/23127035_Spike_20260903.jmx
+test-plans/23127035_Soak_20260903.jmx
+```
+
+Trước khi chạy, mở Activity Monitor và chuẩn bị cửa sổ Terminal cạnh nhau. Runner mặc định dùng backend cô lập ở `tmp/isolated-backend-wf04`, port 3001, in backend PID và chờ 20 giây để chọn đúng tiến trình `node` trong Activity Monitor.
+
+Chạy Smoke trước:
+
+```bash
+cd /Users/kunda/Documents/hw/hw05
+HW05_RUN_DATE=20260903 HW05_CAPTURE_DELAY_SECONDS=20 ./scripts/run_official.sh Smoke
+```
+
+Sau khi Smoke pass, chạy lần lượt từng scenario; không chạy song song:
+
+```bash
+HW05_RUN_DATE=20260903 HW05_CAPTURE_DELAY_SECONDS=20 ./scripts/run_official.sh Load
+HW05_RUN_DATE=20260903 HW05_CAPTURE_DELAY_SECONDS=20 ./scripts/run_official.sh Stress
+HW05_RUN_DATE=20260903 HW05_CAPTURE_DELAY_SECONDS=20 ./scripts/run_official.sh Spike
+```
+
+Trong khi mỗi scenario đang chạy, chụp cùng một frame có Terminal/JMeter output và Activity Monitor đang chọn đúng backend PID mà runner in ra. Lưu ảnh thật vào `evidence/screenshots/20260903/` với tên gợi ý:
+
+```text
+23127035_Load_20260903_activity-monitor.png
+23127035_Stress_20260903_activity-monitor.png
+23127035_Spike_20260903_activity-monitor.png
+```
 
 - [ ] Chạy/capture Load với JMeter hoặc terminal và Activity Monitor hiển thị đúng tiến trình backend `node` trong cùng khung hình.
 - [ ] Chạy/capture Stress với hai thành phần trên trong cùng khung hình.
 - [ ] Chạy/capture Spike với hai thành phần trên trong cùng khung hình.
 - [ ] Ảnh phải đọc được scenario, thời gian, backend PID/resource usage và hostname khi có thể.
-- [ ] Đặt ảnh vào một thư mục evidence rõ ràng và dẫn chiếu chúng trong main report.
+- [ ] Đặt ba ảnh vào `evidence/screenshots/20260903/` và dẫn chiếu chúng trong main report.
 
-Nếu phải chạy lại vào ngày khác 2026-09-01, tên JMX/JTL/report chính phải dùng ngày chạy thật theo `{StudentID}_{ScenarioType}_{YYYYMMDD}`; sau đó phải cập nhật metrics, report, PDF và commit. Không sửa timestamp bên trong raw log.
+Sau khi ba run ngày 3/9 hoàn tất, phải dùng chính JTL/HTML/resource/database evidence `20260903` để tính lại metrics và cập nhật report. Không đổi tên log `20260901` thành `20260903`, không sửa timestamp bên trong raw log và không trộn số liệu hai ngày. Chưa dựng lại PDF ở giai đoạn capture này; chỉ dựng PDF một lần khi toàn bộ nội dung, ảnh và URL đã chốt theo yêu cầu của sinh viên.
 
 ### Hardware evidence
 

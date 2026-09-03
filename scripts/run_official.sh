@@ -13,10 +13,28 @@ case "$scenario" in
 esac
 
 task_root="$(cd "$(dirname "$0")/.." && pwd)"
-sut_backend="${HW05_SUT_BACKEND:-/Users/kunda/Documents/hw/hw04/eshop-sut-main/backend}"
-sut_port="${HW05_PORT:-3000}"
+sut_backend="${HW05_SUT_BACKEND:-$task_root/tmp/isolated-backend-wf04}"
+sut_port="${HW05_PORT:-3001}"
+run_date="${HW05_RUN_DATE:-$(date '+%Y%m%d')}"
+capture_delay="${HW05_CAPTURE_DELAY_SECONDS:-10}"
+if [[ ! "$run_date" =~ ^[0-9]{8}$ ]]; then
+  echo "HW05_RUN_DATE must use YYYYMMDD: $run_date" >&2
+  exit 2
+fi
+if [[ ! "$capture_delay" =~ ^[0-9]+$ ]]; then
+  echo "HW05_CAPTURE_DELAY_SECONDS must be a non-negative integer: $capture_delay" >&2
+  exit 2
+fi
+if [[ ! -f "$sut_backend/server.js" ]]; then
+  echo "Isolated backend not found: $sut_backend/server.js" >&2
+  exit 2
+fi
+if lsof -nP -iTCP:"$sut_port" -sTCP:LISTEN >/dev/null 2>&1; then
+  echo "Port $sut_port is already in use. Stop the existing process before this evidence run." >&2
+  exit 2
+fi
 database_file="$sut_backend/database.sqlite"
-stem="23127035_${scenario}_20260901"
+stem="23127035_${scenario}_${run_date}"
 plan="$task_root/test-plans/${stem}.jmx"
 jtl="$task_root/results/${stem}.jtl"
 report="$task_root/reports/${stem}"
@@ -27,6 +45,14 @@ resource_csv="$task_root/evidence/resource/${stem}_backend_resource.csv"
 metadata_csv="$task_root/evidence/resource/${stem}_run_metadata.csv"
 pre_state="$task_root/evidence/database/${stem}_pre_state.csv"
 post_state="$task_root/evidence/database/${stem}_post_state.csv"
+screenshot_dir="$task_root/evidence/screenshots/$run_date"
+mkdir -p "$screenshot_dir"
+
+if [[ ! -s "$plan" ]]; then
+  echo "Test plan not found: $plan" >&2
+  echo "Generate it first with: HW05_RUN_DATE=$run_date node scripts/generate_task1_assets.js" >&2
+  exit 2
+fi
 
 for target in "$jtl" "$report" "$run_log" "$jmeter_log" "$backend_log" "$resource_csv" "$metadata_csv" "$pre_state" "$post_state"; do
   if [[ -e "$target" ]]; then
@@ -96,11 +122,22 @@ if [[ "$seeded_users" != "80" ]]; then
 fi
 sqlite3 -header -csv "$database_file" "select datetime('now','localtime') as captured_at, count(*) as users, sum(role='admin') as admins, (select count(*) from products) as products, (select count(*) from orders) as orders, (select count(*) from coupon_usage) as coupon_usage from users;" > "$pre_state"
 
-start_iso="$(date '+%Y-%m-%dT%H:%M:%S%z')"
 printf 'scenario,start_time,end_time,backend_pid,jmeter_version,host,port\n' > "$metadata_csv"
 
 "$task_root/scripts/monitor_backend.sh" "$backend_pid" "$scenario" "$resource_csv" &
 monitor_pid=$!
+
+echo "CAPTURE READY: $scenario / $run_date / backend PID $backend_pid / port $sut_port"
+echo "Keep this terminal and Activity Monitor (filtered to PID $backend_pid) in the same frame."
+echo "JTL target: $jtl"
+echo "HTML target: $report"
+echo "Save the real same-frame screenshot under: $screenshot_dir"
+if [[ "$capture_delay" -gt 0 ]]; then
+  echo "JMeter starts in $capture_delay seconds."
+  sleep "$capture_delay"
+fi
+
+start_iso="$(date '+%Y-%m-%dT%H:%M:%S%z')"
 
 set +e
 jmeter -n \

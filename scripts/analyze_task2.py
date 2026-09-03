@@ -6,13 +6,14 @@ from __future__ import annotations
 import csv
 import json
 import math
+import os
 from collections import defaultdict
 from pathlib import Path
 from statistics import mean
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RUN_DATE = "20260901"
+RUN_DATE = os.environ.get("HW05_RUN_DATE", "20260901")
 SCENARIOS = ("Load", "Stress", "Spike", "Soak")
 FINAL_LABEL = "FR06 View imported product detail"
 
