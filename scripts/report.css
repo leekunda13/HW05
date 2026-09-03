@@ -111,6 +111,7 @@ h2[id$="proposed-regression-gates-not-sla"] {
   page-break-before: always;
 }
 
+h2[id$="-ai-critique"],
 h2#ai-critique {
   break-before: page;
   page-break-before: always;
