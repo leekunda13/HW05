@@ -55,7 +55,15 @@ assert review.count("| \u201c") == 8, "Expected eight first-pass correction rows
 assert review.count("**Feasible") == 3, "Expected three feasible classifications"
 assert review.count("**Hallucinated") == 4, "Expected four hallucinated classifications"
 assert "**Unsupported for this workload**" in review
-print("Task 2 raw metrics, review rows, recommendation judgments, and critique length verified.")
+
+main_report = (root / "main_report.md").read_text(encoding="utf-8")
+task2_review = main_report.split("## 10. Task 2", 1)[1].split("## 11.", 1)[0]
+task2_optimizations = main_report.split("## 12. Task 2", 1)[1].split("## 13.", 1)[0]
+assert task2_review.count("| \u201c") == 8, "Main report must contain all eight Task 2 corrections"
+assert task2_optimizations.count("**Feasible") == 3, "Main report must contain three feasible classifications"
+assert task2_optimizations.count("**Hallucinated") == 4, "Main report must contain four hallucinated classifications"
+assert "**Unsupported for this workload**" in task2_optimizations
+print("Task 2 raw metrics, integrated review, recommendation judgments, and critique length verified.")
 PY
 
 if [[ "${HW05_VERIFY_PDFS:-0}" == "1" ]]; then

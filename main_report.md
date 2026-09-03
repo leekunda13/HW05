@@ -122,27 +122,52 @@ The highest stable load observed was **30 VUs for 613.82 seconds**, completing *
 
 The maximum elapsed value was 33 ms while p99 remained 6 ms. No tested stage reached failure or saturation, so 30 VUs is a lower-bound stable envelope, not absolute capacity.
 
-## 10. AI review and corrections
+## 10. Task 2 - AI analysis and misinterpretation review
 
-| Problem found | Correction | Evidence/reason |
+The original unreviewed AI output is retained in `audit/task2_first_pass_ai_analysis.md`. The following eight corrections use the accepted 20260903 JTL and resource evidence:
+
+| First-pass AI statement | Correct raw value | Why it is wrong |
 | --- | --- | --- |
-| The first workflow connected unrelated FR03, FR09, and FR16 actions. | Replaced it with WF-04 admin product publishing. | One business goal now links authentication, write, search, correlation, and detail verification; it is distinct from the three team workflows supplied. |
-| Sample throughput could be labelled workflow throughput. | Count successful final FR06 samplers as exact completions. | Soak is 80.15 samples/s but 20.04 workflows/s. |
-| Whole Stress and Spike averages could be compared as peak levels. | Compare their stage windows. | Stress 24 VUs is 62.08 samples/s; Spike burst 30 VUs is 83.04 samples/s. |
-| A maximum could be called a tail failure. | Report max separately from p95 4 ms and p99 6 ms. | The current 33 ms maximum does not describe all 49,200 samples. |
-| Duration-based Soak was assumed robust to host clock changes. | Excluded the short historical attempt and used fixed completed iterations. | Accepted JTL spans 613.82 seconds and contains exactly 12,300 final samplers. |
+| “Soak sustained 79.49 workflows/s.” | The accepted rerun sustained **80.15 HTTP samples/s**, exactly **12,300** final samplers and **20.04 completed workflows/s** over 613.82 s. | JMeter's default rate counts HTTP samplers, not business journeys. |
+| “Stress achieved 36.33 requests/s,” used as its peak. | Whole Stress is 36.19 samples/s, but the **24-VU stage is 62.08 samples/s**, p95 4 ms, 0 failures. | The whole value averages 6-, 12-, and 24-VU windows. |
+| “Spike is slower than Stress, so the burst degraded throughput.” | The **30-VU burst reached 83.04 samples/s**, p95 5 ms; 26.91 is the whole test including two 3-VU periods. | Different workload windows are not comparable peak stages. |
+| “Spike did not recover.” | Recovery was **8.66 samples/s, p95 5 ms**, versus baseline **8.06 samples/s, p95 7 ms**. | Recovery must be compared with the same 3-VU baseline, not the burst or whole-run average. |
+| “The 1,151 ms maximum proves a tail-latency failure.” | The accepted rerun's maximum is **33 ms**, with p95 **4 ms** and p99 **6 ms** across 49,200 samples. | A maximum is not a percentile and the current accepted raw log does not contain the claimed 1,151 ms value. |
+| “0% errors proves production capacity at 79 users/s.” | Evidence proves **30 VUs**, 0 failures, 80.15 samples/s, and 20.04 workflows/s. No stage reached collapse. | VUs, arrival rate, HTTP sample rate, and completed workflow rate are different quantities. |
+| “Peak RSS 136.67 MB is the memory ceiling.” | Soak RSS start/peak/final is **66.59/138.95/69.39 MB**; first/last-quarter means are **99.05/77.05 MB**. | A transient peak followed by reclamation is neither an absolute ceiling nor proof of a leak. |
+| “The suggested numbers are an SLA.” | Neither the assignment nor SUT defines a response-time/throughput SLA. | Local measurements support proposed regression gates only; product owners must approve service targets. |
 
-These are AI-prepared technical corrections. They become the assignment's mandatory human review only when the student checks the raw evidence and explicitly approves or amends them.
+Task 1 also required two earlier corrections: the unrelated FR03-FR09-FR16 chain was replaced with coherent WF-04, and a clock-jump-affected duration Soak was excluded in favor of fixed completed iterations. These are AI-prepared technical corrections. They become the assignment's mandatory human review only when the student checks the raw evidence and explicitly approves or amends them.
 
 ## 11. Task 2 threshold proposal
 
-The following are proposed same-environment regression gates, not an SLA: fail any business assertion; warn/fail when p95 exceeds 7.5/10 ms or p99 exceeds 9/12 ms; fail below 14.34 samples/s at Load 6 VUs, 55.87 at Stress 24 VUs, 74.74 during the Spike burst, or 72.14 samples/s and 18.04 workflows/s for Soak. Investigate Node CPU above 35% or RSS above 170 MB without automatically failing.
+| Metric/scope | Proposed rule | Basis |
+| --- | --- | --- |
+| Business correctness | Fail on any HTTP/business assertion failure. | Functional failures must not be averaged away. |
+| Selected gated-scope p95 | Warn above 7.5 ms; fail above 10 ms. | +50%/+100% over the worst p95 (5 ms) across Load, Stress 24 VUs, Spike burst, and Soak. |
+| Selected gated-scope p99 | Warn above 9 ms; fail above 12 ms. | +50%/+100% over the worst p99 (6 ms) across those scopes. |
+| Load 6 VUs | Fail below 14.34 samples/s. | 10% below observed 15.93. |
+| Stress 24 VUs | Fail below 55.87 samples/s. | 10% below observed 62.08. |
+| Spike 30-VU burst | Fail below 74.74 samples/s. | 10% below observed 83.04. |
+| Soak 30 VUs | Fail below 72.14 samples/s or 18.04 workflows/s. | 10% below observed 80.15 and 20.04. |
+| Backend resources | Investigate above 35% Node CPU or 170 MB RSS; do not auto-fail. | Rounded bands above observed 28.2% and 138.95 MB peaks; host and GC dependent. |
 
-The latency bands represent +50%/+100% over the worst p95 and p99 across the selected gated scopes: Load, Stress 24 VUs, Spike burst, and Soak. Throughput floors are 10% below observed values. Repeated clean runs must quantify natural variance before these proposed gates are activated.
+These are proposed same-environment regression gates, not an SLA. Repeated clean runs must quantify natural variance before activation.
 
-## 12. Optimization judgment
+## 12. Task 2 optimization judgment
 
-Source review supports experiments with an explicit transaction around FR16 inserts, SQLite WAL plus `busy_timeout`, and a profiled non-unique `users(email)` index. It rejects a normal B-tree index as a direct fix for `LIKE '%term%'`, rejects an additional coupon-code index because `code` is already `UNIQUE`, and rejects a client/server-style connection pool as a drop-in fix for one SQLite handle. Search caching and clustered workers are unsupported by this unique-write/read-after-write workload and may add stale reads or write contention.
+| Recommendation | Classification | Source-grounded judgment |
+| --- | --- | --- |
+| Wrap FR16 batch inserts in an explicit transaction. | **Feasible; prioritize experiment** | `server.js:209-240` prepares one statement but has no `BEGIN/COMMIT`. Benchmark multi-row imports and rollback behavior. |
+| Enable SQLite WAL and `busy_timeout`. | **Feasible experiment, not guaranteed** | `database.js:5` opens one SQLite handle and defines no such PRAGMA. Measure writer contention and checkpoint behavior. |
+| Add a non-unique index on `users(email)`. | **Feasible; profile first** | `database.js:50-61` has no email index; `server.js:35` performs equality login lookup, but only 82 users were present. |
+| Add a B-tree index on `products(name)` for current search. | **Hallucinated as a direct fix** | `server.js:144` uses `LIKE '%term%'`; the leading wildcard generally prevents an ordinary prefix-index lookup. Profile with `EXPLAIN QUERY PLAN`; consider FTS5 or a requirement change. |
+| Add another index on `coupons(code)`. | **Hallucinated/redundant** | `database.js:31` already declares `code TEXT UNIQUE`; coupon lookup is outside WF-04. |
+| Add a conventional database connection pool. | **Hallucinated for current architecture** | The backend uses one in-process SQLite handle, not a client/server database; a PostgreSQL/MySQL-style pool is not a drop-in fix. |
+| Cache exact product-search responses. | **Unsupported for this workload** | Every iteration imports a unique product and immediately reads it, producing little reuse and requiring correct invalidation. |
+| Run clustered Node workers. | **Hallucinated as an immediate fix** | Multiple processes create multiple SQLite handles and may increase writer contention; no accepted result demonstrates a worker bottleneck. |
+
+The first experiment should compare multi-row FR16 imports with and without one explicit transaction, followed by measured WAL/`busy_timeout` combinations. Query plans and representative data volume must precede index claims.
 
 ## 13. Task 3 - Continuous performance-testing model
 
