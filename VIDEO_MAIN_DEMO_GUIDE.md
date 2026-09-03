@@ -62,41 +62,41 @@ Video dài khoảng **6-7 phút**, dùng giọng thật tiếng Việt. Các câ
 >
 > Backend PID là 33539, peak CPU 28,2 phần trăm. RSS bắt đầu ở 66,59 MB, đạt peak 138,95 MB và kết thúc ở 69,39 MB. Vì bộ nhớ giảm lại sau test nên peak RSS không phải memory ceiling hoặc bằng chứng memory leak. Ba mươi VUs chỉ là mức ổn định cao nhất đã thử, không phải giới hạn tuyệt đối của hệ thống.
 
-## 4:30-5:20 — Task 2: kiểm tra phân tích AI
+## 4:30-5:20 — Raw log và tính nhất quán dữ liệu
 
-**Mở:** mục 10-12 trong `main_report.md`.
-
-**Nói:**
-
-> Em không sử dụng nguyên văn kết luận AI mà đối chiếu lại với raw JTL. AI từng nhầm samples mỗi giây với workflows mỗi giây, dùng throughput trung bình của toàn bài để đại diện cho stage tải cao nhất và dùng maximum để kết luận về percentile.
->
-> Sau khi kiểm tra, Soak đạt 80,15 samples mỗi giây nhưng chỉ có 20,04 workflow mỗi giây. Stress stage 24 VUs đạt 62,08 samples mỗi giây, còn Spike burst đạt 83,04 samples mỗi giây. Soak có maximum 33 mili giây nhưng p95 chỉ là 4 mili giây.
->
-> Về tối ưu, transaction cho batch import và WAL với busy timeout là các thử nghiệm khả thi. B-tree thông thường không trực tiếp giải quyết truy vấn `LIKE` có wildcard ở đầu. Các threshold trong báo cáo chỉ là regression gate đề xuất cho cùng môi trường, không phải SLA.
-
-## 5:20-6:00 — Task 3: continuous testing
-
-**Mở:** `assets/task3_continuous_performance_flow.svg`.
+**Mở:** thư mục `results`, sau đó `evidence/database` và `evidence/resource`.
 
 **Nói:**
 
-> Task 3 đề xuất pipeline theo mức rủi ro của commit. Thay đổi backend liên quan phải chạy Smoke trước; nếu Smoke fail thì dừng. Pull request chạy Load, thay đổi database hoặc import có thể thêm Stress, nightly chạy Stress và Spike, còn weekly hoặc release candidate chạy Soak.
+> Đây là các raw JTL đầy đủ của Load, Stress, Spike và Soak, không chỉ có bảng summary. Mỗi scenario còn có HTML dashboard, resource CSV, backend log và database state trước và sau khi chạy.
 >
-> Chỉ so sánh performance khi source, JMX, dataset, database seed và môi trường tương thích. Một p95 regression phải vượt cả ngưỡng tương đối và tuyệt đối, sau đó được chạy xác nhận lại. Baseline mới phải do người review chấp thuận, không tự động thay bằng một kết quả chậm hơn.
+> Mỗi lần chạy chính thức bắt đầu từ database sạch có 5 sản phẩm. Sau Load có 480 sản phẩm, tương ứng 475 import thành công. Sau Stress có 1.632 sản phẩm, tương ứng 1.627 import. Sau Spike có 814 sản phẩm, tương ứng 809 import. Sau Soak có 12.305 sản phẩm, tương ứng đúng 12.300 workflow hoàn tất. Các database delta này giúp xác nhận request không chỉ trả HTTP thành công mà còn tạo đúng thay đổi nghiệp vụ.
 
-## 6:00-6:30 — Kết luận
+## 5:20-5:55 — Evidence và các lần chạy bị loại
 
-**Mở:** thư mục `results`, `reports`, `evidence` và Git log.
+**Mở:** bốn ảnh trong `evidence/screenshots/20260903`, sau đó thư mục `evidence/inconclusive`.
 
 **Nói:**
 
-> Toàn bộ kết luận sử dụng raw JTL, HTML report, database state và resource evidence ngày 03/09/2026. Những attempt cũ hoặc thiếu evidence được giữ riêng trong thư mục inconclusive và không trộn vào baseline. Các accepted run đều không có lỗi và database delta khớp số import thành công. Không có performance issue được mở vì chưa tái hiện được lỗi hoặc failure thật. Kết quả chỉ áp dụng cho workflow, dữ liệu, máy và cấu hình đã ghi nhận.
+> Mỗi ảnh chính thức đều đặt output JMeter hoặc Terminal cạnh Activity Monitor và lọc đúng backend PID. Đây là bằng chứng liên kết kết quả test với CPU và bộ nhớ của đúng tiến trình backend.
+>
+> Những lần chạy cũ, thiếu Activity Monitor hoặc bị ảnh hưởng bởi thay đổi đồng hồ hệ thống được giữ trong thư mục inconclusive nhưng không được trộn vào baseline ngày 03/09. Em không đổi tên log cũ để giả thành evidence mới.
+
+## 5:55-6:30 — Kết luận Task 1
+
+**Mở:** bảng tổng hợp trong `analysis/task1_metrics.md` và Git log.
+
+**Nói:**
+
+> Kết luận Task 1 là cả Load, Stress, Spike và Soak đều có error rate 0 phần trăm trong môi trường đã ghi nhận. Hệ thống xử lý ổn định mức cao nhất đã thử là 30 VUs trong hơn 10 phút, đạt 20,04 workflow hoàn tất mỗi giây, p95 4 mili giây, peak CPU 28,2 phần trăm và peak RSS 138,95 MB.
+>
+> Em không xem 30 VUs là giới hạn tuyệt đối vì test chưa tạo ra lỗi hoặc điểm sụp đổ. Không có GitHub performance issue được mở vì chưa có lỗi thật được tái hiện. Kết quả chỉ áp dụng cho WF-04, dữ liệu, phần cứng và cấu hình test đã trình bày.
 
 ## Checklist trước khi upload
 
 - [ ] Video dài ít nhất 6 phút.
 - [ ] Có giọng thật tiếng Việt.
-- [ ] Có đủ JMX, Load, Stress, Spike, Soak, Task 2 và Task 3.
+- [ ] Có đủ JMX, Load, Stress, Spike và Soak của Task 1.
 - [ ] Có ảnh JMeter/Terminal và Activity Monitor trong cùng khung hình.
 - [ ] Không gọi samples/s là workflows/s.
 - [ ] Không nói 30 VUs là giới hạn tối đa.
