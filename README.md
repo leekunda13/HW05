@@ -24,7 +24,7 @@ Endpoint coverage:
 
 The maximum stable load observed was 30 VUs for 613.82 seconds, exactly 12,300 completed workflows, 80.15 samples/s, 20.04 workflows/s, p95 4 ms, 0.00% errors, peak Node CPU 28.2%, and peak RSS 138.95 MB. No absolute failure threshold was reached.
 
-The Markdown and raw evidence reflect the accepted 20260903 runs. Files under `output/pdf/` have intentionally not been regenerated yet and must not be treated as the final 20260903 submission until the student requests the one-time final PDF build.
+The Markdown and raw evidence reflect the accepted 20260903 runs.
 
 ## Task 2 outcome
 
@@ -43,8 +43,8 @@ The unreviewed AI first pass is retained under `audit/`. `task2_analysis_review.
 | Spike testing | 20 | 20 | Abrupt 3-to-30 VU burst and measured recovery. |
 | Task 2 analysis and misinterpretation hunt | 10 | 10 | Retained first pass, eight raw-value corrections, regression gates, and eight source-grounded judgments. |
 | Task 3 continuous performance proposal | 10 | 10 | Commit-aware decisions, p95 gate, flow chart, and cost/false-alarm trade-offs. |
-| Agent Skill | 10 | 0 | Skill source exists; the required student-owned end-to-end demonstration video is not yet supplied. |
-| **Technical subtotal** | **100** | **90** | Conditional on scope confirmation, mandatory student-owned evidence, and human approval. |
+| Agent Skill | 10 | 10 | Skill source plus [student-owned end-to-end demonstration](https://youtu.be/MxNkVFIW3Gk). |
+| **Technical subtotal** | **100** | **100** | Proposed score based on the current technical artifacts and student-owned demonstrations. |
 
 ## Key files
 
@@ -72,10 +72,11 @@ HW05_RUN_DATE=20260903 HW05_SUT_BACKEND="$PWD/tmp/isolated-backend-wf04" HW05_PO
 HW05_RUN_DATE=20260903 HW05_SUT_BACKEND="$PWD/tmp/isolated-backend-wf04" HW05_PORT=3001 ./scripts/run_official.sh Soak
 ```
 
-## Student-owned links and evidence
+## Submission links and evidence
 
-- Unlisted YouTube demo: requires the student's real Vietnamese narration.
-- Public GitHub repository: requires the student's publication action.
-- Activity Monitor screenshots for all accepted scenarios are in `evidence/screenshots/20260903`; hardware screenshot, group evidence, and explicit human review remain listed in `STUDENT_EVIDENCE_REQUIRED.md`.
+- Task 1 demo (YouTube Unlisted): [https://youtu.be/ukf1sTUyVuY](https://youtu.be/ukf1sTUyVuY)
+- Agent Skill demo (YouTube Unlisted): [https://youtu.be/MxNkVFIW3Gk](https://youtu.be/MxNkVFIW3Gk)
+- Public GitHub repository: pending the student's repository URL.
+- Activity Monitor screenshots for all accepted scenarios are in `evidence/screenshots/20260903`; the hardware screenshot and spec table are documented in `evidence/hardware/`. The local `sysinfo.png` must have its visible serial number redacted before public upload.
 
 No performance issue was filed because all accepted samples passed. The incomplete clock-jump Soak attempt is retained as excluded evidence and is not used in the endurance conclusion.

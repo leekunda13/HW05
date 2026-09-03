@@ -28,12 +28,12 @@ Lý do: workflow hiện tại là `Admin Login -> Import Product CSV -> Search I
 
 ### Agent Skill (10 điểm)
 
-Skill `skills/jmeter-performance-testing/` đã có; còn thiếu bằng chứng sử dụng.
+Skill `skills/jmeter-performance-testing/` và bằng chứng sử dụng đã có.
 
-- [ ] Tự chạy skill end-to-end trên một endpoint group hoàn chỉnh và kiểm tra output.
-- [ ] Quay demo cho lần sử dụng skill này và upload YouTube Unlisted. Cách an toàn nhất là video riêng; nếu ghép vào video chính thì phải có một đoạn được đánh dấu rõ và vẫn chứng minh đầy đủ end-to-end.
-- [ ] Thêm link demo skill vào `README.md` và báo cáo.
-- [ ] Tạo commit riêng cho phần demo/tài liệu Agent Skill.
+- [x] Tự chạy skill end-to-end trên một endpoint group hoàn chỉnh và kiểm tra output.
+- [x] Quay demo cho lần sử dụng skill này và upload YouTube Unlisted: <https://youtu.be/MxNkVFIW3Gk>.
+- [x] Thêm link demo skill vào `README.md` và báo cáo.
+- [x] Tạo commit riêng cho phần demo/tài liệu Agent Skill.
 
 ## 3. Bằng chứng thật bắt buộc của sinh viên
 
@@ -86,36 +86,36 @@ Các metrics Markdown và report đã được tính lại từ chính JTL/HTML/
 
 ### Hardware evidence
 
-- [ ] Chụp hardware report thật bằng System Information/screenfetch hoặc công cụ tương đương.
-- [ ] Ảnh phải hiển thị hostname `MacBook-Air-cua-KunDa.local` và khớp bằng chứng deployment ở homework trước.
+- [x] Chụp và human-review hardware report thật bằng System Information tại `evidence/hardware/sysinfo.png`.
+- [x] Ảnh hiển thị hostname `MacBook-Air-cua-KunDa.local`, Apple M4, 16 GB và macOS 26.5.1.
 - [x] Bảng spec dạng text đã có tại `evidence/hardware/hardware_spec.md`.
-- [ ] Đặt screenshot phần cứng vào evidence và dẫn chiếu trong main report.
+- [ ] Che số sê-ri đang hiển thị trong `sysinfo.png`, sau đó mới đưa bản đã che vào public repository/final package và dẫn chiếu trực tiếp trong main report.
 
 ### Video demo chính
 
-- [ ] Quay ít nhất 6 phút, có giọng thật của sinh viên thuyết minh bằng tiếng Việt.
-- [ ] Cho thấy JMX Load/Stress/Spike, raw JTL, HTML dashboards, soak result và resource monitor.
-- [ ] Công cụ test và resource monitor phải xuất hiện trong cùng khung hình.
-- [ ] Upload YouTube ở chế độ Unlisted.
-- [ ] Thêm URL thật vào `README.md` và `main_report.md`.
+- [x] Quay ít nhất 6 phút, có giọng thật của sinh viên thuyết minh bằng tiếng Việt.
+- [x] Cho thấy JMX Load/Stress/Spike, raw JTL, HTML dashboards, soak result và resource monitor.
+- [x] Công cụ test và resource monitor xuất hiện trong cùng khung hình.
+- [x] Upload YouTube ở chế độ Unlisted: <https://youtu.be/ukf1sTUyVuY>.
+- [x] Thêm URL thật vào `README.md` và `main_report.md`.
 
 Có thể dùng `demo_video_script.md` làm dàn ý, nhưng phải tự nói và tự quay.
 
 ### Human review
 
-- [ ] Đọc bốn JMX chính và xác nhận thread count, ramp-up, timer, CSV sharing, correlation, assertions và listener đúng ý định của mình.
-- [ ] Đối chiếu tám correction trong `task2_analysis_review.md` với `analysis/task2_metrics.md` và raw JTL.
-- [ ] Đối chiếu tám optimization judgments với source HW04 được trích dẫn.
-- [ ] Tự approve hoặc sửa phần human review trong `main_report.md` và `task2_analysis_review.md`.
-- [ ] Đọc và tự approve hoặc sửa đoạn 280 từ trong `AI_Critique.md`.
-- [ ] Ghi rõ trong báo cáo nội dung mình đã kiểm tra và các sửa đổi của mình; AI không được ký thay bước này.
+- [x] Đọc bốn JMX chính và xác nhận thread count, ramp-up, timer, CSV sharing, correlation, assertions và listener đúng ý định của mình.
+- [x] Đối chiếu tám correction trong `task2_analysis_review.md` với `analysis/task2_metrics.md` và raw JTL.
+- [x] Đối chiếu tám optimization judgments với source HW04 được trích dẫn.
+- [x] Tự approve phần human review trong `main_report.md` và `task2_analysis_review.md`.
+- [x] Đọc và approve đoạn 281 từ trong `AI_Critique.md`.
+- [x] Ghi rõ trong báo cáo nội dung mình đã kiểm tra và các sửa đổi của mình; AI không ký thay bước này.
 
 ## 4. Nội dung báo cáo và audit cần cập nhật
 
 - [x] Chèn nội dung AI Critique 200-300 từ vào mục 17 của `main_report.md`.
 - [ ] Cập nhật `AI_Audit.md` với các interaction sau commit `4f1a70f`, gồm tên AI tool, thời gian, prompt và tóm tắt output cho từng interaction.
 - [ ] Sau các thay đổi, xuất lại `main_report.pdf`, `AI_Audit.pdf`, `AI_Critique.pdf` và các PDF liên quan; render để kiểm tra không cắt bảng/chồng chữ.
-- [x] Cập nhật self-assessment trong `README.md` đủ cả 6 tiêu chí: Load, Stress, Spike, Task 2, Task 3 và Agent Skill; Agent Skill hiện để 0 vì chưa có demo.
+- [x] Cập nhật self-assessment trong `README.md` đủ cả 6 tiêu chí; Agent Skill có source và video demo end-to-end.
 - [ ] Trong README ghi đủ: scenarios, endpoint groups, endurance threshold bằng số, số bug/performance issue, link video chính, link demo skill và public GitHub URL.
 - [ ] Kiểm tra main report dẫn tới đúng ảnh, URL, raw JTL, HTML report và issue thật.
 
@@ -155,7 +155,7 @@ Có thể dùng `demo_video_script.md` làm dàn ý, nhưng phải tự nói và
 - [x] Soak ngày 03/09 khoảng 10 phút: 30 VUs, 613.82 giây, 12,300 workflow hoàn chỉnh, p95 4 ms, 0 failure.
 - [x] Task 2 AI first pass, tám metric corrections, threshold proposal và tám optimization judgments.
 - [x] Task 3 commit-aware pipeline, flow chart, p95 regression rule và cost/false-alarm trade-offs.
-- [x] AI Critique 247 từ và AI Audit hiện có đến lần cập nhật workflow.
+- [x] AI Critique 281 từ và AI Audit ghi lại quá trình sử dụng AI.
 - [x] Agent Skill source đã có.
 - [x] Local Git repository và commit log đã có.
 

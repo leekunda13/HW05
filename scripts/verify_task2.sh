@@ -57,8 +57,8 @@ assert review.count("**Hallucinated") == 4, "Expected four hallucinated classifi
 assert "**Unsupported for this workload**" in review
 
 main_report = (root / "main_report.md").read_text(encoding="utf-8")
-task2_review = main_report.split("## 10. Task 2", 1)[1].split("## 11.", 1)[0]
-task2_optimizations = main_report.split("## 12. Task 2", 1)[1].split("## 13.", 1)[0]
+task2_review = main_report.split("## 9. Task 2", 1)[1].split("## 10.", 1)[0]
+task2_optimizations = main_report.split("## 11. Task 2", 1)[1].split("## 12.", 1)[0]
 assert task2_review.count("| \u201c") == 8, "Main report must contain all eight Task 2 corrections"
 assert task2_optimizations.count("**Feasible") == 3, "Main report must contain three feasible classifications"
 assert task2_optimizations.count("**Hallucinated") == 4, "Main report must contain four hallucinated classifications"
@@ -80,7 +80,15 @@ else
   echo "PDF verification skipped until the final one-time build."
 fi
 
-if rg -n '__[A-Z_]+__|\bTODO\b|\bTBD\b|PLACEHOLDER|NaN|undefined' \
+search_cmd() {
+  if command -v rg >/dev/null 2>&1; then
+    rg "$@"
+  else
+    grep -E "$@"
+  fi
+}
+
+if search_cmd -n '__[A-Z_]+__|\bTODO\b|\bTBD\b|PLACEHOLDER|NaN|undefined' \
   README.md main_report.md task2_analysis_review.md AI_Audit.md AI_Critique.md; then
   echo "Unresolved marker found" >&2
   exit 1

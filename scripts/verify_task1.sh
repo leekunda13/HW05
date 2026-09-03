@@ -64,7 +64,15 @@ else
   echo "PDF verification skipped until the final one-time build."
 fi
 
-if rg -n '__[A-Z_]+__|\bTODO\b|\bTBD\b|PLACEHOLDER|NaN|undefined' \
+search_cmd() {
+  if command -v rg >/dev/null 2>&1; then
+    rg "$@"
+  else
+    grep -E "$@"
+  fi
+}
+
+if search_cmd -n '__[A-Z_]+__|\bTODO\b|\bTBD\b|PLACEHOLDER|NaN|undefined' \
   README.md main_report.md AI_Audit.md AI_Critique.md bug_report.md; then
   echo "Unresolved marker found" >&2
   exit 1
