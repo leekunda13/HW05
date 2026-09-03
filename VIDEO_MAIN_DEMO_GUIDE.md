@@ -22,37 +22,37 @@ Video dài khoảng **6-7 phút**, dùng giọng thật tiếng Việt. Các câ
 
 ## 1:20-2:05 — Load test
 
-**Mở:** HTML report Load và ảnh `23127035_Load_20260903_tool_resource.png`.
+**Mở:** HTML report Load, ảnh `23127035_Load_20260903_tool_resource.png` và file `evidence/resource/23127035_Load_20260903_backend_resource.csv`.
 
 **Nói:**
 
 > Load test sử dụng 6 virtual users, ramp-up 15 giây và chạy khoảng 120 giây. Kết quả có 1.902 HTTP samples, không có lỗi, p95 là 5 mili giây và p99 là 6 mili giây. Throughput là 15,93 samples mỗi giây và 3,97 workflow hoàn tất mỗi giây.
 >
-> Trong ảnh evidence, Terminal chạy JMeter và Activity Monitor theo dõi cùng backend PID 24610. Peak CPU là 7,5 phần trăm và peak RSS là 72,55 MB.
+> Trong ảnh evidence, Terminal chạy JMeter và Activity Monitor theo dõi đúng backend PID 24610. Ảnh là một thời điểm nên đang hiển thị CPU 3,70 phần trăm và bộ nhớ 63,1 MB. File resource CSV theo dõi toàn bộ run ghi nhận CPU cao nhất 7,5 phần trăm và RSS cao nhất 72,55 MB.
 
 ## 2:05-2:50 — Stress test
 
-**Mở:** JMX/HTML report Stress và ảnh `23127035_Stress_20260903_tool_resource.png`.
+**Mở:** JMX/HTML report Stress, ảnh `23127035_Stress_20260903_tool_resource.png` và resource CSV Stress.
 
 **Nói:**
 
 > Stress test tăng tải qua ba mức 6, 12 và 24 virtual users. Toàn bài có 6.489 samples, không có lỗi và p95 là 5 mili giây. Riêng stage 24 virtual users đạt 62,08 samples mỗi giây với p95 4 mili giây.
 >
-> Giá trị 36,19 samples mỗi giây là trung bình của toàn bài Stress, không phải throughput của stage 24 virtual users. Backend PID là 27079, peak CPU 14 phần trăm và peak RSS 118,81 MB. Test chưa đạt điểm sụp đổ nên em không xem 24 VUs là giới hạn tối đa.
+> Giá trị 36,19 samples mỗi giây là trung bình của toàn bài Stress, không phải throughput của stage 24 virtual users. Ảnh xác nhận backend PID 27079; resource CSV ghi nhận peak CPU 14 phần trăm và peak RSS 118,81 MB. Test chưa đạt điểm sụp đổ nên em không xem 24 VUs là giới hạn tối đa.
 
 ## 2:50-3:35 — Spike test
 
-**Mở:** JMX/HTML report Spike và ảnh `23127035_Spike_20260903_tool_resource.png`.
+**Mở:** JMX/HTML report Spike, ảnh `23127035_Spike_20260903_tool_resource.png` và resource CSV Spike.
 
 **Nói:**
 
 > Spike test thay đổi đột ngột từ 3 lên 30 virtual users rồi trở về 3 virtual users. Toàn bài có 3.208 samples, không có lỗi và p95 là 5 mili giây. Burst 30 VUs đạt 83,04 samples mỗi giây.
 >
-> Recovery đạt 8,66 samples mỗi giây so với baseline 8,06 samples mỗi giây và p95 không xấu đi. Vì vậy hệ thống đã hồi phục trong phạm vi lần chạy này. Backend PID là 31133, peak CPU 17,7 phần trăm và peak RSS 101,23 MB.
+> Recovery đạt 8,66 samples mỗi giây so với baseline 8,06 samples mỗi giây và p95 không xấu đi. Vì vậy hệ thống đã hồi phục trong phạm vi lần chạy này. Ảnh xác nhận backend PID 31133; resource CSV ghi nhận peak CPU 17,7 phần trăm và peak RSS 101,23 MB.
 
 ## 3:35-4:30 — Soak test
 
-**Mở:** HTML report Soak, `analysis/task1_metrics.md` và ảnh `23127035_Soak_20260903_tool_resource.png`.
+**Mở:** HTML report Soak, `analysis/task1_metrics.md`, ảnh `23127035_Soak_20260903_tool_resource.png` và resource CSV Soak.
 
 **Nói:**
 
@@ -60,7 +60,7 @@ Video dài khoảng **6-7 phút**, dùng giọng thật tiếng Việt. Các câ
 >
 > Throughput là 80,15 HTTP samples mỗi giây, nhưng workflow throughput chỉ là 20,04 workflow mỗi giây. Em phân biệt hai giá trị này vì một workflow đầy đủ có bốn HTTP request.
 >
-> Backend PID là 33539, peak CPU 28,2 phần trăm. RSS bắt đầu ở 66,59 MB, đạt peak 138,95 MB và kết thúc ở 69,39 MB. Vì bộ nhớ giảm lại sau test nên peak RSS không phải memory ceiling hoặc bằng chứng memory leak. Ba mươi VUs chỉ là mức ổn định cao nhất đã thử, không phải giới hạn tuyệt đối của hệ thống.
+> Ảnh xác nhận backend PID 33539. Resource CSV của toàn bộ run ghi nhận peak CPU 28,2 phần trăm. RSS bắt đầu ở 66,59 MB, đạt peak 138,95 MB và kết thúc ở 69,39 MB. Vì bộ nhớ giảm lại sau test nên peak RSS không phải memory ceiling hoặc bằng chứng memory leak. Ba mươi VUs chỉ là mức ổn định cao nhất đã thử, không phải giới hạn tuyệt đối của hệ thống.
 
 ## 4:30-5:20 — Raw log và tính nhất quán dữ liệu
 
