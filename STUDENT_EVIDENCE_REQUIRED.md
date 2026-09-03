@@ -122,7 +122,7 @@ Có thể dùng `demo_video_script.md` làm dàn ý, nhưng phải tự nói và
 ## 5. GitHub và issue
 
 - [x] Dùng public GitHub repository `https://github.com/leekunda13/HW05` bằng tài khoản của sinh viên.
-- [ ] Push toàn bộ commit và kiểm tra public link mở được khi chưa đăng nhập.
+- [x] Push nhánh `main` và kiểm tra public URL trả HTTP 200 khi không dùng Git credential.
 - [x] Thêm public repository URL vào README/main report.
 - [ ] Nếu sau khi tự xác minh có bug thật, tạo GitHub Issue kèm screenshot và link từ `bug_report.md`.
 - [ ] Nếu không có issue performance trong accepted runs, giữ số issue là 0 và nói rõ 0 failure; performance issue không bắt buộc khi không phát hiện.
