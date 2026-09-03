@@ -107,7 +107,7 @@ Có thể dùng `demo_video_script.md` làm dàn ý, nhưng phải tự nói và
 - [ ] Đối chiếu tám correction trong `task2_analysis_review.md` với `analysis/task2_metrics.md` và raw JTL.
 - [ ] Đối chiếu tám optimization judgments với source HW04 được trích dẫn.
 - [ ] Tự approve hoặc sửa phần human review trong `main_report.md` và `task2_analysis_review.md`.
-- [ ] Đọc và tự approve hoặc sửa đoạn 247 từ trong `AI_Critique.md`.
+- [ ] Đọc và tự approve hoặc sửa đoạn 280 từ trong `AI_Critique.md`.
 - [ ] Ghi rõ trong báo cáo nội dung mình đã kiểm tra và các sửa đổi của mình; AI không được ký thay bước này.
 
 ## 4. Nội dung báo cáo và audit cần cập nhật
