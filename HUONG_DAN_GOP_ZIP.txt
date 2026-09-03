@@ -1,0 +1,71 @@
+HUONG DAN GHEP GOI NOP HW05 TU 2 PHAN
+====================================
+
+Sinh vien: 23127035
+Ten ZIP sau khi ghep:
+23127035_HW05_AI_Performance_100.zip
+
+Hai file can tai ve/dat cung mot thu muc:
+1. 23127035_HW05_AI_Performance_100.zip.001
+2. 23127035_HW05_AI_Performance_100.zip.002
+
+Luu y:
+- Phai co du ca hai part.
+- Khong doi ten va khong giai nen tung part rieng le.
+- Ghép theo dung thu tu .001 truoc, .002 sau.
+
+MACOS / LINUX
+-------------
+
+Mo Terminal tai thu muc chua hai part va chay:
+
+cat 23127035_HW05_AI_Performance_100.zip.001 23127035_HW05_AI_Performance_100.zip.002 > 23127035_HW05_AI_Performance_100.zip
+
+Kiem tra SHA-256:
+
+shasum -a 256 23127035_HW05_AI_Performance_100.zip
+
+Gia tri dung:
+e242c66f68d458935a4ac9a11d9ea472ba75ad8e5998d2443964219334da08b5
+
+Kiem tra ZIP:
+
+unzip -t 23127035_HW05_AI_Performance_100.zip
+
+WINDOWS CMD
+-----------
+
+Mo Command Prompt tai thu muc chua hai part va chay:
+
+copy /b 23127035_HW05_AI_Performance_100.zip.001+23127035_HW05_AI_Performance_100.zip.002 23127035_HW05_AI_Performance_100.zip
+
+Kiem tra SHA-256:
+
+certutil -hashfile 23127035_HW05_AI_Performance_100.zip SHA256
+
+Gia tri dung:
+e242c66f68d458935a4ac9a11d9ea472ba75ad8e5998d2443964219334da08b5
+
+Kiem tra kich thuoc sau khi ghep:
+30,697,462 bytes
+
+SHA-256 TUNG PART
+-----------------
+
+23127035_HW05_AI_Performance_100.zip.001
+96927f2140e3f0af54ec9b7de58b6b24c1fb8faa9aa14613a8309f155ec66de0
+
+23127035_HW05_AI_Performance_100.zip.002
+18a04aa53e08c93f47925e6c4b4945b8c29d2ce30081b31b39f9690a512af72f
+
+HUONG DAN NOP
+-------------
+
+Upload ca ba file sau neu he thong cho phep nop nhieu file:
+- 23127035_HW05_AI_Performance_100.zip.001
+- 23127035_HW05_AI_Performance_100.zip.002
+- HUONG_DAN_GOP_ZIP.txt
+
+Giang vien/TA ghep hai part theo lenh ben tren de thu duoc file ZIP dung ten
+23127035_HW05_AI_Performance_100.zip. Sau khi ghep, checksum SHA-256 phai trung
+voi gia tri da cung cap va lenh unzip -t phai bao khong co loi.
