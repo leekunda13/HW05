@@ -22,6 +22,8 @@
 
 The student-reviewed [hardware screenshot](evidence/hardware/sysinfo.png) confirms the hostname, Apple M4, 16 GB memory, and macOS 26.5.1.
 
+![Student-reviewed execution host: hostname, Apple M4, 16 GB, and macOS 26.5.1](evidence/hardware/sysinfo.png)
+
 ## 2. Coherent end-to-end workflow
 
 | Order | Feature/group | Request | Correlation and business assertion |
