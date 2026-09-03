@@ -32,13 +32,13 @@ The current Task 2 numbers remain bootstrap candidate gates:
 | Scope | Candidate decision |
 | --- | --- |
 | Functional correctness | Fail immediately on any HTTP/business assertion failure. |
-| Stable-stage p95 | Warn above 7.5 ms; fail above 10 ms after a clean confirmation run. |
-| Stable-stage p99 | Warn above 9 ms; fail above 12 ms after confirmation. |
-| Load 6 VUs | Investigate/fail below 14.44 samples/s when the repeated run confirms it. |
-| Stress 24 VUs | Investigate/fail below 55.99 samples/s. |
-| Spike 30-VU burst | Investigate/fail below 75.63 samples/s and verify recovery against the 3-VU baseline. |
-| Soak 30 VUs | Investigate/fail below 71.54 samples/s or 17.89 completed workflows/s. |
-| Backend resources | Investigate above 30% Node CPU or 165 MB RSS; do not auto-fail on a single peak. |
+| Selected gated-scope p95 | Warn above 7.5 ms; fail above 10 ms after a clean confirmation run. |
+| Selected gated-scope p99 | Warn above 9 ms; fail above 12 ms after confirmation. |
+| Load 6 VUs | Investigate/fail below 14.34 samples/s when the repeated run confirms it. |
+| Stress 24 VUs | Investigate/fail below 55.87 samples/s. |
+| Spike 30-VU burst | Investigate/fail below 74.74 samples/s and verify recovery against the 3-VU baseline. |
+| Soak 30 VUs | Investigate/fail below 72.14 samples/s or 18.04 completed workflows/s. |
+| Backend resources | Investigate above 35% Node CPU or 170 MB RSS; do not auto-fail on a single peak. |
 
 Before enforcement, run at least three clean baselines on the pinned runner and use their median plus observed spread. A candidate p95 regression requires both a relative increase of at least 20% and an absolute increase of at least 2 ms, or it crosses the approved 10 ms hard band. The dual condition prevents a quantized move from 4 to 5 ms being treated as a serious regression merely because it is 25%. A candidate is repeated once from a clean state. Persistent failure flags the commit and can block release; a non-repeating result is quarantined for human review rather than silently changing the baseline.
 

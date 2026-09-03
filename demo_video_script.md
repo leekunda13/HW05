@@ -2,7 +2,7 @@
 
 ## 0:00-0:40 - Danh tính và môi trường
 
-Mở Terminal, chạy `whoami`, `hostname`, `jmeter --version`, sau đó mở Activity Monitor và lọc tiến trình `node`. Nói rõ MSSV `23127035`, SUT EShop, ngày chạy `2026-09-01`, máy Apple M4/16 GB.
+Mở Terminal, chạy `whoami`, `hostname`, `jmeter --version`, sau đó mở Activity Monitor và lọc tiến trình `node`. Nói rõ MSSV `23127035`, SUT EShop, ngày chạy `2026-09-03`, máy Apple M4/16 GB.
 
 ## 0:40-1:40 - Workflow và dữ liệu
 
@@ -17,7 +17,7 @@ Giải thích đây là một mục tiêu end-to-end: admin phát hành sản ph
 Trình bày ba correction thật:
 
 - loại luồng FR03-FR09-FR16 vì không có một mục tiêu nghiệp vụ thống nhất;
-- đổi toàn bộ artifact mới sang ngày chạy thật `20260901`;
+- dùng đúng ngày chạy thật `20260903` cho JMX/JTL/HTML và không đổi tên log cũ để giả ngày;
 - loại soak scheduler bị clock-jump và rerun bằng 410 vòng/thread.
 
 ## 2:30-4:30 - Ba run chính thức
@@ -32,7 +32,7 @@ Mở lần lượt ba JMX và HTML dashboard:
 
 ## 4:30-5:40 - Soak 10 phút
 
-Mở JTL/HTML của Soak, resource CSV và đồ thị. Nói rõ 30 VU là mức ổn định cao nhất **đã thử**, không phải giới hạn tuyệt đối của phần cứng. Phân biệt 79.49 sample/s với 19.87 completed workflow/s; một workflow đủ có 4 HTTP samples và completion được đếm bằng sampler FR06 cuối.
+Mở JTL/HTML của Soak, resource CSV và đồ thị. Nói rõ 30 VU là mức ổn định cao nhất **đã thử**, không phải giới hạn tuyệt đối của phần cứng. Phân biệt 80.15 sample/s với 20.04 completed workflow/s; một workflow đủ có 4 HTTP samples và completion được đếm bằng sampler FR06 cuối.
 
 ## 5:40-6:30 - Kết luận và integrity
 

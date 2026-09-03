@@ -1,8 +1,128 @@
 {
   "Load": {
-    "jtl": "results/23127035_Load_20260901.jtl",
+    "jtl": "results/23127035_Load_20260903.jtl",
     "overall": {
-      "samples": 1912,
+      "samples": 1902,
+      "errors": 0,
+      "error_percent": 0.0,
+      "mean_ms": 2.694,
+      "p90_ms": 5.0,
+      "p95_ms": 5.0,
+      "p99_ms": 6.0,
+      "min_ms": 0.0,
+      "max_ms": 22.0,
+      "throughput_samples_s": 15.929,
+      "completed_workflows": 474,
+      "completed_workflow_rate_s": 3.97,
+      "window_seconds": 119.402
+    },
+    "stages": {
+      "Load - 6 VUs steady": {
+        "samples": 1902,
+        "errors": 0,
+        "error_percent": 0.0,
+        "mean_ms": 2.694,
+        "p90_ms": 5.0,
+        "p95_ms": 5.0,
+        "p99_ms": 6.0,
+        "min_ms": 0.0,
+        "max_ms": 22.0,
+        "throughput_samples_s": 15.929,
+        "completed_workflows": 474,
+        "completed_workflow_rate_s": 3.97,
+        "window_seconds": 119.402
+      }
+    },
+    "resources": {
+      "observations": 159,
+      "max_cpu_percent": 7.5,
+      "mean_cpu_percent": 2.213,
+      "max_rss_mb": 72.547,
+      "final_rss_mb": 69.641
+    },
+    "response_codes": {
+      "200": 1902
+    }
+  },
+  "Stress": {
+    "jtl": "results/23127035_Stress_20260903.jtl",
+    "overall": {
+      "samples": 6489,
+      "errors": 0,
+      "error_percent": 0.0,
+      "mean_ms": 2.33,
+      "p90_ms": 4.0,
+      "p95_ms": 5.0,
+      "p99_ms": 6.0,
+      "min_ms": 0.0,
+      "max_ms": 23.0,
+      "throughput_samples_s": 36.185,
+      "completed_workflows": 1606,
+      "completed_workflow_rate_s": 8.956,
+      "window_seconds": 179.328
+    },
+    "stages": {
+      "Stress stage 1 - 6 VUs": {
+        "samples": 933,
+        "errors": 0,
+        "error_percent": 0.0,
+        "mean_ms": 2.977,
+        "p90_ms": 5.0,
+        "p95_ms": 5.0,
+        "p99_ms": 7.0,
+        "min_ms": 0.0,
+        "max_ms": 22.0,
+        "throughput_samples_s": 15.74,
+        "completed_workflows": 231,
+        "completed_workflow_rate_s": 3.897,
+        "window_seconds": 59.276
+      },
+      "Stress stage 2 - 12 VUs": {
+        "samples": 1851,
+        "errors": 0,
+        "error_percent": 0.0,
+        "mean_ms": 2.399,
+        "p90_ms": 4.0,
+        "p95_ms": 5.0,
+        "p99_ms": 5.0,
+        "min_ms": 0.0,
+        "max_ms": 12.0,
+        "throughput_samples_s": 31.094,
+        "completed_workflows": 459,
+        "completed_workflow_rate_s": 7.711,
+        "window_seconds": 59.529
+      },
+      "Stress stage 3 - 24 VUs": {
+        "samples": 3705,
+        "errors": 0,
+        "error_percent": 0.0,
+        "mean_ms": 2.133,
+        "p90_ms": 4.0,
+        "p95_ms": 4.0,
+        "p99_ms": 5.0,
+        "min_ms": 0.0,
+        "max_ms": 23.0,
+        "throughput_samples_s": 62.082,
+        "completed_workflows": 916,
+        "completed_workflow_rate_s": 15.349,
+        "window_seconds": 59.679
+      }
+    },
+    "resources": {
+      "observations": 218,
+      "max_cpu_percent": 14.0,
+      "mean_cpu_percent": 5.05,
+      "max_rss_mb": 118.812,
+      "final_rss_mb": 115.641
+    },
+    "response_codes": {
+      "200": 6489
+    }
+  },
+  "Spike": {
+    "jtl": "results/23127035_Spike_20260903.jtl",
+    "overall": {
+      "samples": 3208,
       "errors": 0,
       "error_percent": 0.0,
       "mean_ms": 2.351,
@@ -10,206 +130,110 @@
       "p95_ms": 5.0,
       "p99_ms": 6.0,
       "min_ms": 0.0,
-      "max_ms": 72.0,
-      "throughput_samples_s": 16.037,
-      "window_seconds": 119.225
-    },
-    "stages": {
-      "Load - 6 VUs steady": {
-        "samples": 1912,
-        "errors": 0,
-        "error_percent": 0.0,
-        "mean_ms": 2.351,
-        "p90_ms": 4.0,
-        "p95_ms": 5.0,
-        "p99_ms": 6.0,
-        "min_ms": 0.0,
-        "max_ms": 72.0,
-        "throughput_samples_s": 16.037,
-        "window_seconds": 119.225
-      }
-    },
-    "resources": {
-      "observations": 121,
-      "max_cpu_percent": 6.9,
-      "mean_cpu_percent": 2.374,
-      "max_rss_mb": 72.594,
-      "final_rss_mb": 71.516
-    },
-    "response_codes": {
-      "200": 1912
-    }
-  },
-  "Stress": {
-    "jtl": "results/23127035_Stress_20260901.jtl",
-    "overall": {
-      "samples": 6514,
-      "errors": 0,
-      "error_percent": 0.0,
-      "mean_ms": 1.634,
-      "p90_ms": 3.0,
-      "p95_ms": 4.0,
-      "p99_ms": 5.0,
-      "min_ms": 0.0,
-      "max_ms": 19.0,
-      "throughput_samples_s": 36.329,
-      "window_seconds": 179.308
-    },
-    "stages": {
-      "Stress stage 1 - 6 VUs": {
-        "samples": 932,
-        "errors": 0,
-        "error_percent": 0.0,
-        "mean_ms": 2.193,
-        "p90_ms": 4.0,
-        "p95_ms": 5.0,
-        "p99_ms": 6.0,
-        "min_ms": 0.0,
-        "max_ms": 19.0,
-        "throughput_samples_s": 15.738,
-        "window_seconds": 59.221
-      },
-      "Stress stage 2 - 12 VUs": {
-        "samples": 1873,
-        "errors": 0,
-        "error_percent": 0.0,
-        "mean_ms": 1.688,
-        "p90_ms": 3.0,
-        "p95_ms": 4.0,
-        "p99_ms": 5.0,
-        "min_ms": 0.0,
-        "max_ms": 18.0,
-        "throughput_samples_s": 31.441,
-        "window_seconds": 59.571
-      },
-      "Stress stage 3 - 24 VUs": {
-        "samples": 3709,
-        "errors": 0,
-        "error_percent": 0.0,
-        "mean_ms": 1.466,
-        "p90_ms": 3.0,
-        "p95_ms": 4.0,
-        "p99_ms": 5.0,
-        "min_ms": 0.0,
-        "max_ms": 14.0,
-        "throughput_samples_s": 62.206,
-        "window_seconds": 59.624
-      }
-    },
-    "resources": {
-      "observations": 180,
-      "max_cpu_percent": 13.7,
-      "mean_cpu_percent": 4.225,
-      "max_rss_mb": 114.484,
-      "final_rss_mb": 108.516
-    },
-    "response_codes": {
-      "200": 6514
-    }
-  },
-  "Spike": {
-    "jtl": "results/23127035_Spike_20260901.jtl",
-    "overall": {
-      "samples": 3216,
-      "errors": 0,
-      "error_percent": 0.0,
-      "mean_ms": 1.761,
-      "p90_ms": 3.0,
-      "p95_ms": 4.0,
-      "p99_ms": 5.0,
-      "min_ms": 0.0,
-      "max_ms": 50.0,
-      "throughput_samples_s": 26.981,
-      "window_seconds": 119.196
+      "max_ms": 20.0,
+      "throughput_samples_s": 26.915,
+      "completed_workflows": 788,
+      "completed_workflow_rate_s": 6.611,
+      "window_seconds": 119.189
     },
     "stages": {
       "Spike baseline - 3 VUs": {
-        "samples": 360,
+        "samples": 357,
         "errors": 0,
         "error_percent": 0.0,
-        "mean_ms": 3.061,
-        "p90_ms": 5.0,
+        "mean_ms": 3.644,
+        "p90_ms": 6.0,
+        "p95_ms": 7.0,
+        "p99_ms": 8.0,
+        "min_ms": 0.0,
+        "max_ms": 20.0,
+        "throughput_samples_s": 8.056,
+        "completed_workflows": 88,
+        "completed_workflow_rate_s": 1.986,
+        "window_seconds": 44.317
+      },
+      "Spike burst - 30 VUs": {
+        "samples": 2468,
+        "errors": 0,
+        "error_percent": 0.0,
+        "mean_ms": 2.142,
+        "p90_ms": 4.0,
         "p95_ms": 5.0,
         "p99_ms": 6.0,
         "min_ms": 0.0,
-        "max_ms": 50.0,
-        "throughput_samples_s": 8.126,
-        "window_seconds": 44.303
-      },
-      "Spike burst - 30 VUs": {
-        "samples": 2482,
-        "errors": 0,
-        "error_percent": 0.0,
-        "mean_ms": 1.505,
-        "p90_ms": 3.0,
-        "p95_ms": 4.0,
-        "p99_ms": 5.0,
-        "min_ms": 0.0,
-        "max_ms": 10.0,
-        "throughput_samples_s": 84.027,
-        "window_seconds": 29.538
+        "max_ms": 14.0,
+        "throughput_samples_s": 83.039,
+        "completed_workflows": 606,
+        "completed_workflow_rate_s": 20.39,
+        "window_seconds": 29.721
       },
       "Spike recovery - 3 VUs": {
-        "samples": 374,
+        "samples": 383,
         "errors": 0,
         "error_percent": 0.0,
-        "mean_ms": 2.211,
+        "mean_ms": 2.491,
         "p90_ms": 4.0,
-        "p95_ms": 4.0,
+        "p95_ms": 5.0,
         "p99_ms": 5.0,
         "min_ms": 0.0,
-        "max_ms": 5.0,
-        "throughput_samples_s": 8.379,
-        "window_seconds": 44.634
+        "max_ms": 11.0,
+        "throughput_samples_s": 8.662,
+        "completed_workflows": 94,
+        "completed_workflow_rate_s": 2.126,
+        "window_seconds": 44.218
       }
     },
     "resources": {
-      "observations": 121,
-      "max_cpu_percent": 15.4,
-      "mean_cpu_percent": 3.394,
-      "max_rss_mb": 101.766,
-      "final_rss_mb": 95.672
+      "observations": 159,
+      "max_cpu_percent": 17.7,
+      "mean_cpu_percent": 3.203,
+      "max_rss_mb": 101.234,
+      "final_rss_mb": 100.875
     },
     "response_codes": {
-      "200": 3216
+      "200": 3208
     }
   },
   "Soak": {
-    "jtl": "results/23127035_Soak_20260901.jtl",
+    "jtl": "results/23127035_Soak_20260903.jtl",
     "overall": {
       "samples": 49200,
       "errors": 0,
       "error_percent": 0.0,
-      "mean_ms": 2.294,
-      "p90_ms": 3.0,
+      "mean_ms": 2.154,
+      "p90_ms": 4.0,
       "p95_ms": 4.0,
       "p99_ms": 6.0,
       "min_ms": 0.0,
-      "max_ms": 1151.0,
-      "throughput_samples_s": 79.491,
-      "window_seconds": 618.941
+      "max_ms": 33.0,
+      "throughput_samples_s": 80.154,
+      "completed_workflows": 12300,
+      "completed_workflow_rate_s": 20.039,
+      "window_seconds": 613.817
     },
     "stages": {
       "Soak - 30 VUs sustained": {
         "samples": 49200,
         "errors": 0,
         "error_percent": 0.0,
-        "mean_ms": 2.294,
-        "p90_ms": 3.0,
+        "mean_ms": 2.154,
+        "p90_ms": 4.0,
         "p95_ms": 4.0,
         "p99_ms": 6.0,
         "min_ms": 0.0,
-        "max_ms": 1151.0,
-        "throughput_samples_s": 79.491,
-        "window_seconds": 618.941
+        "max_ms": 33.0,
+        "throughput_samples_s": 80.154,
+        "completed_workflows": 12300,
+        "completed_workflow_rate_s": 20.039,
+        "window_seconds": 613.817
       }
     },
     "resources": {
-      "observations": 608,
-      "max_cpu_percent": 22.3,
-      "mean_cpu_percent": 10.637,
-      "max_rss_mb": 136.672,
-      "final_rss_mb": 51.859
+      "observations": 641,
+      "max_cpu_percent": 28.2,
+      "mean_cpu_percent": 12.155,
+      "max_rss_mb": 138.953,
+      "final_rss_mb": 69.391
     },
     "response_codes": {
       "200": 49200

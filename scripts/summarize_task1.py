@@ -12,8 +12,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RUN_DATE = os.environ.get("HW05_RUN_DATE", "20260901")
+RUN_DATE = os.environ.get("HW05_RUN_DATE", "20260903")
 SCENARIOS = ("Load", "Stress", "Spike", "Soak")
+FINAL_LABEL = "FR06 View imported product detail"
 
 
 def percentile(values: list[float], percent: float) -> float:
@@ -36,6 +37,10 @@ def sample_metrics(rows: list[dict[str, str]]) -> dict[str, float | int]:
     starts = [float(row["timeStamp"]) for row in rows]
     ends = [float(row["timeStamp"]) + float(row["elapsed"]) for row in rows]
     window_seconds = max((max(ends) - min(starts)) / 1000.0, 0.001)
+    completed = sum(
+        row["label"] == FINAL_LABEL and row["success"].strip().lower() == "true"
+        for row in rows
+    )
     return {
         "samples": len(rows),
         "errors": errors,
@@ -47,6 +52,8 @@ def sample_metrics(rows: list[dict[str, str]]) -> dict[str, float | int]:
         "min_ms": min(elapsed, default=0.0),
         "max_ms": max(elapsed, default=0.0),
         "throughput_samples_s": round(len(rows) / window_seconds, 3),
+        "completed_workflows": completed,
+        "completed_workflow_rate_s": round(completed / window_seconds, 3),
         "window_seconds": round(window_seconds, 3),
     }
 
@@ -95,7 +102,7 @@ def main() -> None:
     lines = [
         "# HW05 Task 1 - Reproducible Metrics",
         "",
-        "Percentiles use the nearest-rank method over JMeter `elapsed` milliseconds. Throughput is HTTP samples divided by each observed measurement window; four samples form one completed workflow.",
+        "Percentiles use the nearest-rank method over JMeter `elapsed` milliseconds. Sample throughput is HTTP samples divided by each observed measurement window. Completed workflow throughput counts only successful final FR06 samplers, so scheduled partial iterations are not over-counted.",
         "",
         "| Scenario | Samples | Errors | Error % | Mean ms | p90 ms | p95 ms | p99 ms | Samples/s | Workflows/s | Peak CPU % | Peak RSS MB |",
         "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
@@ -106,7 +113,7 @@ def main() -> None:
         lines.append(
             f"| {scenario} | {overall['samples']} | {overall['errors']} | {overall['error_percent']:.2f} | "
             f"{overall['mean_ms']:.2f} | {overall['p90_ms']:.0f} | {overall['p95_ms']:.0f} | {overall['p99_ms']:.0f} | "
-            f"{overall['throughput_samples_s']:.2f} | {overall['throughput_samples_s'] / 4:.2f} | "
+            f"{overall['throughput_samples_s']:.2f} | {overall['completed_workflow_rate_s']:.2f} | "
             f"{resources['max_cpu_percent']:.1f} | {resources['max_rss_mb']:.2f} |"
         )
 

@@ -48,6 +48,9 @@ trong file remainig work bạn có ghi 'Nếu phải chạy lại vào ngày kh�
 | 2026-09-01 22:56-23:03 | Check the complete assignment against the repository. | Read and visually inspected all nine assignment pages, inventoried deliverables, and consolidated missing work into `STUDENT_EVIDENCE_REQUIRED.md`. Flagged the unresolved transactional-scope risk rather than silently changing the workflow. |
 | 2026-09-01 after 23:13 | Complete Task 3. | Designed a commit-aware continuous-performance model with a flow chart, trigger matrix, smoke gate, p95 confirmation rule, versioned baseline ownership, raw-artifact retention, and cost/false-alarm trade-offs; integrated it into the report and README. |
 | 2026-09-03 10:31 | Prepare current-date evidence capture without rebuilding PDFs. | Parameterized the generator and runner by run date, created dated 20260903 plans, added a safe isolated-backend default, port preflight, PID/capture countdown, screenshot paths, and exact sequential capture instructions. Preserved 20260901 evidence instead of relabelling it. |
+| 2026-09-03 10:50-18:02 | Run and review current-date Smoke, Load, Stress, and Spike evidence. | Verified raw JTL, HTML, database deltas, exact backend PIDs, and same-frame Activity Monitor screenshots. Preserved one Load capture without Activity Monitor, one interrupted Load, and one Spike run without a screenshot as inconclusive rather than deleting or relabelling them. |
+| 2026-09-03 18:04-18:15 | Run and monitor the fixed-iteration Soak. | Accepted 49,200 samples and exactly 12,300 workflows over 613.82 JTL seconds, 0 errors, p95 4 ms, 80.15 samples/s, 20.04 workflows/s, peak CPU 28.2%, and peak RSS 138.95 MB. |
+| 2026-09-03 after 18:15 | Recalculate the current baseline and continue without generating PDFs. | Regenerated Task 2 JSON/Markdown from 20260903 raw logs, updated report tables, regression candidates, screenshot references, README, demo script, critique, and remaining-work checklist. |
 
 ## AI mistakes and corrections
 
@@ -56,9 +59,9 @@ trong file remainig work bạn có ghi 'Nếu phải chạy lại vào ngày kh�
 | Accepted FR03 -> FR09 -> FR16 as end-to-end. | The actions serve unrelated password recovery, coupon validation, and admin import goals. | Replace with one admin publishing journey ending in correlated product detail. | The AI optimized endpoint coverage instead of business coherence. |
 | Used the original date in regenerated filenames. | New runs occurred on 2026-09-01. | Rename all primary plans/results/reports to `20260901`; raw JTL contents remain unchanged. | Reuse of prior generator constants. |
 | Assumed a 600-second scheduler guaranteed ten minutes of traffic. | Excluded attempt: 305.20 JTL seconds, 303 resource observations, but 676 wall-clock seconds after a clock jump. | Use 410 iterations/thread; accept only the 618.94-second, 12,300-workflow rerun. | Scheduler behavior depended on wall-clock continuity. |
-| Called HTTP sample throughput workflow throughput. | Soak has 79.49 samples/s and 19.87 exact workflows/s. | Count successful final FR06 samplers. | JMeter summaries foreground sampler rate. |
-| Compared complete Stress and Spike averages. | Stress 24-VU stage is 62.21 samples/s; Spike burst is 84.03. | Compare equivalent stage windows. | Aggregate summaries hide workload shape. |
-| Promoted the 1,151 ms max and 136.67 MB RSS peak to system properties. | Soak p95/p99 are 4/6 ms; RSS ends at 51.86 MB. | Keep max/peak as observations, not tail failure, leak, or ceiling. | Generic labels were applied without distribution/time-series review. |
+| Called HTTP sample throughput workflow throughput. | Current Soak has 80.15 samples/s and 20.04 exact workflows/s. | Count successful final FR06 samplers. | JMeter summaries foreground sampler rate. |
+| Compared complete Stress and Spike averages. | Current Stress 24-VU stage is 62.08 samples/s; Spike burst is 83.04. | Compare equivalent stage windows. | Aggregate summaries hide workload shape. |
+| Promoted a maximum and RSS peak to system properties. | Current Soak max/p95/p99 are 33/4/6 ms; RSS starts/peaks/ends at 66.59/138.95/69.39 MB. | Keep max/peak as observations, not tail failure, leak, or ceiling. | Generic labels were applied without distribution/time-series review. |
 | Proposed generic indexes and pooling. | Leading-wildcard search, existing coupon uniqueness index, and one SQLite handle. | Classify recommendations against exact query/schema/architecture. | Familiar database advice was reused without source inspection. |
 
 ## Integrity boundary

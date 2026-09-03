@@ -1,0 +1,9 @@
+WARNING: package sun.awt.X11 not in java.desktop
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+Creating summariser <summary>
+Created the tree successfully using /Users/kunda/Documents/hw/hw05/test-plans/23127035_Load_20260903.jmx
+Starting standalone test @ 2026 Sep 3 17:38:41 ICT (1788431921617)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445

@@ -1,6 +1,6 @@
 # HW05 - Những việc còn phải hoàn thành trước khi nộp
 
-Đối chiếu ngày 2026-09-03 với đề `2026.HW05.Performance Testing_En.pdf` và trạng thái Git tại commit `f3fbf75`.
+Đối chiếu ngày 2026-09-03 với đề `2026.HW05.Performance Testing_En.pdf` và trạng thái workspace local hiện tại.
 
 File này là checklist duy nhất cho phần còn lại. Các ô chỉ được đánh dấu hoàn thành sau khi có bằng chứng thật; không dùng ảnh, giọng nói, URL hoặc lời xác nhận do AI tạo.
 
@@ -23,7 +23,7 @@ Lý do: workflow hiện tại là `Admin Login -> Import Product CSV -> Search I
 - [x] Thêm flow chart thể hiện commit/change detection -> scope decision -> smoke -> performance run -> compare baseline -> lưu artifacts -> human review.
 - [x] Phân tích trade-off: chi phí runner, thời gian pipeline, false alarm, noisy neighbour, data drift, khác phần cứng, và quyền phê duyệt baseline.
 - [x] Đưa Task 3 vào phần conclusion của `main_report.md` và cập nhật `README.md`.
-- [x] Dựng lại `output/pdf/main_report.pdf`, render và kiểm tra bố cục.
+- [ ] Dựng lại `output/pdf/main_report.pdf` từ baseline 03/09, render và kiểm tra bố cục khi sinh viên yêu cầu build PDF cuối cùng.
 - [x] Tạo một commit Git riêng, message ngắn, cho Task 3.
 
 ### Agent Skill (10 điểm)
@@ -39,7 +39,7 @@ Skill `skills/jmeter-performance-testing/` đã có; còn thiếu bằng chứng
 
 ### Ảnh từng scenario
 
-Hiện repository không có ảnh Load, Stress hoặc Spike. Vì ảnh phải khớp lần chạy thật, không được chụp lại màn hình từ log cũ rồi mô tả là ảnh lúc chạy. Bộ JMX mới ngày `20260903` đã được chuẩn bị; evidence ngày `20260901` vẫn được giữ nguyên làm lịch sử cho đến khi các run mới hoàn tất.
+Repository hiện có ảnh thật Load, Stress, Spike và Soak ngày `20260903`, mỗi ảnh đặt Terminal/JMeter cạnh Activity Monitor và khớp đúng backend PID. Evidence ngày `20260901` và các capture attempt không đạt vẫn được giữ làm lịch sử/inconclusive, không trộn vào baseline chính.
 
 Các file dùng để capture ngày 3/9:
 
@@ -76,13 +76,13 @@ Trong khi mỗi scenario đang chạy, chụp cùng một frame có Terminal/JMe
 23127035_Spike_20260903_activity-monitor.png
 ```
 
-- [ ] Chạy/capture Load với JMeter hoặc terminal và Activity Monitor hiển thị đúng tiến trình backend `node` trong cùng khung hình.
-- [ ] Chạy/capture Stress với hai thành phần trên trong cùng khung hình.
-- [ ] Chạy/capture Spike với hai thành phần trên trong cùng khung hình.
-- [ ] Ảnh phải đọc được scenario, thời gian, backend PID/resource usage và hostname khi có thể.
-- [ ] Đặt ba ảnh vào `evidence/screenshots/20260903/` và dẫn chiếu chúng trong main report.
+- [x] Chạy/capture Load với JMeter hoặc terminal và Activity Monitor hiển thị đúng tiến trình backend `node` trong cùng khung hình.
+- [x] Chạy/capture Stress với hai thành phần trên trong cùng khung hình.
+- [x] Chạy/capture Spike với hai thành phần trên trong cùng khung hình.
+- [x] Ảnh đọc được scenario, thời gian, backend PID/resource usage và hostname khi có thể.
+- [x] Đặt ảnh Load/Stress/Spike/Soak vào `evidence/screenshots/20260903/` và dẫn chiếu trong main report.
 
-Sau khi ba run ngày 3/9 hoàn tất, phải dùng chính JTL/HTML/resource/database evidence `20260903` để tính lại metrics và cập nhật report. Không đổi tên log `20260901` thành `20260903`, không sửa timestamp bên trong raw log và không trộn số liệu hai ngày. Chưa dựng lại PDF ở giai đoạn capture này; chỉ dựng PDF một lần khi toàn bộ nội dung, ảnh và URL đã chốt theo yêu cầu của sinh viên.
+Các metrics Markdown và report đã được tính lại từ chính JTL/HTML/resource/database evidence `20260903`. Không đổi tên log `20260901` thành `20260903`, không sửa timestamp bên trong raw log và không trộn số liệu hai ngày. Chưa dựng lại PDF ở giai đoạn này; chỉ dựng PDF một lần khi toàn bộ nội dung, ảnh và URL đã chốt theo yêu cầu của sinh viên.
 
 ### Hardware evidence
 
@@ -112,7 +112,7 @@ Có thể dùng `demo_video_script.md` làm dàn ý, nhưng phải tự nói và
 
 ## 4. Nội dung báo cáo và audit cần cập nhật
 
-- [ ] Chèn nội dung AI Critique 200-300 từ vào main report hoặc appendix của main report; hiện critique mới tồn tại ở file/PDF riêng trong khi đề yêu cầu main report bao gồm critique.
+- [x] Chèn nội dung AI Critique 200-300 từ vào mục 17 của `main_report.md`.
 - [ ] Cập nhật `AI_Audit.md` với các interaction sau commit `4f1a70f`, gồm tên AI tool, thời gian, prompt và tóm tắt output cho từng interaction.
 - [ ] Sau các thay đổi, xuất lại `main_report.pdf`, `AI_Audit.pdf`, `AI_Critique.pdf` và các PDF liên quan; render để kiểm tra không cắt bảng/chồng chữ.
 - [x] Cập nhật self-assessment trong `README.md` đủ cả 6 tiêu chí: Load, Stress, Spike, Task 2, Task 3 và Agent Skill; Agent Skill hiện để 0 vì chưa có demo.
@@ -152,7 +152,7 @@ Có thể dùng `demo_video_script.md` làm dàn ý, nhưng phải tự nói và
 - [x] Raw JTL và HTML report cho Load, Stress, Spike; thêm Smoke và Soak hỗ trợ.
 - [x] Assertions/correlation cho JWT, admin role, import result, product ID/name/price.
 - [x] Resource CSV/log và database pre/post state cho các run.
-- [x] Soak khoảng 10 phút: 30 VUs, 618.94 giây, 12,300 workflow hoàn chỉnh, p95 4 ms, 0 failure.
+- [x] Soak ngày 03/09 khoảng 10 phút: 30 VUs, 613.82 giây, 12,300 workflow hoàn chỉnh, p95 4 ms, 0 failure.
 - [x] Task 2 AI first pass, tám metric corrections, threshold proposal và tám optimization judgments.
 - [x] Task 3 commit-aware pipeline, flow chart, p95 regression rule và cost/false-alarm trade-offs.
 - [x] AI Critique 247 từ và AI Audit hiện có đến lần cập nhật workflow.

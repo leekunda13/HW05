@@ -1,0 +1,69 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1788431922627,22,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-1,text,true,,647,261,1,1,http://127.0.0.1:3001/api/login,22,0,10
+1788431923000,11,FR16 Import one product,200,OK,Load - 6 VUs steady 1-1,text,true,,357,564,1,1,http://127.0.0.1:3001/api/admin/import-products,11,0,0
+1788431923534,4,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-1,text,true,,443,224,1,1,http://127.0.0.1:3001/api/products?search=HW05-P001-0-1-1788431922057,4,0,0
+1788431923834,4,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-1,text,true,,443,191,1,1,http://127.0.0.1:3001/api/products/6,3,0,0
+1788431924362,4,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-1,text,true,,647,261,2,2,http://127.0.0.1:3001/api/login,4,0,0
+1788431924638,6,FR16 Import one product,200,OK,Load - 6 VUs steady 1-1,text,true,,357,564,2,2,http://127.0.0.1:3001/api/admin/import-products,6,0,0
+1788431924699,5,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-2,text,true,,647,261,2,2,http://127.0.0.1:3001/api/login,5,0,2
+1788431924941,5,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-1,text,true,,443,224,2,2,http://127.0.0.1:3001/api/products?search=HW05-P002-0-2-1788431923868,5,0,0
+1788431925132,6,FR16 Import one product,200,OK,Load - 6 VUs steady 1-2,text,true,,357,564,2,2,http://127.0.0.1:3001/api/admin/import-products,5,0,0
+1788431925232,4,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-1,text,true,,441,191,2,2,http://127.0.0.1:3001/api/products/7,4,0,0
+1788431925526,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-2,text,true,,443,224,2,2,http://127.0.0.1:3001/api/products?search=HW05-P003-1-1-1788431924328,3,0,0
+1788431925566,5,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-1,text,true,,647,261,2,2,http://127.0.0.1:3001/api/login,5,0,0
+1788431925965,6,FR16 Import one product,200,OK,Load - 6 VUs steady 1-1,text,true,,357,564,2,2,http://127.0.0.1:3001/api/admin/import-products,5,0,0
+1788431926023,3,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-2,text,true,,443,191,2,2,http://127.0.0.1:3001/api/products/8,3,0,0
+1788431926420,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-1,text,true,,443,224,2,2,http://127.0.0.1:3001/api/products?search=HW05-P004-0-3-1788431925241,3,0,0
+1788431926516,5,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-2,text,true,,647,261,2,2,http://127.0.0.1:3001/api/login,5,0,0
+1788431926662,3,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-1,text,true,,441,191,2,2,http://127.0.0.1:3001/api/products/9,3,0,0
+1788431926991,8,FR16 Import one product,200,OK,Load - 6 VUs steady 1-2,text,true,,357,564,3,3,http://127.0.0.1:3001/api/admin/import-products,8,0,0
+1788431927011,4,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-1,text,true,,647,261,3,3,http://127.0.0.1:3001/api/login,4,0,0
+1788431927059,6,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-3,text,true,,647,261,3,3,http://127.0.0.1:3001/api/login,6,0,2
+1788431927266,3,FR16 Import one product,200,OK,Load - 6 VUs steady 1-1,text,true,,357,564,3,3,http://127.0.0.1:3001/api/admin/import-products,3,0,0
+1788431927269,2,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-2,text,true,,444,224,3,3,http://127.0.0.1:3001/api/products?search=HW05-P005-1-2-1788431926030,2,0,0
+1788431927311,6,FR16 Import one product,200,OK,Load - 6 VUs steady 1-3,text,true,,357,564,3,3,http://127.0.0.1:3001/api/admin/import-products,5,0,0
+1788431927507,3,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-2,text,true,,444,192,3,3,http://127.0.0.1:3001/api/products/10,3,0,0
+1788431927588,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-3,text,true,,444,224,3,3,http://127.0.0.1:3001/api/products?search=HW05-P007-2-1-1788431926829,3,0,0
+1788431927654,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-1,text,true,,444,224,3,3,http://127.0.0.1:3001/api/products?search=HW05-P006-0-4-1788431926667,2,0,0
+1788431927974,5,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-2,text,true,,649,261,3,3,http://127.0.0.1:3001/api/login,4,0,0
+1788431927995,2,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-3,text,true,,444,192,3,3,http://127.0.0.1:3001/api/products/12,2,0,0
+1788431928037,3,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-1,text,true,,442,192,3,3,http://127.0.0.1:3001/api/products/11,3,0,0
+1788431928290,4,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-3,text,true,,649,261,3,3,http://127.0.0.1:3001/api/login,4,0,0
+1788431928394,5,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-1,text,true,,649,261,3,3,http://127.0.0.1:3001/api/login,5,0,0
+1788431928407,5,FR16 Import one product,200,OK,Load - 6 VUs steady 1-2,text,true,,357,565,3,3,http://127.0.0.1:3001/api/admin/import-products,5,0,0
+1788431928499,5,FR16 Import one product,200,OK,Load - 6 VUs steady 1-3,text,true,,357,565,3,3,http://127.0.0.1:3001/api/admin/import-products,5,0,0
+1788431928649,3,FR16 Import one product,200,OK,Load - 6 VUs steady 1-1,text,true,,357,565,3,3,http://127.0.0.1:3001/api/admin/import-products,3,0,0
+1788431928666,1,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-2,text,true,,444,224,3,3,http://127.0.0.1:3001/api/products?search=HW05-P008-1-3-1788431927513,1,0,0
+1788431928874,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-3,text,true,,444,224,3,3,http://127.0.0.1:3001/api/products?search=HW05-P009-2-2-1788431928000,3,0,0
+1788431928892,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-1,text,true,,444,224,3,3,http://127.0.0.1:3001/api/products?search=HW05-P010-0-5-1788431928042,3,0,0
+1788431929119,3,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-2,text,true,,442,192,3,3,http://127.0.0.1:3001/api/products/13,3,0,0
+1788431929191,3,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-3,text,true,,444,192,3,3,http://127.0.0.1:3001/api/products/14,2,0,0
+1788431929267,3,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-1,text,true,,442,192,3,3,http://127.0.0.1:3001/api/products/15,3,0,0
+1788431929488,4,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-2,text,true,,649,261,4,4,http://127.0.0.1:3001/api/login,4,0,0
+1788431929632,4,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-1,text,true,,649,261,4,4,http://127.0.0.1:3001/api/login,4,0,0
+1788431929679,4,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-3,text,true,,649,261,4,4,http://127.0.0.1:3001/api/login,4,0,0
+1788431929705,4,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-4,text,true,,649,261,4,4,http://127.0.0.1:3001/api/login,4,0,1
+1788431929967,5,FR16 Import one product,200,OK,Load - 6 VUs steady 1-2,text,true,,357,565,4,4,http://127.0.0.1:3001/api/admin/import-products,5,0,0
+1788431929997,5,FR16 Import one product,200,OK,Load - 6 VUs steady 1-1,text,true,,357,565,4,4,http://127.0.0.1:3001/api/admin/import-products,5,0,0
+1788431930051,5,FR16 Import one product,200,OK,Load - 6 VUs steady 1-3,text,true,,357,565,4,4,http://127.0.0.1:3001/api/admin/import-products,4,0,0
+1788431930062,4,FR16 Import one product,200,OK,Load - 6 VUs steady 1-4,text,true,,357,565,4,4,http://127.0.0.1:3001/api/admin/import-products,3,0,0
+1788431930241,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-1,text,true,,444,224,4,4,http://127.0.0.1:3001/api/products?search=HW05-P013-0-6-1788431929273,3,0,0
+1788431930310,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-4,text,true,,444,224,4,4,http://127.0.0.1:3001/api/products?search=HW05-P014-3-1-1788431929325,3,0,0
+1788431930413,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-3,text,true,,444,224,4,4,http://127.0.0.1:3001/api/products?search=HW05-P012-2-3-1788431929196,3,0,0
+1788431930424,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-2,text,true,,444,224,4,4,http://127.0.0.1:3001/api/products?search=HW05-P011-1-4-1788431929124,2,0,0
+1788431930613,3,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-1,text,true,,442,192,4,4,http://127.0.0.1:3001/api/products/17,3,0,0
+1788431930652,3,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-4,text,true,,442,192,4,4,http://127.0.0.1:3001/api/products/19,3,0,0
+1788431930842,3,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-3,text,true,,444,192,4,4,http://127.0.0.1:3001/api/products/18,3,0,0
+1788431930907,3,FR06 View imported product detail,200,OK,Load - 6 VUs steady 1-2,text,true,,444,192,4,4,http://127.0.0.1:3001/api/products/16,3,0,0
+1788431931015,4,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-4,text,true,,649,261,4,4,http://127.0.0.1:3001/api/login,4,0,0
+1788431931049,3,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-1,text,true,,649,261,4,4,http://127.0.0.1:3001/api/login,3,0,0
+1788431931199,3,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-3,text,true,,649,261,4,4,http://127.0.0.1:3001/api/login,3,0,0
+1788431931372,3,FR02 Login and correlate admin JWT,200,OK,Load - 6 VUs steady 1-2,text,true,,649,261,4,4,http://127.0.0.1:3001/api/login,3,0,0
+1788431931447,5,FR16 Import one product,200,OK,Load - 6 VUs steady 1-4,text,true,,357,565,4,4,http://127.0.0.1:3001/api/admin/import-products,5,0,0
+1788431931511,6,FR16 Import one product,200,OK,Load - 6 VUs steady 1-1,text,true,,357,565,4,4,http://127.0.0.1:3001/api/admin/import-products,6,0,0
+1788431931594,5,FR16 Import one product,200,OK,Load - 6 VUs steady 1-2,text,true,,357,565,4,4,http://127.0.0.1:3001/api/admin/import-products,5,0,0
+1788431931629,5,FR16 Import one product,200,OK,Load - 6 VUs steady 1-3,text,true,,357,565,4,4,http://127.0.0.1:3001/api/admin/import-products,5,0,0
+1788431931850,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-2,text,true,,444,224,5,5,http://127.0.0.1:3001/api/products?search=HW05-P018-1-5-1788431930912,3,0,0
+1788431931866,2,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-1,text,true,,444,224,5,5,http://127.0.0.1:3001/api/products?search=HW05-P015-0-7-1788431930618,2,0,0
+1788431931914,2,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-3,text,true,,444,224,5,5,http://127.0.0.1:3001/api/products?search=HW05-P017-2-4-1788431930847,2,0,0
+1788431931951,3,FR05 Search imported product,200,OK,Load - 6 VUs steady 1-4,text,true,,444,224,5,5,http://127.0.0.1:3001/api/products?search=HW05-P016-3-2-1788431930657,3,0,0

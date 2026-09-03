@@ -10,10 +10,10 @@ WF-04 is distinct from the three team workflows supplied by the student: WF-01 L
 
 | Scenario | Workload | Samples | Error % | p95 ms | Samples/s | Exact workflows/s |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| Load | 6 VUs / 120 s | 1,912 | 0.00 | 5 | 16.04 | 4.00 |
-| Stress | 6 -> 12 -> 24 VUs | 6,514 | 0.00 | 4 | 36.33 | 9.00 |
-| Spike | 3 -> 30 -> 3 VUs | 3,216 | 0.00 | 4 | 26.98 | 6.65 |
-| Soak | 30 VUs / 410 iterations each | 49,200 | 0.00 | 4 | 79.49 | 19.87 |
+| Load | 6 VUs / 120 s | 1,902 | 0.00 | 5 | 15.93 | 3.97 |
+| Stress | 6 -> 12 -> 24 VUs | 6,489 | 0.00 | 5 | 36.19 | 8.96 |
+| Spike | 3 -> 30 -> 3 VUs | 3,208 | 0.00 | 5 | 26.91 | 6.61 |
+| Soak | 30 VUs / 410 iterations each | 49,200 | 0.00 | 4 | 80.15 | 20.04 |
 
 Endpoint coverage:
 
@@ -22,7 +22,9 @@ Endpoint coverage:
 - read-heavy: FR05 exact search and FR06 correlated product detail;
 - business completion: the imported name, ID, and price are verified at the final detail endpoint.
 
-The maximum stable load observed was 30 VUs for 618.94 seconds, exactly 12,300 completed workflows, 79.49 samples/s, 19.87 workflows/s, p95 4 ms, 0.00% errors, peak Node CPU 22.3%, and peak RSS 136.67 MB. No absolute failure threshold was reached.
+The maximum stable load observed was 30 VUs for 613.82 seconds, exactly 12,300 completed workflows, 80.15 samples/s, 20.04 workflows/s, p95 4 ms, 0.00% errors, peak Node CPU 28.2%, and peak RSS 138.95 MB. No absolute failure threshold was reached.
+
+The Markdown and raw evidence reflect the accepted 20260903 runs. Files under `output/pdf/` have intentionally not been regenerated yet and must not be treated as the final 20260903 submission until the student requests the one-time final PDF build.
 
 ## Task 2 outcome
 
@@ -50,9 +52,10 @@ The unreviewed AI first pass is retained under `audit/`. `task2_analysis_review.
 - `task2_analysis_review.md` and matching PDF
 - `task3_continuous_performance_proposal.md` and `assets/task3_continuous_performance_flow.svg`
 - `AI_Audit.md`, `AI_Critique.md`, and matching PDFs
-- `test-plans/23127035_{Load,Stress,Spike}_20260901.jmx`
-- `results/23127035_{Load,Stress,Spike,Soak}_20260901.jtl`
-- `reports/23127035_{Load,Stress,Spike,Soak}_20260901/index.html`
+- `test-plans/23127035_{Load,Stress,Spike}_20260903.jmx`
+- `results/23127035_{Load,Stress,Spike,Soak}_20260903.jtl`
+- `reports/23127035_{Load,Stress,Spike,Soak}_20260903/index.html`
+- `evidence/screenshots/20260903/23127035_{Load,Stress,Spike,Soak}_20260903_tool_resource.png`
 - `analysis/task1_metrics.{md,json}` and `analysis/task2_metrics.{md,json}`
 - `evidence/resource`, `evidence/database`, and `evidence/inconclusive`
 - `skills/jmeter-performance-testing`
@@ -63,16 +66,16 @@ The unreviewed AI first pass is retained under `audit/`. `task2_analysis_review.
 The safe runner refuses to overwrite evidence. Prepare an isolated backend copy whose only source change is port 3001, then run:
 
 ```bash
-HW05_SUT_BACKEND="$PWD/tmp/isolated-backend-wf04" HW05_PORT=3001 ./scripts/run_official.sh Load
-HW05_SUT_BACKEND="$PWD/tmp/isolated-backend-wf04" HW05_PORT=3001 ./scripts/run_official.sh Stress
-HW05_SUT_BACKEND="$PWD/tmp/isolated-backend-wf04" HW05_PORT=3001 ./scripts/run_official.sh Spike
-HW05_SUT_BACKEND="$PWD/tmp/isolated-backend-wf04" HW05_PORT=3001 ./scripts/run_official.sh Soak
+HW05_RUN_DATE=20260903 HW05_SUT_BACKEND="$PWD/tmp/isolated-backend-wf04" HW05_PORT=3001 ./scripts/run_official.sh Load
+HW05_RUN_DATE=20260903 HW05_SUT_BACKEND="$PWD/tmp/isolated-backend-wf04" HW05_PORT=3001 ./scripts/run_official.sh Stress
+HW05_RUN_DATE=20260903 HW05_SUT_BACKEND="$PWD/tmp/isolated-backend-wf04" HW05_PORT=3001 ./scripts/run_official.sh Spike
+HW05_RUN_DATE=20260903 HW05_SUT_BACKEND="$PWD/tmp/isolated-backend-wf04" HW05_PORT=3001 ./scripts/run_official.sh Soak
 ```
 
 ## Student-owned links and evidence
 
 - Unlisted YouTube demo: requires the student's real Vietnamese narration.
 - Public GitHub repository: requires the student's publication action.
-- Activity Monitor/hardware screenshots, group evidence, and explicit human review: see `STUDENT_EVIDENCE_REQUIRED.md`.
+- Activity Monitor screenshots for all accepted scenarios are in `evidence/screenshots/20260903`; hardware screenshot, group evidence, and explicit human review remain listed in `STUDENT_EVIDENCE_REQUIRED.md`.
 
 No performance issue was filed because all accepted samples passed. The incomplete clock-jump Soak attempt is retained as excluded evidence and is not used in the endurance conclusion.

@@ -1,0 +1,227 @@
+2026-09-03 17:54:38,525 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2026-09-03 17:54:38,535 INFO o.a.j.JMeter: Loading user properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/user.properties
+2026-09-03 17:54:38,535 INFO o.a.j.JMeter: Loading system properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/system.properties
+2026-09-03 17:54:38,535 INFO o.a.j.JMeter: Setting JMeter property: jmeter.save.saveservice.output_format=csv
+2026-09-03 17:54:38,535 INFO o.a.j.JMeter: Setting JMeter property: jmeter.save.saveservice.print_field_names=true
+2026-09-03 17:54:38,535 INFO o.a.j.JMeter: Setting JMeter property: jmeter.save.saveservice.connect_time=true
+2026-09-03 17:54:38,535 INFO o.a.j.JMeter: Setting JMeter property: jmeter.save.saveservice.latency=true
+2026-09-03 17:54:38,535 INFO o.a.j.JMeter: Setting JMeter property: jmeter.save.saveservice.bytes=true
+2026-09-03 17:54:38,535 INFO o.a.j.JMeter: Setting JMeter property: jmeter.save.saveservice.sent_bytes=true
+2026-09-03 17:54:38,535 INFO o.a.j.JMeter: Setting JMeter property: jmeter.save.saveservice.thread_counts=true
+2026-09-03 17:54:38,536 INFO o.a.j.JMeter: Setting JMeter property: jmeter.save.saveservice.assertion_results_failure_message=true
+2026-09-03 17:54:38,536 INFO o.a.j.JMeter: Setting JMeter property: port=3001
+2026-09-03 17:54:38,537 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-09-03 17:54:38,537 INFO o.a.j.JMeter: Version 5.6.3
+2026-09-03 17:54:38,537 INFO o.a.j.JMeter: java.version=21.0.12.1
+2026-09-03 17:54:38,537 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2026-09-03 17:54:38,538 INFO o.a.j.JMeter: os.name=Mac OS X
+2026-09-03 17:54:38,538 INFO o.a.j.JMeter: os.arch=aarch64
+2026-09-03 17:54:38,538 INFO o.a.j.JMeter: os.version=26.5.1
+2026-09-03 17:54:38,538 INFO o.a.j.JMeter: file.encoding=UTF-8
+2026-09-03 17:54:38,538 INFO o.a.j.JMeter: java.awt.headless=true
+2026-09-03 17:54:38,538 INFO o.a.j.JMeter: Max memory     =1073741824
+2026-09-03 17:54:38,538 INFO o.a.j.JMeter: Available Processors =10
+2026-09-03 17:54:38,541 INFO o.a.j.JMeter: Default Locale=English (EN)
+2026-09-03 17:54:38,549 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2026-09-03 17:54:38,549 INFO o.a.j.JMeter: JMeterHome=/opt/homebrew/Cellar/jmeter/5.6.3/libexec
+2026-09-03 17:54:38,549 INFO o.a.j.JMeter: user.dir  =/Users/kunda/Documents/hw/hw05
+2026-09-03 17:54:38,549 INFO o.a.j.JMeter: PWD       =/Users/kunda/Documents/hw/hw05
+2026-09-03 17:54:38,551 INFO o.a.j.JMeter: IP: 127.0.0.1 Name: MacBook-Air-cua-KunDa.local FullName: localhost
+2026-09-03 17:54:38,562 INFO o.a.j.JMeter: Setting property 'jmeter.reportgenerator.outputdir' to:'/Users/kunda/Documents/hw/hw05/reports/23127035_Spike_20260903'
+2026-09-03 17:54:38,564 INFO o.a.j.s.FileServer: Default base='/Users/kunda/Documents/hw/hw05'
+2026-09-03 17:54:38,567 INFO o.a.j.s.FileServer: Set new base='/Users/kunda/Documents/hw/hw05/test-plans'
+2026-09-03 17:54:38,628 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-09-03 17:54:38,639 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-09-03 17:54:38,640 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-09-03 17:54:38,641 INFO o.a.j.s.SaveService: Loading file: /Users/kunda/Documents/hw/hw05/test-plans/23127035_Spike_20260903.jmx
+2026-09-03 17:54:38,666 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-03 17:54:38,666 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-03 17:54:38,666 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-03 17:54:38,666 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-03 17:54:38,666 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2026-09-03 17:54:38,666 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2026-09-03 17:54:38,693 INFO o.a.j.JMeter: Creating summariser <summary>
+2026-09-03 17:54:38,695 INFO o.a.j.r.d.ReportGenerator: ReportGenerator will use for Parsing the separator: ','
+2026-09-03 17:54:38,695 INFO o.a.j.r.d.ReportGenerator: Will generate report at end of test from  results file: /Users/kunda/Documents/hw/hw05/results/23127035_Spike_20260903.jtl
+2026-09-03 17:54:38,695 INFO o.a.j.r.d.ReportGenerator: Reading report generator properties from: /opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/reportgenerator.properties
+2026-09-03 17:54:38,695 INFO o.a.j.r.d.ReportGenerator: Merging with JMeter properties
+2026-09-03 17:54:38,696 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.temp_dir' not found, using default value 'temp' instead.
+2026-09-03 17:54:38,697 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.apdex_per_transaction' not found, using default value 'null' instead.
+2026-09-03 17:54:38,697 INFO o.a.j.r.c.ReportGeneratorConfiguration: apdex_per_transaction is empty, not APDEX per transaction customization
+2026-09-03 17:54:38,697 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.sample_filter' not found, using default value 'null' instead.
+2026-09-03 17:54:38,697 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.report_title' not found, using default value 'null' instead.
+2026-09-03 17:54:38,697 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.start_date' not found, using default value 'null' instead.
+2026-09-03 17:54:38,697 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.end_date' not found, using default value 'null' instead.
+2026-09-03 17:54:38,697 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.date_format' not found, using default value 'null' instead.
+2026-09-03 17:54:38,697 INFO o.a.j.r.c.ReportGeneratorConfiguration: Will use date range start date: null, end date: null
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.totalTPS.exclude_controllers' not found, using default value 'false' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.activeThreadsOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.timeVsThreads.exclude_controllers' not found, using default value 'false' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimeDistribution.exclude_controllers' not found, using default value 'false' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.transactionsPerSecond.exclude_controllers' not found, using default value 'false' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentiles.exclude_controllers' not found, using default value 'false' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimePercentilesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.responseTimesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.connectTimeOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.graph.latenciesOverTime.exclude_controllers' not found, using default value 'false' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.filters_only_sample_series' not found, using default value 'true' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.series_filter' not found, using default value '' instead.
+2026-09-03 17:54:38,699 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.json.show_controllers_only' not found, using default value 'false' instead.
+2026-09-03 17:54:38,700 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.filters_only_sample_series' not found, using default value 'true' instead.
+2026-09-03 17:54:38,700 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.series_filter' not found, using default value '' instead.
+2026-09-03 17:54:38,700 INFO o.a.j.r.c.ReportGeneratorConfiguration: Property 'jmeter.reportgenerator.exporter.html.show_controllers_only' not found, using default value 'false' instead.
+2026-09-03 17:54:38,703 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-09-03 17:54:38,703 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-09-03 17:54:38,703 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-09-03 17:54:38,705 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2026-09-03 17:54:38,705 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2026-09-03 17:54:38,719 INFO o.a.j.r.ClassFinder: Will scan jar /opt/homebrew/Cellar/jmeter/5.6.3/libexec/lib/ext/jmeter-plugins-manager-1.9.jar with filter ExtendsClassFilter [parents=[interface org.apache.jmeter.functions.Function], inner=false, contains=null, notContains=null]. Consider exposing JMeter plugins via META-INF/services, and add JMeter-Skip-Class-Scanning=true manifest attribute so JMeter can skip classfile scanning
+2026-09-03 17:54:38,829 INFO o.a.j.JMeter: Running test (1788432878829)
+2026-09-03 17:54:38,836 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Spike baseline - 3 VUs
+2026-09-03 17:54:38,836 INFO o.a.j.e.StandardJMeterEngine: Starting 3 threads for group Spike baseline - 3 VUs.
+2026-09-03 17:54:38,836 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-09-03 17:54:38,836 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=3 ramp-up=5 delayedStart=false
+2026-09-03 17:54:38,838 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-09-03 17:54:38,838 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 2 : Spike burst - 30 VUs
+2026-09-03 17:54:38,838 INFO o.a.j.e.StandardJMeterEngine: Starting 30 threads for group Spike burst - 30 VUs.
+2026-09-03 17:54:38,838 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-09-03 17:54:38,838 INFO o.a.j.t.ThreadGroup: Starting thread group... number=2 threads=30 ramp-up=1 delayedStart=false
+2026-09-03 17:54:38,842 INFO o.a.j.t.JMeterThread: Thread started: Spike baseline - 3 VUs 1-1
+2026-09-03 17:54:38,843 INFO o.a.j.s.FileServer: Stored: ../data/performance_users.csv
+2026-09-03 17:54:38,847 INFO o.a.j.t.ThreadGroup: Started thread group number 2
+2026-09-03 17:54:38,847 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 3 : Spike recovery - 3 VUs
+2026-09-03 17:54:38,847 INFO o.a.j.e.StandardJMeterEngine: Starting 3 threads for group Spike recovery - 3 VUs.
+2026-09-03 17:54:38,847 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-09-03 17:54:38,847 INFO o.a.j.t.ThreadGroup: Starting thread group... number=3 threads=3 ramp-up=1 delayedStart=false
+2026-09-03 17:54:38,848 INFO o.a.j.t.ThreadGroup: Started thread group number 3
+2026-09-03 17:54:38,848 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-09-03 17:54:39,513 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = MacBook-Air-cua-KunDa.local
+2026-09-03 17:54:39,521 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2026-09-03 17:54:39,522 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-09-03 17:54:39,522 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2026-09-03 17:54:39,522 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-09-03 17:54:39,522 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-09-03 17:54:40,512 INFO o.a.j.t.JMeterThread: Thread started: Spike baseline - 3 VUs 1-2
+2026-09-03 17:54:42,179 INFO o.a.j.t.JMeterThread: Thread started: Spike baseline - 3 VUs 1-3
+2026-09-03 17:55:00,101 INFO o.a.j.r.Summariser: summary +    163 in 00:00:21 =    7.7/s Avg:     3 Min:     1 Max:    21 Err:     0 (0.00%) Active: 3 Started: 3 Finished: 0
+2026-09-03 17:55:23,756 INFO o.a.j.t.JMeterThread: Thread finished: Spike baseline - 3 VUs 1-1
+2026-09-03 17:55:23,763 INFO o.a.j.t.JMeterThread: Thread finished: Spike baseline - 3 VUs 1-2
+2026-09-03 17:55:23,765 INFO o.a.j.t.JMeterThread: Thread finished: Spike baseline - 3 VUs 1-3
+2026-09-03 17:55:23,840 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-1
+2026-09-03 17:55:23,881 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-2
+2026-09-03 17:55:23,912 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-3
+2026-09-03 17:55:23,943 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-4
+2026-09-03 17:55:23,979 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-5
+2026-09-03 17:55:24,009 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-6
+2026-09-03 17:55:24,040 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-7
+2026-09-03 17:55:24,076 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-8
+2026-09-03 17:55:24,106 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-9
+2026-09-03 17:55:24,143 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-10
+2026-09-03 17:55:24,175 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-11
+2026-09-03 17:55:24,208 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-12
+2026-09-03 17:55:24,241 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-13
+2026-09-03 17:55:24,273 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-14
+2026-09-03 17:55:24,306 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-15
+2026-09-03 17:55:24,339 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-16
+2026-09-03 17:55:24,373 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-17
+2026-09-03 17:55:24,409 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-18
+2026-09-03 17:55:24,437 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-19
+2026-09-03 17:55:24,470 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-20
+2026-09-03 17:55:24,501 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-21
+2026-09-03 17:55:24,539 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-22
+2026-09-03 17:55:24,574 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-23
+2026-09-03 17:55:24,603 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-24
+2026-09-03 17:55:24,639 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-25
+2026-09-03 17:55:24,668 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-26
+2026-09-03 17:55:24,704 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-27
+2026-09-03 17:55:24,733 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-28
+2026-09-03 17:55:24,772 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-29
+2026-09-03 17:55:24,800 INFO o.a.j.t.JMeterThread: Thread started: Spike burst - 30 VUs 2-30
+2026-09-03 17:55:30,005 INFO o.a.j.r.Summariser: summary +    664 in 00:00:30 =   22.2/s Avg:     2 Min:     0 Max:     8 Err:     0 (0.00%) Active: 30 Started: 33 Finished: 3
+2026-09-03 17:55:30,006 INFO o.a.j.r.Summariser: summary =    827 in 00:00:51 =   16.2/s Avg:     3 Min:     0 Max:    21 Err:     0 (0.00%)
+2026-09-03 17:55:53,436 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-15
+2026-09-03 17:55:53,463 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-12
+2026-09-03 17:55:53,484 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-10
+2026-09-03 17:55:53,487 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-17
+2026-09-03 17:55:53,505 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-5
+2026-09-03 17:55:53,530 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-1
+2026-09-03 17:55:53,542 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-8
+2026-09-03 17:55:53,587 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-21
+2026-09-03 17:55:53,603 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-2
+2026-09-03 17:55:53,604 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-22
+2026-09-03 17:55:53,624 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-19
+2026-09-03 17:55:53,646 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-16
+2026-09-03 17:55:53,652 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-13
+2026-09-03 17:55:53,663 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-3
+2026-09-03 17:55:53,664 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-27
+2026-09-03 17:55:53,673 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-24
+2026-09-03 17:55:53,678 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-9
+2026-09-03 17:55:53,678 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-25
+2026-09-03 17:55:53,715 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-7
+2026-09-03 17:55:53,723 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-30
+2026-09-03 17:55:53,726 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-18
+2026-09-03 17:55:53,727 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-14
+2026-09-03 17:55:53,735 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-23
+2026-09-03 17:55:53,749 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-4
+2026-09-03 17:55:53,755 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-6
+2026-09-03 17:55:53,767 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-26
+2026-09-03 17:55:53,780 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-20
+2026-09-03 17:55:53,783 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-28
+2026-09-03 17:55:53,811 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-11
+2026-09-03 17:55:53,844 INFO o.a.j.t.JMeterThread: Thread finished: Spike burst - 30 VUs 2-29
+2026-09-03 17:55:53,852 INFO o.a.j.t.JMeterThread: Thread started: Spike recovery - 3 VUs 3-1
+2026-09-03 17:55:54,190 INFO o.a.j.t.JMeterThread: Thread started: Spike recovery - 3 VUs 3-2
+2026-09-03 17:55:54,523 INFO o.a.j.t.JMeterThread: Thread started: Spike recovery - 3 VUs 3-3
+2026-09-03 17:56:00,094 INFO o.a.j.r.Summariser: summary +   2045 in 00:00:30 =   68.0/s Avg:     2 Min:     0 Max:    11 Err:     0 (0.00%) Active: 3 Started: 36 Finished: 33
+2026-09-03 17:56:00,095 INFO o.a.j.r.Summariser: summary =   2872 in 00:01:21 =   35.3/s Avg:     2 Min:     0 Max:    21 Err:     0 (0.00%)
+2026-09-03 17:56:30,195 INFO o.a.j.r.Summariser: summary +    253 in 00:00:30 =    8.4/s Avg:     2 Min:     0 Max:     7 Err:     0 (0.00%) Active: 3 Started: 36 Finished: 33
+2026-09-03 17:56:30,197 INFO o.a.j.r.Summariser: summary =   3125 in 00:01:51 =   28.1/s Avg:     2 Min:     0 Max:    21 Err:     0 (0.00%)
+2026-09-03 17:56:38,572 INFO o.a.j.t.JMeterThread: Thread finished: Spike recovery - 3 VUs 3-3
+2026-09-03 17:56:38,596 INFO o.a.j.t.JMeterThread: Thread finished: Spike recovery - 3 VUs 3-1
+2026-09-03 17:56:38,744 INFO o.a.j.t.JMeterThread: Thread finished: Spike recovery - 3 VUs 3-2
+2026-09-03 17:56:38,745 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-09-03 17:56:38,745 INFO o.a.j.s.FileServer: Close: ../data/performance_users.csv
+2026-09-03 17:56:38,751 INFO o.a.j.r.Summariser: summary +     72 in 00:00:09 =    8.4/s Avg:     2 Min:     1 Max:     7 Err:     0 (0.00%) Active: 0 Started: 36 Finished: 36
+2026-09-03 17:56:38,751 INFO o.a.j.r.Summariser: summary =   3197 in 00:02:00 =   26.7/s Avg:     2 Min:     0 Max:    21 Err:     0 (0.00%)
+2026-09-03 17:56:38,752 INFO o.a.j.JMeter: Generating Dashboard
+2026-09-03 17:56:38,752 INFO o.a.j.r.d.ReportGenerator: Flushing result collector before report Generation
+2026-09-03 17:56:38,770 INFO o.a.j.r.p.NormalizerSampleConsumer: Using format, 'ms', to parse timeStamp field
+2026-09-03 17:56:38,851 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): beginDate produced 0 samples
+2026-09-03 17:56:38,851 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.AggregateConsumer#stopProducing(): endDate produced 0 samples
+2026-09-03 17:56:38,852 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ApdexSummaryConsumer#stopProducing(): apdexSummary produced 0 samples
+2026-09-03 17:56:38,852 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.RequestsSummaryConsumer#stopProducing(): requestsSummary produced 0 samples
+2026-09-03 17:56:38,854 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.StatisticsSummaryConsumer#stopProducing(): statisticsSummary produced 0 samples
+2026-09-03 17:56:38,855 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.Top5ErrorsBySamplerConsumer#stopProducing(): top5ErrorsBySampler produced 0 samples
+2026-09-03 17:56:38,855 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.ErrorsSummaryConsumer#stopProducing(): errorsSummary produced 0 samples
+2026-09-03 17:56:38,855 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.HitsPerSecondGraphConsumer#stopProducing(): hitsPerSecond produced 0 samples
+2026-09-03 17:56:38,871 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyVSRequestGraphConsumer#stopProducing(): latencyVsRequest produced 0 samples
+2026-09-03 17:56:38,871 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.SyntheticResponseTimeDistributionGraphConsumer#stopProducing(): syntheticResponseTimeDistribution produced 0 samples
+2026-09-03 17:56:38,871 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.BytesThroughputGraphConsumer#stopProducing(): bytesThroughputOverTime produced 0 samples
+2026-09-03 17:56:38,871 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.CodesPerSecondGraphConsumer#stopProducing(): codesPerSecond produced 0 samples
+2026-09-03 17:56:38,883 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeVSRequestGraphConsumer#stopProducing(): responseTimeVsRequest produced 0 samples
+2026-09-03 17:56:38,883 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): startIntervalControlerFilter produced 22379 samples
+2026-09-03 17:56:38,883 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TotalTPSGraphConsumer#stopProducing(): totalTPS produced 0 samples
+2026-09-03 17:56:38,883 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ActiveThreadsGraphConsumer#stopProducing(): activeThreadsOverTime produced 0 samples
+2026-09-03 17:56:38,883 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TimeVSThreadGraphConsumer#stopProducing(): timeVsThreads produced 0 samples
+2026-09-03 17:56:38,883 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeDistributionGraphConsumer#stopProducing(): responseTimeDistribution produced 0 samples
+2026-09-03 17:56:38,883 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.TransactionsPerSecondGraphConsumer#stopProducing(): transactionsPerSecond produced 0 samples
+2026-09-03 17:56:38,883 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesGraphConsumer#stopProducing(): responseTimePercentiles produced 0 samples
+2026-09-03 17:56:38,884 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimePercentilesOverTimeGraphConsumer#stopProducing(): responseTimePercentilesOverTime produced 0 samples
+2026-09-03 17:56:38,884 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ResponseTimeOverTimeGraphConsumer#stopProducing(): responseTimesOverTime produced 0 samples
+2026-09-03 17:56:38,884 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.ConnectTimeOverTimeGraphConsumer#stopProducing(): connectTimeOverTime produced 0 samples
+2026-09-03 17:56:38,884 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.graph.impl.LatencyOverTimeGraphConsumer#stopProducing(): latenciesOverTime produced 0 samples
+2026-09-03 17:56:38,884 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): nameFilter produced 47955 samples
+2026-09-03 17:56:38,884 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.FilterConsumer#stopProducing(): dateRangeFilter produced 9591 samples
+2026-09-03 17:56:38,884 INFO o.a.j.r.p.AbstractSampleConsumer: class org.apache.jmeter.report.processor.NormalizerSampleConsumer#stopProducing(): normalizer produced 3197 samples
+2026-09-03 17:56:38,884 INFO o.a.j.r.p.CsvFileSampleSource: produce(): 3197 samples produced in 99ms on channel 0
+2026-09-03 17:56:38,884 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'json' of className:'org.apache.jmeter.report.dashboard.JsonExporter'
+2026-09-03 17:56:38,922 INFO o.a.j.r.d.JsonExporter: Found data for consumer statisticsSummary in context
+2026-09-03 17:56:38,922 INFO o.a.j.r.d.JsonExporter: Creating statistics for overall
+2026-09-03 17:56:38,922 INFO o.a.j.r.d.JsonExporter: Creating statistics for other transactions
+2026-09-03 17:56:38,922 INFO o.a.j.r.d.JsonExporter: Checking output folder
+2026-09-03 17:56:38,923 INFO o.a.j.r.d.JsonExporter: Writing statistics JSON to /Users/kunda/Documents/hw/hw05/reports/23127035_Spike_20260903/statistics.json
+2026-09-03 17:56:38,940 INFO o.a.j.r.d.ReportGenerator: Exporting data using exporter:'html' of className:'org.apache.jmeter.report.dashboard.HtmlTemplateExporter'
+2026-09-03 17:56:38,941 INFO o.a.j.r.d.HtmlTemplateExporter: Will generate dashboard in folder: /Users/kunda/Documents/hw/hw05/reports/23127035_Spike_20260903
+2026-09-03 17:56:38,983 INFO o.a.j.r.d.HtmlTemplateExporter: Report will be generated in: /Users/kunda/Documents/hw/hw05/reports/23127035_Spike_20260903, creating folder structure
+2026-09-03 17:56:38,983 INFO o.a.j.r.d.TemplateVisitor: Copying folder from '/opt/homebrew/Cellar/jmeter/5.6.3/libexec/bin/report-template' to '/Users/kunda/Documents/hw/hw05/reports/23127035_Spike_20260903', got message: /Users/kunda/Documents/hw/hw05/reports/23127035_Spike_20260903, found non empty folder with following content [/Users/kunda/Documents/hw/hw05/reports/23127035_Spike_20260903/statistics.json], will be ignored
+2026-09-03 17:56:39,103 INFO o.a.j.JMeter: Dashboard generated
